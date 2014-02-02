@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DominoApp" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../bin/DominoApp" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="./DominoSzene/DominoSzene.scn" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../../bin/DominoApp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="./DominoSzene/DominoSzene.scn" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-fexceptions" />
+			<Add directory="../../include" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,-rpath,." />
+			<Add library="Horde3D" />
+			<Add library="Horde3DUtils" />
+			<Add library="glfw" />
+			<Add library="GameEngineCore" />
+			<Add library="GameSceneGraphComponent" />
+			<Add library="GameBulletPhysicsComponent" />
+			<Add directory="../../bin" />
+		</Linker>
+		<Unit filename="DemoApp.cpp" />
+		<Unit filename="DemoApp.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

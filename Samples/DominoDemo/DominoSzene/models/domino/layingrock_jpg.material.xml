@@ -1,0 +1,14 @@
+<Material>
+    <Shader source="shaders/model.shader"/>
+    <Sampler map="models/domino/layingrock.jpg" name="albedoMap"/>
+    <Sampler map="models/domino/layingrockBump.tga" name="normalMap" allowCompression="false"/>
+    <Sampler map="$TexCube" name="ambientMap"/>
+    <Sampler map="$TexCube" name="envMap"/>
+    <Sampler map="$Tex2D" name="depthBuf"/>
+    <Sampler map="$Tex2D" name="buf0"/>
+    <Sampler map="$Tex2D" name="buf1"/>
+    <Sampler map="$Tex2D" name="buf2"/>
+    <Sampler map="$Tex2D" name="heightNormMap"/>
+    <Sampler map="$Tex2D" name="detailMap"/>
+    <ShaderFlag name="_F03_ParallaxMapping"/>
+</Material>

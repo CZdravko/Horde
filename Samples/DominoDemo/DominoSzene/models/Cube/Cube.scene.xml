@@ -1,0 +1,3 @@
+<Model geometry="models\Cube\Cube.geo" name="Cube.001">
+    <Mesh tx="3.76482" vertREnd="23" ty="-5.29789" sx="0.40130" tz="-4.43467" sy="0.40130" sz="0.40130" batchStart="0" name="Cube.001" batchCount="36" material="models/domino/Tube_png.material.xml" vertRStart="0"/>
+</Model>

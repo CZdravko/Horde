@@ -1,0 +1,11 @@
+<!DOCTYPE SceneConfiguration>
+<Configuration>
+  <SceneGraph path="models/demo.scene.xml" />
+  <AttachmentPlugIn name="GameEngine" />
+  <!--<EnginePath mediapath="media" animationpath="animations"/>-->
+  <EngineConfig shadowMapSize="2048" anisotropyFactor="16" texCompression="true"
+    loadTextures="true" maxNumMessages="5000" fastAnimation="true" />
+  <!--<StereoscopyConfig mode="sideBySide" method="asymmetricFrustum" eyeOffset="0.0325" focalLength="1"/>-->
+  <ActiveCamera name="camera" />
+  <Extras/>
+</Configuration>

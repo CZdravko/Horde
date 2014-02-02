@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.debug.1936992578">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.debug.1936992578" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/GameEngineCore"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Core"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/GameEngineCore/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Core/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="GameEngineCore" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="RESOLVED" kind="libraryFile" name="Core" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.debug.1936992578" name="Debug" parent="org.eclipse.cdt.msvc.dll.debug">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.debug.1936992578." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.debug.965910063" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.debug">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.debug.1808120428" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.debug"/>
+							<builder buildPath="${workspace_loc:/GameEngineCore}/Debug" id="org.eclipse.cdt.msvc.builder.866382824" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.debug.1881154340" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.834415359" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1369592799" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.498936958" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.644743453" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.402504740" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.debug.1568461765" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.773172643" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1147981262" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.1497676594" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1027676918" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1877421680" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.debug.2057075517" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.debug">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.126953177" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.1518510519" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.703727955" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.debug.958093870" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.debug">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.2120827262" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.debug.1184828414" name="Generate Debug Info (/debug)" superClass="org.eclipse.cdt.msvc.link.option.debug" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.1051656196" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Lua/Debug/Lua.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/zlib/Debug/zlib.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/XMLParser/Debug/XMLParser.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.1969181313" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.1597841185" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Common|GameEngineCore" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="GameEngineCore"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.release.360385384">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.release.360385384" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/GameEngineCore"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/GameEngineCore/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="GameEngineCore" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.release.360385384" name="Release" parent="org.eclipse.cdt.msvc.dll.release">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.release.360385384." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.release.711174667" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.release">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.release.1527655710" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.release"/>
+							<builder buildPath="${workspace_loc:/GameEngineCore}/Release" id="org.eclipse.cdt.msvc.builder.1032235702" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.release.149034402" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.2004661420" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.760145331" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.857288610" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1710441448" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.2109727298" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.release.536536045" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1554827858" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1716629938" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.133913474" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft SDKs\Windows\v7.0A\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft Visual Studio 10.0\VC\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1358869943" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1111969775" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.release.284523433" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.release">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.1249694327" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft SDKs\Windows\v7.0A\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft Visual Studio 10.0\VC\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.1307624546" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="WIN32"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.1548460283" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.release.978314521" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.release">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.2135542981" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.306647046" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;D:\MDK\Horde3DEngine.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;D:\MDK\Horde3DUtils.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;D:\MDK\Lua.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;D:\MDK\zlib.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;D:\MDK\XMLParser.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.1495423851" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.693819327" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="GameEngineCore.org.eclipse.cdt.msvc.projectType.dll.1145446424" name="Shared Library" projectType="org.eclipse.cdt.msvc.projectType.dll"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1936992578;org.eclipse.cdt.msvc.dll.debug.1936992578.;org.eclipse.cdt.msvc.cl.c.dll.debug.1881154340;org.eclipse.cdt.msvc.cl.inputType.c.402504740">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.360385384;org.eclipse.cdt.msvc.dll.release.360385384.;org.eclipse.cdt.msvc.cl.dll.release.536536045;org.eclipse.cdt.msvc.cl.inputType.1111969775">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.360385384;org.eclipse.cdt.msvc.dll.release.360385384.;org.eclipse.cdt.msvc.cl.c.dll.release.149034402;org.eclipse.cdt.msvc.cl.inputType.c.2109727298">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1936992578;org.eclipse.cdt.msvc.dll.debug.1936992578.;org.eclipse.cdt.msvc.cl.dll.debug.1568461765;org.eclipse.cdt.msvc.cl.inputType.1877421680">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope"/>
+</cproject>

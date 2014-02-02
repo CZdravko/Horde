@@ -1,0 +1,238 @@
+﻿<BTrees valid="true">
+  <Actions>
+    <Action name="setProperty" />
+    <Action name="adjustProperty" />
+    <Action name="goto" />
+    <Action name="gotoFoundObject" />
+    <Action name="gotoFoundObjectInteractionPos" />
+    <Action name="talk" />
+    <Action name="playAnim" />
+    <Action name="pickUpFoundObject" />
+    <Action name="putDown" />
+    <Action name="wait" />
+    <Action name="useFoundObject" />
+    <Action name="cout" />
+    <Action name="find_Char_with_property" />
+    <Action name="givePickedUpObject" />
+    <Action name="interactWithFoundCharacter" />
+    <Action name="resetInteractions" />
+  </Actions>
+  <Conditions>
+    <Condition name="findObjectByName" />
+    <Condition name="findObjectByAttribute" />
+    <Condition name="checkPropertyGreaterThan" />
+    <Condition name="checkPropertyLowerThan" />
+    <Condition name="haveObject" />
+    <Condition name="checkForInteraction" />
+  </Conditions>
+  <Trees>
+  <!-- with numerical weights whether the weight is positive or negative is the defining factor of whether
+  the designer wants the value to be greater than or less than the value that is in the query's descriptor, however
+  if the designer wants the value to be equal to the value of the query's descriptor then the equivalent variable must be set! -->
+    <Tree treeName="Main_Behavior" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="2" numberOfNDesc="0"
+	BDescriptorName="desc1" BDescriptorValue="true" BDescriptorName="desc2" BDescriptorValue="false" NDescriptorName="ndesc1"
+	NDescriptorValue="5" NDescriptorEquivalent="false">
+	
+      <Parallel subtype="C1F1">
+	   <Query>
+		<BDescriptor name="query_desc1" value="true" weight="1"/>
+		<BDescriptor name="query_desc2" value="false" weight="3"/>
+		<NDescriptor name="query_ndesc1" value="41" weight="2" />
+	  </Query>
+        <Subtree treeName="Desires_Over_Time" />
+        <Decorator subtype="Repeat" param="infty">
+          <Selector subtype="Normal">
+            <Sequence>
+              <Condition subtype="checkPropertyGreaterThan" param="Bladder 70" />
+              <Subtree treeName="Toilet" />
+            </Sequence>
+            <Sequence>
+              <Condition subtype="checkPropertyGreaterThan" param="Thirst 53" />
+              <Subtree treeName="Drink" />
+            </Sequence>
+            <Subtree treeName="Idle" />
+          </Selector>
+        </Decorator>
+      </Parallel>
+	
+    </Tree>
+    <Tree treeName="Toilet" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Sequence>
+        <Condition subtype="findObjectByName" param="toilet" />
+        <Action subtype="gotoFoundObjectInteractionPos" param="" />
+        <Decorator subtype="Repeat While False" param="">
+          <Sequence>
+            <Action subtype="wait" param="25" />
+            <Action subtype="useFoundObject" param="" />
+            <Action subtype="setProperty" param="Bladder 0" />
+          </Sequence>
+        </Decorator>
+      </Sequence>
+    </Tree>
+    <Tree treeName="getDrink" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Selector subtype="Normal">
+        <Condition name="Already have a drink" subtype="haveObject" param="Drink" />
+        <Sequence name="Find drink">
+          <Condition subtype="findObjectByName" param="stein01" />
+          <Action subtype="gotoFoundObjectInteractionPos" param="" />
+          <Action subtype="pickUpFoundObject" param="" />
+        </Sequence>
+        <Sequence name="Order drink">
+          <Condition subtype="findObjectByAttribute" param="servesBeer" />
+          <Action subtype="gotoFoundObjectInteractionPos" param="" />
+          <Action subtype="talk" param="A beer please!" />
+          <Action subtype="interactWithFoundCharacter" param="order" />
+          <Action subtype="wait" param="480" />
+        </Sequence>
+        <Sequence name="Get drink from booth">
+          <Condition subtype="findObjectByName" param="booth" />
+          <Action subtype="gotoFoundObjectInteractionPos" param="" />
+          <Action subtype="useFoundObject" param="" />
+        </Sequence>
+      </Selector>
+    </Tree>
+    <Tree treeName="Idle" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Parallel subtype="C1F1">
+        <Decorator subtype="Repeat While False" param="">
+          <Sequence>
+            <Action subtype="wait" param="1" />
+            <Condition subtype="checkPropertyGreaterThan" param="Bladder 70" />
+          </Sequence>
+        </Decorator>
+        <Selector subtype="Random">
+          <Action subtype="playAnim" param="idle" />
+          <Action subtype="playAnim" param="idle2" />
+          <Action subtype="playAnim" param="idle3" />
+        </Selector>
+      </Parallel>
+    </Tree>
+    <Tree treeName="Drink" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Sequence>
+        <Subtree treeName="getDrink" />
+        <Action subtype="playAnim" param="drink" />
+        <Action subtype="setProperty" param="Thirst 0" />
+        <Action subtype="adjustProperty" param="Drunkeness 20" />
+        <Action subtype="adjustProperty" param="Bladder 30" />
+      </Sequence>
+    </Tree>
+    <Tree treeName="Desires_Over_Time" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Parallel subtype="CaFa">
+        <Decorator subtype="Repeat" param="infty">
+          <Sequence>
+            <Action subtype="wait" param="42" />
+            <Action subtype="adjustProperty" param="Thirst 1" />
+            <Action subtype="adjustProperty" param="Bladder 1" />
+          </Sequence>
+        </Decorator>
+        <Decorator subtype="Repeat" param="infty">
+          <Sequence>
+            <Action subtype="wait" param="99" />
+            <Action subtype="adjustProperty" param="Drunkeness -1" />
+          </Sequence>
+        </Decorator>
+        <Action subtype="setProperty" param="Story 0" />
+      </Parallel>
+    </Tree>
+    <!--Funktioniert, ist aber etwas unelegant-->
+    <!--<Tree treeName="Tell_while_E_listener">
+    <Decorator subtype="Repeat" param="infty">
+          <Sequence>
+            <Action subtype="wait" param="1" />
+            <Selector subtype="Normal">
+              <Sequence name="fromBeginning">
+                <Condition subtype="checkPropertyLowerThan" param="Story 1" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="You know what happened to me last week?" />
+                <Action subtype="setProperty" param="Story 2" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="As I was walking home, I found something lying on the street." />
+                <Action subtype="setProperty" param="Story 3" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+              <Sequence name="FromPart2">
+                <Condition subtype="checkPropertyLowerThan" param="Story 2" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="As I was walking home, I found something lying on the street." />
+                <Action subtype="setProperty" param="Story 3" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+              <Sequence name="FromPart3">
+                <Condition subtype="checkPropertyLowerThan" param="Story 3" />
+                <Condition name="Listener there?" subtype="checkForInteraction" param="listener" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+            </Selector>
+          </Sequence>
+        </Decorator>
+    </Tree>-->
+
+    <Tree treeName="Tell_while_E_listener" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Decorator subtype="Repeat" param="infty">
+        <Sequence>
+          <Action subtype="wait" param="1" />
+          <Condition name="Listener?" subtype="checkForInteraction" param="listener" />
+          <Parallel subtype="C1F1">
+            <Decorator subtype="Repeat While True" param="">
+              <Sequence>
+                <Action subtype="wait" param="1" />
+                <Condition name="Listener?" subtype="checkForInteraction" param="listener" />
+              </Sequence>
+            </Decorator>
+            <Selector subtype="Normal">
+              <Sequence name="fromBeginning">
+                <Condition subtype="checkPropertyLowerThan" param="Story 1" />
+                <Action subtype="talk" param="You know what happened to me last week?" />
+                <Action subtype="setProperty" param="Story 2" />
+                <Action subtype="talk" param="As I was walking home, I found something lying on the street." />
+                <Action subtype="setProperty" param="Story 3" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+              <Sequence name="FromPart2">
+                <Condition subtype="checkPropertyLowerThan" param="Story 2" />
+                <Action subtype="talk" param="As I was walking home, I found something lying on the street." />
+                <Action subtype="setProperty" param="Story 3" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+              <Sequence name="FromPart3">
+                <Condition subtype="checkPropertyLowerThan" param="Story 3" />
+                <Action subtype="talk" param="It was a hundred dollar note!" />
+                <Action subtype="setProperty" param="Story 4" />
+              </Sequence>
+            </Selector>
+          </Parallel>
+        </Sequence>
+      </Decorator>
+    </Tree>
+    <Tree treeName="Serving_Girl" treeType="Dynamic" class="Generic_Behavior" numberOfBDesc="0" numberOfNDesc="0">
+      <Decorator subtype="Repeat" param="infty">
+        <Sequence>
+          <Action subtype="wait" param="1" />
+          <Condition subtype="checkForInteraction" param="order" />
+          <Action subtype="talk" param="Sure. One Moment please." />
+          <Condition subtype="findObjectByAttribute" param="servable" />
+          <Action subtype="gotoFoundObjectInteractionPos" param="" />
+          <Action subtype="pickUpFoundObject" param="" />
+          <Condition subtype="findObjectByAttribute" param="needsServing" />
+          <Action subtype="gotoFoundObject" param="" />
+          <Action subtype="talk" param="Here you go. Enjoy." />
+          <Action subtype="givePickedUpObject" param="" />
+          <Action subtype="resetInteractions" param="" />
+        </Sequence>
+      </Decorator>
+    </Tree>
+    <Tree treeName="GetDrinkByServer" treeType="Normal" class="Generic_Behavior">
+      <Sequence>
+        <Condition subtype="findObjectByAttribute" param="servableDrink" />
+        <Action subtype="gotoFoundObject" param="" />
+        <Action subtype="pickUpFoundObject" param="" />
+      </Sequence>
+    </Tree>
+  </Trees>
+</BTrees>

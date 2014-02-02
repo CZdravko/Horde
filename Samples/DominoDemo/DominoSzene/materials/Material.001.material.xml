@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<Material>
+	<Shader source="shaders\default.shader"/>
+	<ShaderFlag name="_F01_Skinning"/>
+	<ShaderFlag name="_F02_NormalMapping"/>
+	<Sampler map="textures\models\texture_1.jpg" name="albedoMap"/>
+</Material>

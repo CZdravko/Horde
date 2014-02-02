@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.debug.1270670555">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.debug.1270670555" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/H3DEngine"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/H3DEngine/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="H3DEngine" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.debug.1270670555" name="Debug" parent="org.eclipse.cdt.msvc.dll.debug">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.debug.1270670555." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.debug.1504310648" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.debug">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.debug.1620011330" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.debug"/>
+							<builder buildPath="${workspace_loc:/Horde3DEngine}/Debug" id="org.eclipse.cdt.msvc.builder.2004174052" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+								</outputEntries>
+							</builder>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.debug.1284021276" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.261474094" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1453615055" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.442759047" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.444836242" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1500454475" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.debug.1158208729" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1520834303" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1416955220" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.1461558770" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.671864223" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.2140113523" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.debug.1892415969" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.debug">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.1383569431" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.1801178310" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.645650526" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.debug.787481405" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.debug">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.1249339656" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.debug.2050159273" name="Generate Debug Info (/debug)" superClass="org.eclipse.cdt.msvc.link.option.debug" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.1379782157" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${VCLib}/msvcrtd.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.Lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.792020717" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.1539131709" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ExtensionASFAMC"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Horde3D"/>
+						<entry excluding="D3D11|utOpenGL.cpp|proj.win32|proj.ios|GL" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Horde3DEngine"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Shared"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Source"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.release.892597757">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.release.892597757" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Horde3DEngine"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/H3DEngine"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Horde3DEngine/Release"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/H3DEngine/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="Horde3DEngine" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="RESOLVED" kind="libraryFile" name="H3DEngine" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.release.892597757" name="Release" parent="org.eclipse.cdt.msvc.dll.release">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.release.892597757." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.release.2032669177" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.release">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.release.599233028" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.release"/>
+							<builder buildPath="${workspace_loc:/Horde3DEngine}/Release" id="org.eclipse.cdt.msvc.builder.565148794" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.release.2075007106" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.54943449" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1291996687" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.555845754" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/ASFAMCEXT_ROOT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${HORDE_ROOT}/3DEngine/Horde3D/Source/Shared&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1747568977" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1814432180" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.release.1334790708" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.454531176" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.894133340" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.978921367" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/ASFAMCEXT_ROOT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${HORDE_ROOT}/3DEngine/Horde3D/Source/Shared&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1069816205" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.733315671" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.release.874870061" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.release">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.34222090" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Extensions/Terrain/Bindings/C++}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Shared}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3DEngine/ASFAMCEXT_ROOT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${HORDE_ROOT}/3DEngine/Horde3D/Source/Shared&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/ExtensionASFAMC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/H3DEngine/Shared}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.878800132" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="_DEBUG"/>
+									<listOptionValue builtIn="false" value="_WINDOWS"/>
+									<listOptionValue builtIn="false" value="_USRDLL"/>
+									<listOptionValue builtIn="false" value="HORDE3D_EXPORTS"/>
+									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
+									<listOptionValue builtIn="false" value="FORCE_H3D_RENDERER_GLES2"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.517951446" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.release.900842591" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.release">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.181879224" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.793915750" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MSSDK\Lib\AdvAPI32.Lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MSSDK\Lib\User32.Lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MSVC\lib\msvcrtd.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${VCLib}/msvcrtd.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.Lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.414430927" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.536005104" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="ASFAMCEXT_ROOT|Horde3DEngine/utOpenGL.cpp|Horde3DEngine/ConvexHull.cpp|Horde3DEngine/proj.win32|Horde3DEngine/Tiling|Horde3DEngine/proj.ios|Horde3DEngine/proj.android|Horde3DEngine/GL|Horde3DEngine/D3D11" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="Horde3DEngine.org.eclipse.cdt.msvc.projectType.dll.1736570163" name="Shared Library" projectType="org.eclipse.cdt.msvc.projectType.dll"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/Horde3DEngine"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/Horde3DEngine"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.892597757;org.eclipse.cdt.msvc.dll.release.892597757.;org.eclipse.cdt.msvc.cl.c.dll.release.2075007106;org.eclipse.cdt.msvc.cl.inputType.c.1814432180">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1270670555;org.eclipse.cdt.msvc.dll.debug.1270670555.;org.eclipse.cdt.msvc.cl.c.dll.debug.1284021276;org.eclipse.cdt.msvc.cl.inputType.c.1500454475">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.892597757;org.eclipse.cdt.msvc.dll.release.892597757.;org.eclipse.cdt.msvc.cl.dll.release.1334790708;org.eclipse.cdt.msvc.cl.inputType.733315671">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1270670555;org.eclipse.cdt.msvc.dll.debug.1270670555.;org.eclipse.cdt.msvc.cl.dll.debug.1158208729;org.eclipse.cdt.msvc.cl.inputType.2140113523">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

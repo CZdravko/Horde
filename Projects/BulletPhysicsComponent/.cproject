@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.debug.1491458757">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.debug.1491458757" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BulletPhysicsComponent"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BulletPhysicsComponent/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BulletPhysicsComponent" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.debug.1491458757" name="Debug" parent="org.eclipse.cdt.msvc.dll.debug">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.debug.1491458757." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.debug.296578393" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.debug">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.debug.1774188968" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.debug"/>
+							<builder buildPath="${workspace_loc:/GameBulletPhysicsComponent}/Debug" id="org.eclipse.cdt.msvc.builder.93464765" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+								</outputEntries>
+							</builder>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.debug.1970769614" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1914782678" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.834844049" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.2093794602" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.480648785" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1141460265" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.debug.854355544" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1422440385" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.729822591" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.75107879" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/Extras/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/Extras/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:/Microsoft SDKs/Windows/v7.0A/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:/Microsoft Visual Studio 10.0/VC/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/XMLParser/XMLParser}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lua}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/zlib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.2049621859" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1828057888" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.debug.786296857" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.debug">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.1863829384" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/Extras/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/Bullet/bullet-2.74/Extras/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:/Microsoft SDKs/Windows/v7.0A/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:/Microsoft Visual Studio 10.0/VC/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/XMLParser/XMLParser}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lua}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/zlib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.657900059" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.1268562944" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.debug.198713404" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.debug">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.1456268003" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.debug.389585128" name="Generate Debug Info (/debug)" superClass="org.eclipse.cdt.msvc.link.option.debug" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.1897519068" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Lua/Debug/Lua.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/XMLParser/Debug/XMLParser.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/OpenGL32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Core/Debug/Core.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.600699408" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.621981714" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="GameBulletPhysicsComponent|BulletCollision|LinearMath|GLPhysicsView.cpp|BulletDynamics|ConvexDecomposition|GIMPACTUtils" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BulletCollision"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BulletDynamics"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ConvexDecomposition"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="GIMPACTUtils"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="GameBulletPhysicsComponent"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="LinearMath"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="org.eclipse.cdt.msvc.dll.release.605027116">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.release.605027116" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/GameBulletPhysicsComponent"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/GameBulletPhysicsComponent/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="GameBulletPhysicsComponent" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="dll" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" description="" id="org.eclipse.cdt.msvc.dll.release.605027116" name="Release" parent="org.eclipse.cdt.msvc.dll.release">
+					<folderInfo id="org.eclipse.cdt.msvc.dll.release.605027116." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.msvc.toolchain.dll.release.556360496" name="Microsoft Visual C++" superClass="org.eclipse.cdt.msvc.toolchain.dll.release">
+							<targetPlatform id="org.eclipse.cdt.msvc.targetPlatform.dll.release.1320307585" superClass="org.eclipse.cdt.msvc.targetPlatform.dll.release"/>
+							<builder buildPath="${workspace_loc:/GameBulletPhysicsComponent}/Release" id="org.eclipse.cdt.msvc.builder.1396042636" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.msvc.builder"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.dll.release.474338116" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1008681581" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.488601441" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.1373212389" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.920906703" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1501153425" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.cl.dll.release.1938598276" name="C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.dll.release">
+								<option id="org.eclipse.cdt.msvc.cl.option.optimization.454097061" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1553936153" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.includes.1182854172" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/Extras/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft SDKs\Windows\v7.0A\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft Visual Studio 10.0\VC\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/Extras/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/XMLParser/XMLParser}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lua}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/zlib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1960569534" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.2005438741" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.rc.dll.release.721379266" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.dll.release">
+								<option id="org.eclipse.cdt.msvc.rc.option.includes.1472408477" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/Extras/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft SDKs\Windows\v7.0A\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\Microsoft Visual Studio 10.0\VC\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bullet/bullet-2.74/Extras/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${MSSDKinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VCinc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/GIMPACTUtils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent/ConvexDecomposition}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BulletPhysicsComponent}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps/Bullet/bullet-2.74/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/XMLParser/XMLParser}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lua}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/zlib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/GameEngine/Deps}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.160676608" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="WIN32"/>
+									<listOptionValue builtIn="false" value="BULLETPHYSICSCOMPONENT_EXPORTS"/>
+									<listOptionValue builtIn="false" value="GAMEENGINE_EXPORTS"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.rc.inputType.1053507797" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.link.dll.release.1106942026" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.release">
+								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.838168615" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.1314495077" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Lua/Debug/Lua.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/XMLParser/Debug/XMLParser.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/OpenGL32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/GIU32.lib&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Core/Debug/Core.lib}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.msvc.link.inputType.2116232225" superClass="org.eclipse.cdt.msvc.link.inputType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.msvc.lib.1578084933" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="GLPhysicsView.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="GameBulletPhysicsComponent.org.eclipse.cdt.msvc.projectType.dll.1491552618" name="Shared Library" projectType="org.eclipse.cdt.msvc.projectType.dll"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1491458757;org.eclipse.cdt.msvc.dll.debug.1491458757.;org.eclipse.cdt.msvc.cl.c.dll.debug.1970769614;org.eclipse.cdt.msvc.cl.inputType.c.1141460265">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.debug.1491458757;org.eclipse.cdt.msvc.dll.debug.1491458757.;org.eclipse.cdt.msvc.cl.dll.debug.854355544;org.eclipse.cdt.msvc.cl.inputType.1828057888">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.605027116;org.eclipse.cdt.msvc.dll.release.605027116.;org.eclipse.cdt.msvc.cl.c.dll.release.474338116;org.eclipse.cdt.msvc.cl.inputType.c.1501153425">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.dll.release.605027116;org.eclipse.cdt.msvc.dll.release.605027116.;org.eclipse.cdt.msvc.cl.dll.release.1938598276;org.eclipse.cdt.msvc.cl.inputType.2005438741">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope"/>
+</cproject>
