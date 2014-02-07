@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="org.eclipse.cdt.msvc.dll.debug.1392853689">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.debug.1392853689" moduleId="org.eclipse.cdt.core.settings" name="Debug">
@@ -14,8 +16,8 @@
 					</externalSetting>
 				</externalSettings>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -81,7 +83,7 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/Horde3DUtils.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.1938856330" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>
@@ -106,8 +108,8 @@
 					</externalSetting>
 				</externalSettings>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -172,7 +174,7 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/Horde3DUtils.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.1198227986" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>

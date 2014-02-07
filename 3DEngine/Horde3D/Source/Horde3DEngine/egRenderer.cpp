@@ -185,7 +185,8 @@ bool Renderer::init()
 
 	_overlayBatches.reserve( 64 );
 	_overlayVerts = new OverlayVert[MaxNumOverlayVerts];
-	_overlayVB = gRDI->createVertexBuffer( MaxNumOverlayVerts * sizeof( OverlayVert ), 0x0 );
+	unsigned char* over_data = new unsigned char[MaxNumOverlayVerts * sizeof( OverlayVert )];
+	_overlayVB = gRDI->createVertexBuffer( MaxNumOverlayVerts * sizeof( OverlayVert ), over_data );
 
 	// Create unit primitives
 	createPrimitives();

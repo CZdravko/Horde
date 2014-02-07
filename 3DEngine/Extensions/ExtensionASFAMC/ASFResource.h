@@ -44,16 +44,21 @@ public:
 private:
 	Skeleton* _pSkeleton;
 	map<NodeHandle, JointNode*> joint_idxMap;
+	map<NodeHandle, int> jointH_BoneidxMap;
+	map<NodeHandle, JointNode*> pJointH_cJointMap; // Vector
 	map<string, string> joint_boneMap;
 	map<string, string> joint_childMap;
 	map<string,int> joint_name_idxMap;
 	map<NodeHandle, Vec3f> joint_idx_unitVecMap;
+	std::map<NodeHandle, Matrix4f> frameTransformMap;
+	std::vector<Matrix4f> frameTransforms;
 
 	void buildJointIdxMap(SceneNode* model);
 	void traverseSkeleton(Bone* bone, Matrix4f cumulativeTransform, Vec3f* absoluteUnitVectors);
-	void getAbsoluteUnitVectors();
-	void transformBone(Bone* bone, Matrix4f cumulativeTransform, Vec3f* absoluteUnitVectors);
-
+	Vec3f* getAbsoluteUnitVectors();
+	void transformBone(Bone* bone, Matrix4f &cumulativeTransform, Vec3f* absoluteUnitVectors);
+	void rebasePosture(ModelNode* modelNode, Posture posture);
+	void rebaseTree(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans);
 };
 
 } /* namespace Horde3DAsfAmc */

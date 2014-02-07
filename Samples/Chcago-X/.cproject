@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="org.eclipse.cdt.msvc.exe.debug.1778514">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.exe.debug.1778514" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -19,14 +21,6 @@
 								<option id="org.eclipse.cdt.msvc.cl.option.optimization.863103566" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization" value="org.eclipse.cdt.msvc.cl.option.optimization.default" valueType="enumerated"/>
 								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.169967607" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat" value="org.eclipse.cdt.msvc.cl.option.debugFormat.complete" valueType="enumerated"/>
 								<option id="org.eclipse.cdt.msvc.cl.option.includes.1973568334" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32/ANGLE}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common/GameEngine}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/Shared}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32}&quot;"/>
@@ -45,6 +39,7 @@
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1015982374" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
 							</tool>
@@ -65,24 +60,16 @@
 								</option>
 								<option id="org.eclipse.cdt.msvc.cl.option.macros.476736166" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="WIN32"/>
-									<listOptionValue builtIn="false" value="_DEBUG"/>
 									<listOptionValue builtIn="false" value="_WINDOWS"/>
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.2065963088" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.rc.exe.debug.2073892808" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.exe.debug">
 								<option id="org.eclipse.cdt.msvc.rc.option.includes.1718651519" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32/ANGLE}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common/GameEngine}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/Shared}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32}&quot;"/>
@@ -101,6 +88,7 @@
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.rc.inputType.505925022" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
 							</tool>
@@ -111,16 +99,15 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/shell32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/Gdi32.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${VCLib}/msvcrtd.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32/ANGLE/libEGL.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32/ANGLE/libGLESv2.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/BulletPhysicsComponent/Debug/BulletPhysicsComponent.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/AnimationComponent/Debug/AnimationComponent.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/IKComponent/Debug/IKComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/Projects/BulletPhysicsComponent/Debug/BulletPhysicsComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/Projects/AnimationComponent/Debug/AnimationComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/Projects/IKComponent/Debug/IKComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/Projects/Core/Debug/Core.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/Projects/SceneGraphComponent/Debug/SceneGraphComponent.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Core/Debug/Core.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/SceneGraphComponent/Debug/SceneGraphComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/3DEngine/Horde3D/Samples/cocos2dx-mini/platform/win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/3DEngine/Horde3D/Samples/cocos2dx-mini/platform/win32/ANGLE/libGLESv2.lib}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.406765786" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>
@@ -141,8 +128,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.exe.release.2084417127" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -155,14 +142,6 @@
 								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1129609590" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
 								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.777074777" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
 								<option id="org.eclipse.cdt.msvc.cl.option.includes.1851792916" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.cl.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32/ANGLE}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common/GameEngine}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/Shared}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32}&quot;"/>
@@ -181,6 +160,7 @@
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.1564040613" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
 							</tool>
@@ -206,19 +186,12 @@
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1533626358" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.rc.exe.release.193044367" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.exe.release">
 								<option id="org.eclipse.cdt.msvc.rc.option.includes.1690011724" name="Include Path (/I)" superClass="org.eclipse.cdt.msvc.rc.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Source/Shared}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde3D-Source@horde3d-cz/Horde3D/Bindings/C++}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chicago-X/COCOS2D_PATH/platform/win32/ANGLE}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Common/GameEngine}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/Shared}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Horde/Projects/Common/Horde3D}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Chcago-X/cocos2dx-mini/platform/win32}&quot;"/>
@@ -237,17 +210,12 @@
 									<listOptionValue builtIn="false" value="HORDE3D_GLES2"/>
 									<listOptionValue builtIn="false" value="RENDERER_GLES2"/>
 									<listOptionValue builtIn="false" value="UNICODE"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.rc.inputType.679345916" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.link.exe.release.18086743" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.exe.release">
 								<option id="org.eclipse.cdt.msvc.link.option.libraries.2074788123" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\Delovna\horde3d-x-gles2_d3d11\Horde3D\Build\Horde3D_Engine\Debug_gles2\Horde3D_vc8.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\Delovna\horde3d-x-gles2_d3d11\Horde3D\Build\Horde3D_Utils\Debug_gles2\Horde3DUtils_vc8.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Lib\User32.Lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\msvcrt.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MDK\GameEngineCore.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MDK\GameSceneGraphComponent.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/User32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/AdvAPI32.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${MSSDKLib}/shell32.lib&quot;"/>
@@ -263,6 +231,10 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DUtils/Debug/H3DUtils.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Core/Debug/Core.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/SceneGraphComponent/Debug/SceneGraphComponent.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/3DEngine/Horde3D/Samples/cocos2dx-mini/platform/win32/ANGLE/libEGL.lib}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/Horde/3DEngine/Horde3D/Samples/cocos2dx-mini/platform/win32/ANGLE/libGLESv2.lib}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.298299932" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>

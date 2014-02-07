@@ -33,7 +33,7 @@
 		<link>
 			<name>Horde3DUtils</name>
 			<type>2</type>
-			<locationURI>HORDE3D_ROOT/Horde3D/Source/Horde3DUtils</locationURI>
+			<locationURI>HORDE/3DEngine/Horde3D/Source/Horde3DUtils</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

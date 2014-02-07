@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="org.eclipse.cdt.msvc.dll.debug.735063701">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.msvc.dll.debug.735063701" moduleId="org.eclipse.cdt.core.settings" name="Debug">
@@ -14,8 +16,8 @@
 					</externalSetting>
 				</externalSettings>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -55,7 +57,6 @@
 								</option>
 								<option id="org.eclipse.cdt.msvc.cl.option.macros.1625511545" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="WIN32"/>
-									<listOptionValue builtIn="false" value="_DEBUG"/>
 									<listOptionValue builtIn="false" value="_WINDOWS"/>
 									<listOptionValue builtIn="false" value="_USRDLL"/>
 									<listOptionValue builtIn="false" value="HORDE3DUTILS_EXPORTS"/>
@@ -86,10 +87,6 @@
 								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.511846696" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
 								<option id="org.eclipse.cdt.msvc.link.option.debug.1807367299" name="Generate Debug Info (/debug)" superClass="org.eclipse.cdt.msvc.link.option.debug" value="true" valueType="boolean"/>
 								<option id="org.eclipse.cdt.msvc.link.option.libraries.1847907317" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MSVC\lib\msvcrtd.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${VCLib}/msvcrtd.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.1335001700" superClass="org.eclipse.cdt.msvc.link.inputType"/>
@@ -116,8 +113,8 @@
 					</externalSetting>
 				</externalSettings>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -187,8 +184,6 @@
 							<tool id="org.eclipse.cdt.msvc.link.dll.release.1999303533" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.release">
 								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.481711768" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
 								<option id="org.eclipse.cdt.msvc.link.option.libraries.1906692671" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;F:\MSVC\lib\msvcrtd.lib&quot;"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${VCLib}/msvcrtd.lib&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libEGL.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Horde3DEngine/proj.win32/ANGLE/libGLESv2.lib}&quot;"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/H3DEngine/Debug/H3DEngine.lib}&quot;"/>

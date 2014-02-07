@@ -26,6 +26,7 @@ namespace Horde3D {
 #endif
 
 static const char *defaultShaderVS =
+	"precision mediump float;\n"
 	"uniform mat4 viewProjMat;\n"
 	"uniform mat4 worldMat;\n"
 	"attribute vec3 vertPos;\n"
@@ -35,6 +36,7 @@ static const char *defaultShaderVS =
 
 
 const char *defaultShaderFS =
+	"precision mediump float;\n"
 	"uniform mediump vec4 color;\n"
 	"void main() {\n"
 	"	gl_FragColor = color;\n"
