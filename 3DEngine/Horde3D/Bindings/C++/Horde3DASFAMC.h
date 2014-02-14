@@ -14,6 +14,7 @@
 #pragma once
 
 #include "Horde3D.h"
+#include "utMath.h"
 
 #ifndef DLL
 #	if defined( WIN32 ) || defined( _WINDOWS )
@@ -58,4 +59,15 @@ const int H3DEXT_AMC_resType = 150;
 const int H3DEXT_ASF_resType = 151;
 
 
+DLL void h3dextBuildJointIdxMap(H3DRes asfRes);
+
+DLL void h3dextSetModel(H3DNode modelHandle, H3DRes asfRes);
+
+DLL int h3dextGetNumFrames(H3DRes asfRes);
+
+DLL int h3dextGetNumEtities(H3DRes asfRes);
+
+DLL void h3dextRebasePosture(H3DRes asfRes, int frameIndex, Horde3D::Matrix4f** frameTs, Horde3D::Quaternion** frameQs, bool basePosture,  bool skeletonBasePosture);
+
+DLL void h3dextGetEntityName(H3DRes asfRes, int enitityIndex, char* name);
 

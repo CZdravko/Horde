@@ -12,6 +12,8 @@
 #include <egPrerequisites.h>
 #include <egModel.h>
 #include "asfamc/skeleton.h"
+#include "asfamc/motion.h"
+#include "utMath.h"
 
 namespace Horde3DAsfAmc {
 
@@ -37,28 +39,42 @@ public:
 	void release();
 	bool load(const char *data, int size);
 
-	bool prepairBonesJoints(ModelNode* modelNode);
+	void buildJointIdxMap(SceneNode* model);
 
+	void setModel(SceneNode* node);
+
+	int getNumFrames(){return _numFrames;};
+	int getNumEntities(){return _numEntities;};
+	void rebasePosture(int frameIndex, Matrix4f** frameTs, Quaternion** frameQs, bool basePosture, bool skeletonBasePosture);
+	void getEntityName(int enitityIndex, char* name);
 
 
 private:
 	Skeleton* _pSkeleton;
-	map<NodeHandle, JointNode*> joint_idxMap;
+	Motion* _pMotion;
+	SceneNode* _pNode;
+
+	uint32 _numEntities;
+	uint32 _numFrames;
+
+	map<NodeHandle, int> joint_idxMap;
+	map<int, JointNode*> idx_jointMap;
 	map<NodeHandle, int> jointH_BoneidxMap;
 	map<NodeHandle, JointNode*> pJointH_cJointMap; // Vector
-	map<string, string> joint_boneMap;
+	map<string, char*> joint_boneMap;
 	map<string, string> joint_childMap;
 	map<string,int> joint_name_idxMap;
 	map<NodeHandle, Vec3f> joint_idx_unitVecMap;
 	std::map<NodeHandle, Matrix4f> frameTransformMap;
-	std::vector<Matrix4f> frameTransforms;
+	std::vector< map<NodeHandle, Matrix4f> > frames;
 
-	void buildJointIdxMap(SceneNode* model);
+	void initjointH_BoneidxMap(SceneNode* model);
+
 	void traverseSkeleton(Bone* bone, Matrix4f cumulativeTransform, Vec3f* absoluteUnitVectors);
 	Vec3f* getAbsoluteUnitVectors();
 	void transformBone(Bone* bone, Matrix4f &cumulativeTransform, Vec3f* absoluteUnitVectors);
-	void rebasePosture(ModelNode* modelNode, Posture posture);
-	void rebaseTree(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans);
+
+	void rebaseTree(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans, Matrix4f* frameT, Quaternion* frameQ, bool basePosture);
 };
 
 } /* namespace Horde3DAsfAmc */

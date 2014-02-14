@@ -97,7 +97,6 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ExtensionASFAMC"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Horde3D"/>
 						<entry excluding="D3D11|utOpenGL.cpp|proj.win32|proj.ios|GL" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Horde3DEngine"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Shared"/>
@@ -208,7 +207,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="ASFAMCEXT_ROOT|Horde3DEngine/utOpenGL.cpp|Horde3DEngine/ConvexHull.cpp|Horde3DEngine/proj.win32|Horde3DEngine/Tiling|Horde3DEngine/proj.ios|Horde3DEngine/proj.android|Horde3DEngine/GL|Horde3DEngine/D3D11" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="ExtensionASFAMC/ASFResource.cpp|ASFAMCEXT_ROOT|Horde3DEngine/utOpenGL.cpp|Horde3DEngine/ConvexHull.cpp|Horde3DEngine/proj.win32|Horde3DEngine/Tiling|Horde3DEngine/proj.ios|Horde3DEngine/proj.android|Horde3DEngine/GL|Horde3DEngine/D3D11" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

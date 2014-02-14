@@ -1,0 +1,2 @@
+<Light name="Light1" lightingContext="LIGHTING2" shadowContext=""
+	shadowMapCount="0" radius="3" fov="180" material="models/man/light.material.xml" />

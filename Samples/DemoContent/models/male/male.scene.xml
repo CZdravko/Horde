@@ -3,35 +3,164 @@
     <Joint tx="0.000391" ty="15.3568" tz="-0.145863" rx="-0" ry="-89.9999" rz="0" jointIndex="1" name="Bip01" >
         <Joint tx="0" ty="-15.3002" tz="0" rx="-0" ry="89.9999" rz="0" jointIndex="2" name="Bip01_Footsteps" />
         <Joint rx="-0" ry="-89.9999" rz="89.9999" jointIndex="3" name="Bip01_Pelvis" >
+        	 <Attachment type="GameEngine" name="Bip01_Pelvis">
+        	 	<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0"
+								shape="Box" kinematic="1" ragdoll="true">
+				</BulletPhysics>
+			</Attachment>
             <Joint tx="1.59108" ty="2e-006" tz="0.299842" rx="-0.000229183" ry="1.82409" rz="5.72958e-005" jointIndex="4" name="Bip01_Spine" >
+	            <Attachment type="GameEngine" name="Bip01_Spine">
+					<BulletPhysics x="1.58072" y="1.78897" z="0.6" mass="0" kinematic="1" shape="Box" ragdoll="true">
+<!-- 						<Proxy name="Thigh"></Proxy> -->
+	<!-- 						<Constraint type="Hinge" parent="Bip01_Pelvis"> -->
+	<!-- 							<TransformA qx="0" qy="0" qz="0" qw="1" vx="-0.8" vy="-0.9" vz="-0.175"/> -->
+	<!-- 							<TransformB qx="0" qy="0" qz="0" qw="1" vx="0.8" vy="0" vz="0.15"/> -->
+	<!-- 							<Limit /> -->
+	<!-- 						</Constraint> -->
+					</BulletPhysics>
+				</Attachment>
                 <Joint tx="-1.58072" ty="1.78897" tz="-0.350332" rx="-0.0820476" ry="4.25411" rz="176.94" jointIndex="5" name="Bip01_L_Thigh" >
+                	<Attachment type="GameEngine" name="Bip01_L_Thigh">
+						<BulletPhysics x="3.171" y="0.6" z="0.6" mass="10" shape="Box" kinematic="0" ragdoll="true">
+							<Offset lX="3.171" lY="0" lZ="0"/>
+							<Proxy name="Calf"></Proxy>
+							<Constraint type="Hinge" parent="Bip01_Spine">
+								<TransformA qx="-1.57079632679" qy="1.57079632679" qz="0" qw="0" vx="-1.58072" vy="1.88897" vz="0.350332"/>
+								<TransformB qx="1.57079632679" qy="1.57079632679" qz="0" qw="1" vx="-3.171" vy="0" vz="0"/>
+								<Limit />
+							</Constraint>
+						</BulletPhysics>
+					</Attachment>
                     <Joint tx="6.342" ty="0" tz="0" rx="-0" ry="-0.168965" rz="0" jointIndex="6" name="Bip01_L_Calf" >
+                    	<Attachment type="GameEngine" name="Bip01_L_Calf">
+							<BulletPhysics x="3.7333" y="0.6" z="0.6" mass="10" shape="Box" kinematic="0" ragdoll="true" >
+								<Offset lX="3.7333" lY="0" lZ="0" />
+								<Proxy name="Foot"></Proxy>
+								<Constraint type="Hinge" parent="Bip01_L_Thigh">
+									<TransformA qx="0" qy="0" qz="-1.57079632679" qw="1" vx="3.171" vy="0" vz="0"/>
+									<TransformB qx="0" qy="0" qz="-1.57079632679" qw="1" vx="-3.7333" vy="0" vz="0"/>
+									<Limit />
+								</Constraint>
+							</BulletPhysics> 
+						</Attachment>
                         <Joint tx="7.4666" ty="0" tz="0" rx="-5.39843" ry="5.96882" rz="3.04744" jointIndex="7" name="Bip01_L_Foot" >
+                        	<Attachment type="GameEngine" name="Bip01_L_Foot">
+<!-- 								<BulletPhysics x="0.8" y="0.6" z="0.6" mass="10" -->
+<!-- 										shape="Box" kinematic="0" ragdoll="true"> -->
+<!-- <!-- 									<Proxy name="Foot"></Proxy> --> -->
+<!-- <!-- 									<Constraint type="Hinge" parent="Bip01_L_Calf"> --> -->
+<!-- <!-- 										<TransformA qx="0" qy="0" qz="0" qw="1" vx="3.7333" vy="0" vz="0"/> --> -->
+<!-- <!-- 										<TransformB qx="0" qy="0" qz="0" qw="1" vx="-0.8" vy="0" vz="0"/> --> -->
+<!-- <!-- 										<Limit /> --> -->
+<!-- <!-- 									</Constraint> --> -->
+<!-- 								</BulletPhysics> -->
+							</Attachment>   
                             <Joint tx="1.59102" ty="0" tz="-2.36823" rx="-0" ry="100.298" rz="0" jointIndex="8" name="Bip01_L_Toe0" />
                         </Joint>
                     </Joint>
                 </Joint>
                 <Joint tx="-1.58072" ty="-1.78897" tz="-0.350341" rx="0.0823341" ry="4.25411" rz="-176.94" jointIndex="9" name="Bip01_R_Thigh" >
+	                <Attachment type="GameEngine" name="Bip01_R_Thigh">
+		        	 	<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0"
+										shape="Box" kinematic="1" ragdoll="true">
+						</BulletPhysics>
+					</Attachment>
                     <Joint tx="6.342" ty="0" tz="0" rx="-0" ry="-0.168965" rz="0" jointIndex="10" name="Bip01_R_Calf" >
+                    	<Attachment type="GameEngine" name="Bip01_R_Calf">
+			        	 	<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0"
+											shape="Box" kinematic="1" ragdoll="true">
+							</BulletPhysics>
+						</Attachment>
                         <Joint tx="7.4666" ty="0" tz="0" rx="5.39843" ry="5.96882" rz="-3.04744" jointIndex="11" name="Bip01_R_Foot" >
+                        	<Attachment type="GameEngine" name="Bip01_R_Foot">
+				        	 	<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0"
+												shape="Box" kinematic="1" ragdoll="true">
+								</BulletPhysics>
+							</Attachment>
                             <Joint tx="1.59102" ty="0" tz="-2.36823" rx="-0" ry="100.298" rz="0" jointIndex="12" name="Bip01_R_Toe0" />
                         </Joint>
                     </Joint>
                 </Joint>
                 <Joint tx="2.2079" ty="0" tz="0.001735" rx="-0" ry="-8.52715" rz="0" jointIndex="13" name="Bip01_Spine1" >
+                	<Attachment type="GameEngine" name="Bip01_Spine1">
+						<BulletPhysics x="1.1" y="0.6" z="0.6" mass="10"
+								shape="Box" kinematic="0" ragdoll="true">
+							<Proxy name="Spine1"></Proxy>
+							<Constraint type="Hinge" parent="Bip01_Spine">
+								<TransformA qx="0" qy="0" qz="1.57079632679" qw="0" vx="2.2079" vy="0" vz="0.001735"/>
+								<TransformB qx="0" qy="0" qz="1.57079632679" qw="1" vx="-1.1" vy="0" vz="0"/>
+								<Limit low="0" high="0" />
+							</Constraint>
+						</BulletPhysics>
+					</Attachment>
                     <Joint tx="2.2039" ty="0" tz="0.002331" rx="-0" ry="-5.46686" rz="0" jointIndex="14" name="Bip01_Spine2" >
+                   <Attachment type="GameEngine" name="Bip01_Spine2">
+						<BulletPhysics x="1.7" y="0.6" z="0.6" mass="10"
+								shape="Box" kinematic="0" ragdoll="true">
+							<Proxy name="Spine2"></Proxy>
+							<Constraint type="Hinge" parent="Bip01_Spine1">
+								<TransformA qx="0" qy="0" qz="1.57079632679" qw="0" vx="2.2039" vy="0" vz="0.002331"/>
+								<TransformB qx="0" qy="0" qz="1.57079632679" qw="1" vx="-1.7" vy="0" vz="0"/>
+								<Limit low="0" high="0" />
+							</Constraint>
+						</BulletPhysics>
+					</Attachment>
                         <Joint tx="3.46989" ty="0" tz="-0.292861" rx="-5.72958e-005" ry="30.1214" rz="0.000114592" jointIndex="15" name="Bip01_Neck" >
+                        	<Attachment type="GameEngine" name="Bip01_Neck">
+<!-- 								<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0" -->
+<!-- 										shape="Box" kinematic="1" ragdoll="true"> -->
+<!-- 									<Proxy name="Neck"></Proxy> -->
+<!-- 								</BulletPhysics> -->
+							</Attachment>
                             <Joint tx="1.25176" ty="0" tz="0" rx="-0" ry="-12.9516" rz="-5.72958e-005" jointIndex="16" name="Bip01_Head" >
+                            	<Attachment type="GameEngine" name="Bip01_Head">
+<!-- 									<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="0" -->
+<!-- 											shape="Box" kinematic="1" ragdoll="true"> -->
+<!-- 										<Proxy name="Head"></Proxy> -->
+<!-- 									</BulletPhysics> -->
+								</Attachment>
                                 <Joint tx="1.66308" ty="-0.539754" sx="0.625059" tz="-1.39378" rx="-0" sy="1.01387" ry="-96.7896" sz="0.625059" rz="180" jointIndex="17" name="Bone_auge_r" />
+                                 
                                 <Joint tx="1.66308" ty="0.547513" sx="0.625059" tz="-1.39378" rx="-0" sy="1.01387" ry="-96.7896" sz="0.625059" rz="180" jointIndex="18" name="Bone_auge_l" />
                             </Joint>
                             <Joint tx="-0.661252" ty="0.944701" tz="-0.254535" rx="-0.000114592" ry="149.833" rz="82.3863" jointIndex="19" name="Bip01_L_Clavicle" >
+                            	<Attachment type="GameEngine" name="Bip01_L_Clavicle">
+<!-- 					        	 	<BulletPhysics x="0.6" y="0.6" z="0.6" mass="10" -->
+<!-- 													shape="Box" kinematic="0" ragdoll="true"> -->
+<!-- 										<Constraint type="Hinge" parent="Bip01_Spine2"> -->
+<!-- 											<TransformA qx="0" qy="0" qz="0" qw="0" vx="2.91764699999999" vy="0" vz="0"/> -->
+<!-- 											<TransformB qx="0" qy="0" qz="0" qw="1" vx="-0.3" vy="0" vz="0"/> -->
+<!-- 											<Limit  /> -->
+<!-- 										</Constraint> -->
+<!-- 									</BulletPhysics> -->
+								</Attachment>
                                 <Joint tx="2.04122" ty="1e-006" tz="0" rx="18.1279" ry="1.14965" rz="-32.9068" jointIndex="20" name="Bip01_L_UpperArm" >
+                                   <Attachment type="GameEngine" name="Bip01_L_UpperArm">
+										<BulletPhysics x="0.20715" y="0.42379" z="0.32134" mass="10"
+												shape="Box" kinematic="0" ragdoll="true">
+											<Proxy name="boxupperarm"></Proxy>
+											<Constraint type="ConeTwist" parent="Bip01_Spine2">
+												<TransformA qx="1.57079632679" qy="0" qz="0" qw="0" vx="0.754972000000009" vy="2.967923" vz="0"/>
+												<TransformB qx="0" qy="0" qz="3.14" qw="1" vx="-2.25" vy="0" vz="0"/>
+												<Limit />
+											</Constraint>
+										</BulletPhysics>
+									</Attachment>
                                     <Joint tx="4.49557" ty="-1e-006" tz="0" rx="-0" ry="-2.63195" rz="0" jointIndex="21" name="Bip01_L_Forearm" >
+                                        <Attachment type="GameEngine" name="Bip01_L_Forearm">
+<!-- 											<BulletPhysics x="4.50715" y="2.62379" z="2.62134" mass="0" -->
+<!-- 														shape="Box"  kinematic="1" ragdoll="true"> -->
+<!-- 												<Proxy name="Forearm"></Proxy> -->
+<!-- 											</BulletPhysics> -->
+										</Attachment>
                                         <Joint tx="3.71841" ty="0" tz="0" rx="-83.1076" ry="172.466" rz="-170.402" jointIndex="22" name="Bip01_L_Hand" >
+	                                        
                                             <Joint tx="0.377036" ty="-0.608215" tz="-0.211378" rx="53.5683" ry="-86.0439" rz="-122.128" jointIndex="23" name="Bip01_L_Finger0" >
                                                 <Joint tx="0.462601" ty="0" tz="0" rx="-0" ry="8.36821" rz="0" jointIndex="24" name="Bip01_L_Finger01" >
-                                                    <Joint tx="0.462598" ty="0" tz="0" rx="-0" ry="4.89431" rz="0" jointIndex="25" name="Bip01_L_Finger02" />
+                                                    
+                                                    <Joint tx="0.462598" ty="0" tz="0" rx="-0" ry="4.89431" rz="0" jointIndex="25" name="Bip01_L_Finger02">
+                                                       
+                                                    </Joint>
                                                 </Joint>
                                             </Joint>
                                             <Joint tx="1.49494" ty="-0.558185" tz="0.000444" rx="1.14742" ry="11.6552" rz="-5.76843" jointIndex="26" name="Bip01_L_Finger1" >
@@ -59,9 +188,13 @@
                                 </Joint>
                             </Joint>
                             <Joint tx="-0.661254" ty="-0.944698" tz="-0.254542" rx="-0.000114592" ry="149.833" rz="-82.386" jointIndex="38" name="Bip01_R_Clavicle" >
+                            	
                                 <Joint tx="2.04122" ty="-1e-006" tz="0" rx="-18.1279" ry="1.14965" rz="32.9068" jointIndex="39" name="Bip01_R_UpperArm" >
+	                               
                                     <Joint tx="4.49557" ty="0" tz="0" rx="-0" ry="-2.63195" rz="0" jointIndex="40" name="Bip01_R_Forearm" >
+	                                    
                                         <Joint tx="3.71841" ty="-1e-006" tz="0" rx="83.1076" ry="172.466" rz="170.402" jointIndex="41" name="Bip01_R_Hand" >
+	                                        
                                             <Joint tx="0.377037" ty="0.608215" tz="-0.211378" rx="-53.5683" ry="-86.0439" rz="122.128" jointIndex="42" name="Bip01_R_Finger0" >
                                                 <Joint tx="0.462601" ty="0" tz="-1e-006" rx="-0" ry="8.36821" rz="0" jointIndex="43" name="Bip01_R_Finger01" >
                                                     <Joint tx="0.462599" ty="0" tz="0" rx="-0" ry="4.89431" rz="0" jointIndex="44" name="Bip01_R_Finger02" />
@@ -98,11 +231,11 @@
         </Joint>
     </Joint>
     <Mesh vertREnd="659" batchStart="0" name="kopf" batchCount="2988" material="models/male/kopf.material.xml" vertRStart="0" />
-    <Mesh vertREnd="972" batchStart="2988" name="torso_lang" batchCount="1434" material="models/male/torso_lang_4.material.xml" vertRStart="660" />
+<!--     <Mesh vertREnd="972" batchStart="2988" name="torso_lang" batchCount="1434" material="models/male/torso_lang_4.material.xml" vertRStart="660" /> -->
     <Mesh vertREnd="1110" batchStart="4422" name="haar_4" batchCount="636" material="models/male/haar_4_3.material.xml" vertRStart="973" />
     <Mesh vertREnd="1266" batchStart="5058" name="schuhe_norm" batchCount="552" material="models/male/schuhe_1.material.xml" vertRStart="1111" />
     <Mesh vertREnd="1279" batchStart="5610" name="auge_r" batchCount="60" material="models/male/auge1.material.xml" vertRStart="1267" />
     <Mesh vertREnd="1292" batchStart="5670" name="auge_l" batchCount="60" material="models/male/auge1.material.xml" vertRStart="1280" />
-    <Mesh vertREnd="1702" batchStart="6180" name="hose_lang" batchCount="1308" material="models/male/hose_lang_1.material.xml" vertRStart="1384" />
+<!--     <Mesh vertREnd="1702" batchStart="6180" name="hose_lang" batchCount="1308" material="models/male/hose_lang_1.material.xml" vertRStart="1384" /> -->
     <Mesh vertREnd="2114" batchStart="7488" name="hand" batchCount="1728" material="models/male/hand.material.xml" vertRStart="1703" />
 </Model>

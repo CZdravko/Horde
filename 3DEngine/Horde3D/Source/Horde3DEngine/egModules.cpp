@@ -31,7 +31,7 @@
 #else
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	#include "extension.h"
-#include "ExtAsfAmc.h"
+//#include "ExtAsfAmc.h"
 //	#pragma comment( lib, "Extension_Terrain.lib" )
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #endif
@@ -64,7 +64,7 @@ void Modules::installExtensions()
 	extMan().installExtension( new Horde3DTerrain::ExtTerrain() );
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #endif
-	extMan().installExtension(new Horde3DAsfAmc::ExtAsfAmc());
+	//extMan().installExtension(new Horde3DAsfAmc::ExtAsfAmc());
 }
 
 

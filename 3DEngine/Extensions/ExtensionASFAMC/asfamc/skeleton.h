@@ -93,16 +93,18 @@ public:
 
   int getNumBones(){return NUM_BONES_IN_ASF_FILE;};
 
+  //This recursive function traverses skeleton hierarchy
+    //and returns a pointer to the bone with index - bIndex
+    //ptr should be a pointer to the root node
+    //when this function first called
+    Bone* getBone(Bone *ptr, int bIndex);
+
+
 protected:
 
   //parse the skeleton (.ASF) file	
   int readASFfile(char* asf_filename, double scale);
 
-  //This recursive function traverses skeleton hierarchy 
-  //and returns a pointer to the bone with index - bIndex
-  //ptr should be a pointer to the root node 
-  //when this function first called
-  Bone* getBone(Bone *ptr, int bIndex);
 
   //This function sets sibling or child for parent bone
   //If parent bone does not have a child, 

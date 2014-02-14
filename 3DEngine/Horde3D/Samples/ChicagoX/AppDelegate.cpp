@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Scene.h"
+#include "Scene2.h"
 
 USING_NS_CC;
 
@@ -25,7 +25,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
 
 	//set root node
-	pDirector->setRootNode( new Scene() );
+	pDirector->setRootNode( new Scene2() );
 
     return true;
 }

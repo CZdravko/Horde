@@ -19,6 +19,9 @@
 #include "utDebug.h"
 
 
+#include <stdio.h>
+
+
 namespace Horde3D {
 
 using namespace std;
@@ -123,6 +126,7 @@ bool AnimationResource::load( const char *data, int size )
 			memcpy( &compressed, pData, sizeof( char ) ); pData += sizeof( char ); 
 		}
 
+		printf("EName: %s\n", name);
 		entity.frames.resize( compressed ? 1 : _numFrames );
 		for( uint32 j = 0; j < (compressed ? 1 : _numFrames); ++j )
 		{
@@ -140,6 +144,10 @@ bool AnimationResource::load( const char *data, int size )
 			memcpy( &frame.scaleVec.x, pData, sizeof( float ) ); pData += sizeof( float );
 			memcpy( &frame.scaleVec.y, pData, sizeof( float ) ); pData += sizeof( float );
 			memcpy( &frame.scaleVec.z, pData, sizeof( float ) ); pData += sizeof( float );
+
+			printf("Q = %f\t %f\t %f\t %f\t ; T =  %f\t %f\t %f\n", frame.rotQuat.x, frame.rotQuat.y,
+																	frame.rotQuat.z, frame.rotQuat.w,
+																	frame.transVec.x, frame.transVec.y, frame.transVec.z);
 
 			// Prebake transformation matrix for fast animation path
 			frame.bakedTransMat.scale( frame.scaleVec.x, frame.scaleVec.y, frame.scaleVec.z );

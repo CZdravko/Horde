@@ -80,7 +80,7 @@ Scene2::Scene2() {
 	ikPlugin = new GameEngine::IKPlugin();
 	GameEngine::installPlugin(ikPlugin);
 
-	if (!GameEngine::loadScene("F:\\MDK\\TutorialApp\\DemoContent\\Demo.scn")) {//DominoDemo\\DominoSzene\\DominoSzene.scn
+	if (!GameEngine::loadScene("D:\\repo\\git\\Horde\\Samples\\DemoContent\\Demo.scn")) {//DominoDemo\\DominoSzene\\DominoSzene.scn
 		printf("NO SCENE TO LOAD!\n");
 		exit(-1);
 	}

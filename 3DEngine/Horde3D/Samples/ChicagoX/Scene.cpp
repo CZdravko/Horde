@@ -102,7 +102,7 @@ Scene::Scene() {
 	// Skybox
 	H3DRes skyBoxRes = h3dAddResource(H3DResTypes::SceneGraph, "models/skybox/skybox.scene.xml", 0);
 
-	H3DRes ASFRes = h3dAddResource(H3DEXT_ASF_resType, "animations/test.anim.xml", 0);
+	//H3DRes ASFRes = h3dAddResource(H3DEXT_ASF_resType, "animations/test.anim.xml", 0);
 
 	//Adding 2 lights:
 	PointLight p1 = PointLight(Vec3f(0, 0, -10), 2, 1);
@@ -212,9 +212,9 @@ void Scene::update(float fDelta) {
 	keyStateHandler();
 
 	color_index++;
-	if (color_index % 256 == 0) {
-		updateLightTexture();
-	}
+//	if (color_index % 256 == 0) {
+//		updateLightTexture();
+//	}
 
 	for (unsigned int i = 0; i < Key::Count; ++i)
 		_prevKeys[i] = _keys[i];
@@ -372,28 +372,28 @@ void Scene::keyStateHandler() {
 
 		if (_keys[Key::W]) {
 			// Move forward
-			/*_x -= sinf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
+			_x -= sinf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
 			 _y -= sinf(-degToRad(_rx)) * curVel;
-			 _z -= cosf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;*/
+			 _z -= cosf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
 			m_vPointLights[0].position.z += 0.5;
 		}
 		if (_keys[Key::S]) {
 			// Move backward
-			/*_x += sinf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
+			_x += sinf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
 			 _y += sinf(-degToRad(_rx)) * curVel;
-			 _z += cosf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;*/
+			 _z += cosf(degToRad(_ry)) * cosf(-degToRad(_rx)) * curVel;
 			m_vPointLights[0].position.z -= 0.5;
 		}
 		if (_keys[Key::A]) {
 			// Strafe left
-			/*_x += sinf(degToRad(_ry - 90)) * curVel;
-			 _z += cosf(degToRad(_ry - 90)) * curVel;*/
+			_x += sinf(degToRad(_ry - 90)) * curVel;
+			 _z += cosf(degToRad(_ry - 90)) * curVel;
 			m_vPointLights[0].position.x -= 0.5;
 		}
 		if (_keys[Key::D]) {
 			// Strafe right
-			/*_x += sinf(degToRad(_ry + 90)) * curVel;
-			 _z += cosf(degToRad(_ry + 90)) * curVel;*/
+			_x += sinf(degToRad(_ry + 90)) * curVel;
+			 _z += cosf(degToRad(_ry + 90)) * curVel;
 			m_vPointLights[0].position.x += 0.5;
 		}
 	}

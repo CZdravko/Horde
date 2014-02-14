@@ -1,0 +1,10 @@
+<Material>
+	<Shader source="shaders/model.shader"/>
+	<ShaderFlag name="_F03_ParallaxMapping" />
+	
+	<Sampler name="lightRrMap" map="lightRrTex" />
+	<Sampler name="lightColorMap" map="lightColorTex" />
+	<Sampler name="tileMap" map="tileTex" />
+	<Sampler name="normalMap" map="textures/models/layingrock.jpg" />
+	<Sampler name="normalMap" map="textures/models/layingrockBump.tga" allowCompression="false" />
+</Material>

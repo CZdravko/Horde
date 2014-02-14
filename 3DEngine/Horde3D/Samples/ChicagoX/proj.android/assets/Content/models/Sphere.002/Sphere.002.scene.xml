@@ -1,0 +1,9 @@
+<Model name="Sphere.002" geometry="models\Sphere.002\Sphere.002.geo">
+	<Joint name="Bone" rx="90" ry="0" rz="-0" jointIndex="1" >
+		<Joint name="Bone.001" tx="0" ty="0" tz="-1" rx="3.25689e-12" ry="1.08291e-12" rz="-1.43436e-05" jointIndex="2" >
+			<Joint name="Bone.002" tx="0" ty="-0" tz="-1" rx="-2.71473e-19" ry="-9.70628e-20" rz="-3.05749e-33" jointIndex="3" />
+		</Joint>
+	</Joint>
+
+	<Mesh name="Sphere.002" material="materials\default.material.xml" batchStart="0" batchCount="2376" vertRStart="0" vertREnd="1655" />
+</Model>

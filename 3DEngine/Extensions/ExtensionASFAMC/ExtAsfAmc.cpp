@@ -11,6 +11,7 @@
 #include "egModules.h"
 #include "utPlatform.h"
 #include <egPrerequisites.h>
+#include "utMath.h"
 
 namespace Horde3DAsfAmc {
 
@@ -40,20 +41,70 @@ bool Horde3DAsfAmc::ExtAsfAmc::init() {
 void Horde3DAsfAmc::ExtAsfAmc::release() {
 }
 
-namespace Horde3DAsfAmc {
+
 
 using namespace Horde3D;
+using namespace Horde3DAsfAmc;
 
-DLLEXP bool h3dextPrepairBonesJoints(NodeHandle modelHandle, ResHandle asfRes) {
-	SceneNode *modelNode = Modules::sceneMan().resolveNodeHandle(modelHandle);
-	if (modelNode == 0x0)
-		return false;
+
+
+
+
+DLLEXP void h3dextBuildJointIdxMap(ResHandle asfRes) {
 
 	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
 	if (aRes == 0x0)
-		return false;
+		return;
 
-	return ((ASFResource *)aRes)->prepairBonesJoints((ModelNode*)modelNode);
+	((ASFResource *)aRes)->buildJointIdxMap(0x0);
 }
 
+
+DLLEXP void h3dextSetModel(NodeHandle modelHandle, ResHandle asfRes) {
+	SceneNode *modelNode = Modules::sceneMan().resolveNodeHandle(modelHandle);
+	if (modelNode == 0x0)
+		return;
+
+	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
+	if (aRes == 0x0)
+		return;
+
+	((ASFResource *)aRes)->setModel((SceneNode*)modelNode);
 }
+
+DLLEXP int h3dextGetNumFrames(ResHandle asfRes) {
+
+	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
+	if (aRes == 0x0)
+		return -1;
+
+	return ((ASFResource *)aRes)->getNumFrames();
+}
+
+DLLEXP int h3dextGetNumEtities(ResHandle asfRes) {
+
+	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
+	if (aRes == 0x0)
+		return -1;
+
+	return ((ASFResource *)aRes)->getNumEntities();
+}
+
+DLLEXP void h3dextRebasePosture(ResHandle asfRes, int frameIndex, Matrix4f** frameTs, Quaternion** frameQs, bool basePosture,  bool skeletonBasePosture) {
+
+	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
+	if (aRes == 0x0)
+		return;
+
+	((ASFResource *)aRes)->rebasePosture(frameIndex, frameTs, frameQs, basePosture,  skeletonBasePosture);
+}
+
+DLLEXP void h3dextGetEntityName(ResHandle asfRes, int enitityIndex, char* name){
+
+	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
+	if (aRes == 0x0)
+		return;
+
+	((ASFResource *)aRes)->getEntityName(enitityIndex, name);
+}
+

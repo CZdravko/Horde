@@ -39,9 +39,9 @@ void CrowdSim::init() {
 
 	// Load character with walk animation
 	H3DRes characterRes = h3dAddResource(H3DResTypes::SceneGraph,
-			"models/man/man.scene.xml", 0);
+			"models/male/male.scene.xml", 0);
 	H3DRes characterWalkRes = h3dAddResource(H3DResTypes::Animation,
-			"animations/man.anim", 0);
+			"animations/junk.dat", 0);
 
 	H3DRes lightRes = h3dAddResource(H3DResTypes::SceneGraph,
 			"models/man/man.light.xml", 0);
@@ -61,7 +61,7 @@ void CrowdSim::init() {
 			platformDirectory);
 
 	// Add characters
-	for (unsigned int i = 0; i < 5; ++i) {
+	for (unsigned int i = 0; i < 1; ++i) {
 		Particle p;
 		Particle l;
 
