@@ -137,10 +137,15 @@ void ModelNode::setupAnimStage( int stage, AnimationResource *anim, int layer,
 }
 
 
-void ModelNode::setAnimParams( int stage, float time, float weight )
+void ModelNode::setAnimParams( int stage, float time, float weight)
 {
 	if( _animCtrl.setAnimParams( stage, time, weight ) ) markDirty();
 }
+
+void ModelNode::setAnimBias(int stage, float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW){
+	_animCtrl.setAnimBias(stage, biasTransX, biasTransY, biasTransZ, biasRotX, biasRotY, biasRotZ, biasRotW);
+}
+
 
 
 bool ModelNode::setMorphParam( const string &targetName, float weight )

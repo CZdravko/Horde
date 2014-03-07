@@ -2012,6 +2012,28 @@ DLL void h3dSetupModelAnimStage( H3DNode modelNode, int stage, H3DRes animationR
 */
 DLL void h3dSetModelAnimParams( H3DNode modelNode, int stage, float time, float weight );
 
+
+/* Function: h3dSetModelAnimBias
+		Sets the animation stage BIAS of a Model node.
+
+	Details:
+		This function sets the current animation stage bias of the
+		specified model. It complements additive animations.
+
+	Parameters:
+		modelNode  - handle to the Model node to be modified
+		stage      - index of the animation stage to be modified
+		biasTransX ... Z       - bias translation
+		biasRotX ... W     - bias rotation
+
+	Returns:
+		nothing
+*/
+DLL void h3dSetModelAnimBias(H3DNode modelNode, int stage, float biasTransX, float biasTransY, float biasTransZ,
+		float biasRotX, float biasRotY, float biasRotZ, float biasRotW);
+
+
+
 /* Function: h3dSetModelMorpher
 		Sets the weight of a morph target.
 	

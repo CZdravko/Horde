@@ -13,7 +13,6 @@
 // *************************************************************************************************
 //
 
-
 // ****************************************************************************************
 //
 // GameEngine Core Library of the University of Augsburg
@@ -47,60 +46,54 @@ using namespace Horde3D;
  * @author Volker Wiendl
  * @date Mai 2008
  */
-class GameEventData
-{
+class GameEventData {
 public:
-	enum TypeID
-	{
-		INVALID = -1,
-		BOOLEAN,
-		INT,
-		FLOAT,
-		DOUBLE,
-		STRING,
-		ARRAY,
-		CUSTOM
+	enum TypeID {
+		INVALID = -1, BOOLEAN, INT, FLOAT, DOUBLE, STRING, ARRAY, CUSTOM
 	};
 
-	explicit GameEventData() : m_typeID(INVALID), m_size(0), m_owner(false) { m_data.ptr = 0; }
+	explicit GameEventData() :
+			m_typeID(INVALID), m_size(0), m_owner(false) {
+		m_data.ptr = 0;
+	}
 
-	explicit GameEventData(int value) : m_typeID(INT), m_size(0), m_owner(false)
-	{
+	explicit GameEventData(int value) :
+			m_typeID(INT), m_size(0), m_owner(false) {
 		m_data.i = value;
 	}
 
-	explicit GameEventData(float value) : m_typeID(FLOAT), m_size(0), m_owner(false)
-	{
+	explicit GameEventData(float value) :
+			m_typeID(FLOAT), m_size(0), m_owner(false) {
 		m_data.f = value;
 	}
 
-	explicit GameEventData(double value) : m_typeID(DOUBLE), m_size(0), m_owner(false)
-	{
+	explicit GameEventData(double value) :
+			m_typeID(DOUBLE), m_size(0), m_owner(false) {
 		m_data.d = value;
 	}
 
-	explicit GameEventData(const char* data) : m_typeID(STRING), m_size(0), m_owner(false)
-	{
+	explicit GameEventData(const char* data) :
+			m_typeID(STRING), m_size(0), m_owner(false) {
 		m_data.s = data;
 	}
 
-	explicit GameEventData(bool value) : m_typeID(BOOLEAN), m_size(0), m_owner(false)
-	{
+	explicit GameEventData(bool value) :
+			m_typeID(BOOLEAN), m_size(0), m_owner(false) {
 		m_data.b = value;
 	}
 
-	explicit GameEventData(float* data, size_t elements) : m_typeID(ARRAY), m_size(sizeof(float) * elements), m_owner(false)
-	{
+	explicit GameEventData(float* data, size_t elements) :
+			m_typeID(ARRAY), m_size(sizeof(float) * elements), m_owner(false) {
 		m_data.ptr = data;
 	}
 
-	explicit GameEventData(char* data, size_t elements) : m_typeID(ARRAY), m_size(sizeof(char) * elements), m_owner(false)
-	{
+	explicit GameEventData(char* data, size_t elements) :
+			m_typeID(ARRAY), m_size(sizeof(char) * elements), m_owner(false) {
 		m_data.ptr = data;
 	}
 
-	GameEventData(void* data) : m_typeID(CUSTOM), m_owner(false)
-	{
+	GameEventData(void* data) :
+			m_typeID(CUSTOM), m_owner(false) {
 		m_data.ptr = data;
 	}
 
@@ -144,13 +137,9 @@ public:
 	//	return *this;
 	//}
 
-
-	virtual ~GameEventData()
-	{
-		if (m_owner)
-		{
-			switch(m_typeID)
-			{
+	virtual ~GameEventData() {
+		if (m_owner) {
+			switch (m_typeID) {
 			case ARRAY:
 				free(m_data.ptr);
 				break;
@@ -163,10 +152,8 @@ public:
 		}
 	}
 
-	void* data()
-	{
-		switch(m_typeID)
-		{
+	void* data() {
+		switch (m_typeID) {
 		case INVALID:
 			return 0;
 		case BOOLEAN:
@@ -182,21 +169,19 @@ public:
 		}
 	}
 
-	virtual GameEventData* clone(  ) const
-	{
+	virtual GameEventData* clone() const {
 		GameEventData* clonedData = new GameEventData(*this);
 
-		switch(m_typeID)
-		{
+		switch (m_typeID) {
 		case ARRAY:
 			clonedData->m_data.ptr = malloc(m_size);
 			clonedData->m_owner = true;
 			memcpy(clonedData->m_data.ptr, m_data.ptr, m_size);
 			break;
 		case STRING:
-			clonedData->m_data.s = new char[strlen( m_data.s ) + 1];
+			clonedData->m_data.s = new char[strlen(m_data.s) + 1];
 			clonedData->m_owner = true;
-			memcpy( (char*) clonedData->m_data.s, m_data.s, strlen( m_data.s ) + 1 );
+			memcpy((char*) clonedData->m_data.s, m_data.s, strlen(m_data.s) + 1);
 			break;
 		default:
 			return clonedData;
@@ -205,26 +190,32 @@ public:
 	}
 
 protected:
-	GameEventData(TypeID id) : m_typeID(id), m_size(0), m_owner(false) { m_data.ptr = 0; }
+	GameEventData(TypeID id) :
+			m_typeID(id), m_size(0), m_owner(false) {
+		m_data.ptr = 0;
+	}
 
-	union Data
-	{
-		bool			b;
-		const char*		s;
-		float			f;
-		double			d;
-		int				i;
-		void*			ptr;
+	union Data {
+		bool b;
+		const char* s;
+		float f;
+		double d;
+		int i;
+		void* ptr;
 	};
 
-	TypeID	m_typeID;
-	Data	m_data;
-	size_t	m_size;
-	bool	m_owner;
+	TypeID m_typeID;
+	Data m_data;
+	size_t m_size;
+	bool m_owner;
 
 private:
-	GameEventData(const GameEventData& other) : m_typeID(other.m_typeID), m_data(other.m_data), m_owner(false) {}
-	const GameEventData& operator= (const GameEventData& other) {return *this;}
+	GameEventData(const GameEventData& other) :
+			m_typeID(other.m_typeID), m_data(other.m_data), m_owner(false) {
+	}
+	const GameEventData& operator=(const GameEventData& other) {
+		return *this;
+	}
 
 };
 
@@ -234,8 +225,7 @@ private:
  * @author Volker Wiendl
  * @date Mai 2008
  */
-class GameEvent
-{
+class GameEvent {
 
 public:
 	enum EventID {
@@ -371,7 +361,7 @@ public:
 		KW_INIT,				/// initializes a KinectWorld smart object after the entire scene was loaded
 		KW_SET_PROPERTY,		/// sets a property of a KinectWorld smart object (using a pointer to a subclass of KWPropertyData)
 		KW_EXECUTE_ACTION,		/// triggers the given action of a KinectWorld smart object (using const char*)
-		KW_EXECUTE_DIALOGUE_ACTION,/// triggers the given dialogue action of a KinectWorld smart object (using const char*)
+		KW_EXECUTE_DIALOGUE_ACTION,		/// triggers the given dialogue action of a KinectWorld smart object (using const char*)
 		KW_APPLY_EFFECT,		/// applies an effect to the KinectWorld smart object (using KWSmartObjectEffect*)
 
 		///////////////////////////////////////////////////////////////////////////////////////////
@@ -401,11 +391,11 @@ public:
 		E_GET_SOUND_DISTANCE,	/// Get the distance of the current sound node to the active listener. @data pointer to float
 		E_GET_SOUND_ISPLAYING,	/// Returns whether a sound is currently playing
 		E_GET_VISIBILITY,		/// Returns whether the current entity is visible by the active cam
-		E_GET_PROJECTION_MATRIX,/// Returns the current camera projection matrix @data pointer to float[16] for the matrix
+		E_GET_PROJECTION_MATRIX,		/// Returns the current camera projection matrix @data pointer to float[16] for the matrix
 		E_GET_SCENEGRAPH_ID,	/// Returns the entity's scenegraph id (hordeID)
 		E_GET_ANIM_LENGTH,		/// Get the length of an animation in seconds (using all frames and default speed).
 		E_GET_SOCKET_DATA,		/// Gets the data received by the socket component @data: pointer to char* where data is copied to
-		E_GET_SOCKET_NEWEST_MSG,/// Gets the newest message received by the socket component and throws away all older messages @data: pointer to char* where data is copied to
+		E_GET_SOCKET_NEWEST_MSG,		/// Gets the newest message received by the socket component and throws away all older messages @data: pointer to char* where data is copied to
 		EM_GET_MOOD_PAD,		/// gets the current mood from the Emotion component as PAD values (using Vec3f)
 		D_CURRENT_SENTENCE,		/// get current sentence from Dialogue components
 		IK_GETPARAMI,			/// Gets an IK parameter (IK_Param) of type integer
@@ -420,21 +410,21 @@ public:
 		AG_MOVEMENT_GET_SPEED,	/// Gets the default movement speed. Param: AgentMovementData(), returns: float
 		AG_GAZE_GET_STATUS,		/// Gets the gaze node's status. Param: AgentGazeData(int), returns: int
 		AG_GAZE_GET_SPEED,		/// Gets the agent's default gaze speed. Param: AgentGazeData(), returns: float
-		AG_FORMATION_GET_AGENTS,/// Gets the members of the formation. Param: AgentFormationData(int**), returns: int
+		AG_FORMATION_GET_AGENTS,		/// Gets the members of the formation. Param: AgentFormationData(int**), returns: int
 		AG_FORMATION_GET_TYPE,	/// Gets the type of the formation. Param: AgentFormationData(), returns: int
 		AG_FORMATION_GET_ENTRY,	/// Computes, returns:  an entry point to the formation. Param: AgentFormationData(int), returns: Vec3f
 		AG_GET_IPDIST,			/// Gets the interpersonal distance constraints of the agent. Param: AgentFormationData(), returns: float,float
 		AG_GET_ORIENTCUST,		/// Gets the deviation value from the normal orientation of the agent. Param: AgentFormationData(), returns: float
 		AG_GET_REPOSANIM,		/// Gets the the repositioning animation name. Param: AgentFormationData(), returns: const char*
 		AG_GET_PARAM,			/// Gets the value of a component parameter. Param: AgentConfigData(), returns: float/int/const char*
-		
+
 		KW_IS_SMART_OBJECT,		/// Checks if the entity has a KWSmartObjectComponent (using bool*) 
 		KW_IS_SELECTABLE,		/// Checks if the entity can be selected by the user (using bool*)
 		KW_IS_VISIBLE,			/// Checks if the object is visible on the given camera (using KWVisibleData*) 
 		KW_GET_NAME,			/// Gets the name of the KinectWorld smart object (using string*)
 		KW_GET_PROPERTY,		/// sets a property of a KinectWorld smart object (using a pointer to a subclass of KWPropertyData)
 		KW_GET_ACTIONS,			/// Gets the list of actions stored in a KinectWorld smart object (using vector<KWActionData*>*)
-		KW_GET_DIALOGUE_ACTIONS,/// Gets the list of dialogue actions stored in a KinectWorld smart object (using vector<KWDialogueActionData*>*)
+		KW_GET_DIALOGUE_ACTIONS,			/// Gets the list of dialogue actions stored in a KinectWorld smart object (using vector<KWDialogueActionData*>*)
 
 		///////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -498,89 +488,150 @@ public:
 		SCI_MODE,
 		SCI_ACTIONSOUND,
 
+		E_SET_ANIM_BIAS,		/// Sets animation BIAS
+
 		EVENT_COUNT				/// Must be the last entry in the enumeration !!!!
 	};
-	static GameEvent::EventID convertStringEvent(std::string in)
-	{
-		if(in.find("E_INVALID") != std::string::npos) return GameEvent::E_INVALID;
-		if(in.find("E_SET_TRANSFORMATION") != std::string::npos) return GameEvent::E_SET_TRANSFORMATION;
-		if(in.find("E_SET_ROTATION") != std::string::npos) return GameEvent::E_SET_ROTATION;
-		if(in.find("E_SET_TRANSLATION") != std::string::npos) return GameEvent::E_SET_TRANSLATION;
-		if(in.find("E_SET_SCALE") != std::string::npos) return GameEvent::E_SET_SCALE;
-		if(in.find("E_TRANSLATE_LOCAL") != std::string::npos) return GameEvent::E_TRANSLATE_LOCAL;
-		if(in.find("E_TRANSLATE_GLOBAL") != std::string::npos) return GameEvent::E_TRANSLATE_GLOBAL;
-		if(in.find("E_ROTATE_LOCAL") != std::string::npos) return GameEvent::E_ROTATE_LOCAL;
-		if(in.find("E_TRANSFORMATION") != std::string::npos) return GameEvent::E_TRANSFORMATION;
-		if(in.find("E_MESH_DATA") != std::string::npos) return GameEvent::E_MESH_DATA;
-		if(in.find("E_MORPH_TARGET") != std::string::npos) return GameEvent::E_MORPH_TARGET;
-		if(in.find("E_MORPH_TARGET_ANIM") != std::string::npos) return GameEvent::E_MORPH_TARGET_ANIM;
-		if(in.find("E_KEY_PRESS") != std::string::npos) return GameEvent::E_KEY_PRESS;
-		if(in.find("E_PLAY_ANIM") != std::string::npos) return GameEvent::E_PLAY_ANIM;
-		if(in.find("E_UPDATE_ANIM") != std::string::npos) return GameEvent::E_UPDATE_ANIM;
-		if(in.find("E_ANIM_STOPPED") != std::string::npos) return GameEvent::E_ANIM_STOPPED;
-		if(in.find("E_SET_ANIM_FRAME") != std::string::npos) return GameEvent::E_SET_ANIM_FRAME;
-		if(in.find("E_ATTACH") != std::string::npos) return GameEvent::E_ATTACH;
-		if(in.find("E_SET_NODE_PARENT") != std::string::npos) return GameEvent::E_SET_NODE_PARENT;
-		if(in.find("E_SPEAKING_STOPPED") != std::string::npos) return GameEvent::E_SPEAKING_STOPPED;
-		if(in.find("E_SPEAK") != std::string::npos) return GameEvent::E_SPEAK;
-		if(in.find("E_SET_VOICE") != std::string::npos) return GameEvent::E_SET_VOICE;
-		if(in.find("E_COLLISION") != std::string::npos) return GameEvent::E_COLLISION;
-		if(in.find("E_ACTIVATE_CAM") != std::string::npos) return GameEvent::E_ACTIVATE_CAM;
-		if(in.find("E_PERFORM_ACTION") != std::string::npos) return GameEvent::E_PERFORM_ACTION;
-		if(in.find("E_WITNESS_ACTION") != std::string::npos) return GameEvent::E_WITNESS_ACTION;
-		if(in.find("E_GO_TO_ENTITY") != std::string::npos) return GameEvent::E_GO_TO_ENTITY;
-		if(in.find("E_GO_TO_POSITION") != std::string::npos) return GameEvent::E_GO_TO_POSITION;
-		if(in.find("E_GO_TO_STOPPED") != std::string::npos) return GameEvent::E_GO_TO_STOPPED;
-		if(in.find("E_SET_PROPERTY") != std::string::npos) return GameEvent::E_SET_PROPERTY;
-		if(in.find("E_GET_PROPERTY") != std::string::npos) return GameEvent::E_GET_PROPERTY;
-		if(in.find("E_ADJUST_PROPERTY") != std::string::npos) return GameEvent::E_ADJUST_PROPERTY;
-		if(in.find("E_INTERACT") != std::string::npos) return GameEvent::E_INTERACT;
-		if(in.find("E_INTERACT_PARTNER") != std::string::npos) return GameEvent::E_INTERACT_PARTNER;
-		if(in.find("E_SET_SOUND_GAIN") != std::string::npos) return GameEvent::E_SET_SOUND_GAIN;
-		if(in.find("E_SET_SOUND_LOOP") != std::string::npos) return GameEvent::E_SET_SOUND_LOOP;
-		if(in.find("E_SET_SOUND_FILE") != std::string::npos) return GameEvent::E_SET_SOUND_FILE;
-		if(in.find("E_SET_PHONEMES_FILE") != std::string::npos) return GameEvent::E_SET_PHONEMES_FILE;
-		if(in.find("E_SET_ENABLED") != std::string::npos) return GameEvent::E_SET_ENABLED;
-		if(in.find("E_PICKUP") != std::string::npos) return GameEvent::E_PICKUP;
-		if(in.find("E_AILOD_CHANGE") != std::string::npos) return GameEvent::E_AILOD_CHANGE;
-		if(in.find("E_ACTIVE_CAM_CHANGE") != std::string::npos) return GameEvent::E_ACTIVE_CAM_CHANGE;
-		if(in.find("GL_DRAW") != std::string::npos) return GameEvent::GL_DRAW;
-		if(in.find("GP_STATE_CHANGE") != std::string::npos) return GameEvent::GP_STATE_CHANGE;
-		if(in.find("SCI_NODE_ID") != std::string::npos) return GameEvent::SCI_NODE_ID;
-		if(in.find("SCI_DECISION_ID") != std::string::npos) return GameEvent::SCI_DECISION_ID;
-		if(in.find("SCI_DECIDED_ID") != std::string::npos) return GameEvent::SCI_DECIDED_ID;
-		if(in.find("SCI_QUICKTIME_ID") != std::string::npos) return GameEvent::SCI_QUICKTIME_ID;
-		if(in.find("SCI_QUICKTIME_RESULT") != std::string::npos) return GameEvent::SCI_QUICKTIME_RESULT;
-		if(in.find("SCI_BLACKOUT") != std::string::npos) return GameEvent::SCI_BLACKOUT;
-		if(in.find("SCI_END") != std::string::npos) return GameEvent::SCI_END;
-		if(in.find("SCI_MODE") != std::string::npos) return GameEvent::SCI_MODE;
-		if(in.find("SCI_ACTIONSOUND") != std::string::npos) return GameEvent::SCI_ACTIONSOUND;
-		if(in.find("E_SET_PATH_GOAL") != std::string::npos) return GameEvent::E_SET_PATH_GOAL;
-		if(in.find("E_TARGET_REACHED") != std::string::npos) return GameEvent::E_TARGET_REACHED;
-		if(in.find("E_STOP_MOVING") != std::string::npos) return GameEvent::E_STOP_MOVING;
-		if(in.find("E_MOUSE_MOVE") != std::string::npos) return GameEvent::E_MOUSE_MOVE;
-		if(in.find("E_MOUSE_CLICK") != std::string::npos) return GameEvent::E_MOUSE_CLICK;
-		if(in.find("E_GUI_EVENT") != std::string::npos) return GameEvent::E_GUI_EVENT;
-		if(in.find("E_EXITPOINTER") != std::string::npos) return GameEvent::E_EXITPOINTER;
+	static GameEvent::EventID convertStringEvent(std::string in) {
+		if (in.find("E_INVALID") != std::string::npos)
+			return GameEvent::E_INVALID;
+		if (in.find("E_SET_TRANSFORMATION") != std::string::npos)
+			return GameEvent::E_SET_TRANSFORMATION;
+		if (in.find("E_SET_ROTATION") != std::string::npos)
+			return GameEvent::E_SET_ROTATION;
+		if (in.find("E_SET_TRANSLATION") != std::string::npos)
+			return GameEvent::E_SET_TRANSLATION;
+		if (in.find("E_SET_SCALE") != std::string::npos)
+			return GameEvent::E_SET_SCALE;
+		if (in.find("E_TRANSLATE_LOCAL") != std::string::npos)
+			return GameEvent::E_TRANSLATE_LOCAL;
+		if (in.find("E_TRANSLATE_GLOBAL") != std::string::npos)
+			return GameEvent::E_TRANSLATE_GLOBAL;
+		if (in.find("E_ROTATE_LOCAL") != std::string::npos)
+			return GameEvent::E_ROTATE_LOCAL;
+		if (in.find("E_TRANSFORMATION") != std::string::npos)
+			return GameEvent::E_TRANSFORMATION;
+		if (in.find("E_MESH_DATA") != std::string::npos)
+			return GameEvent::E_MESH_DATA;
+		if (in.find("E_MORPH_TARGET") != std::string::npos)
+			return GameEvent::E_MORPH_TARGET;
+		if (in.find("E_MORPH_TARGET_ANIM") != std::string::npos)
+			return GameEvent::E_MORPH_TARGET_ANIM;
+		if (in.find("E_KEY_PRESS") != std::string::npos)
+			return GameEvent::E_KEY_PRESS;
+		if (in.find("E_PLAY_ANIM") != std::string::npos)
+			return GameEvent::E_PLAY_ANIM;
+		if (in.find("E_UPDATE_ANIM") != std::string::npos)
+			return GameEvent::E_UPDATE_ANIM;
+		if (in.find("E_ANIM_STOPPED") != std::string::npos)
+			return GameEvent::E_ANIM_STOPPED;
+		if (in.find("E_SET_ANIM_FRAME") != std::string::npos)
+			return GameEvent::E_SET_ANIM_FRAME;
+		if (in.find("E_ATTACH") != std::string::npos)
+			return GameEvent::E_ATTACH;
+		if (in.find("E_SET_NODE_PARENT") != std::string::npos)
+			return GameEvent::E_SET_NODE_PARENT;
+		if (in.find("E_SPEAKING_STOPPED") != std::string::npos)
+			return GameEvent::E_SPEAKING_STOPPED;
+		if (in.find("E_SPEAK") != std::string::npos)
+			return GameEvent::E_SPEAK;
+		if (in.find("E_SET_VOICE") != std::string::npos)
+			return GameEvent::E_SET_VOICE;
+		if (in.find("E_COLLISION") != std::string::npos)
+			return GameEvent::E_COLLISION;
+		if (in.find("E_ACTIVATE_CAM") != std::string::npos)
+			return GameEvent::E_ACTIVATE_CAM;
+		if (in.find("E_PERFORM_ACTION") != std::string::npos)
+			return GameEvent::E_PERFORM_ACTION;
+		if (in.find("E_WITNESS_ACTION") != std::string::npos)
+			return GameEvent::E_WITNESS_ACTION;
+		if (in.find("E_GO_TO_ENTITY") != std::string::npos)
+			return GameEvent::E_GO_TO_ENTITY;
+		if (in.find("E_GO_TO_POSITION") != std::string::npos)
+			return GameEvent::E_GO_TO_POSITION;
+		if (in.find("E_GO_TO_STOPPED") != std::string::npos)
+			return GameEvent::E_GO_TO_STOPPED;
+		if (in.find("E_SET_PROPERTY") != std::string::npos)
+			return GameEvent::E_SET_PROPERTY;
+		if (in.find("E_GET_PROPERTY") != std::string::npos)
+			return GameEvent::E_GET_PROPERTY;
+		if (in.find("E_ADJUST_PROPERTY") != std::string::npos)
+			return GameEvent::E_ADJUST_PROPERTY;
+		if (in.find("E_INTERACT") != std::string::npos)
+			return GameEvent::E_INTERACT;
+		if (in.find("E_INTERACT_PARTNER") != std::string::npos)
+			return GameEvent::E_INTERACT_PARTNER;
+		if (in.find("E_SET_SOUND_GAIN") != std::string::npos)
+			return GameEvent::E_SET_SOUND_GAIN;
+		if (in.find("E_SET_SOUND_LOOP") != std::string::npos)
+			return GameEvent::E_SET_SOUND_LOOP;
+		if (in.find("E_SET_SOUND_FILE") != std::string::npos)
+			return GameEvent::E_SET_SOUND_FILE;
+		if (in.find("E_SET_PHONEMES_FILE") != std::string::npos)
+			return GameEvent::E_SET_PHONEMES_FILE;
+		if (in.find("E_SET_ENABLED") != std::string::npos)
+			return GameEvent::E_SET_ENABLED;
+		if (in.find("E_PICKUP") != std::string::npos)
+			return GameEvent::E_PICKUP;
+		if (in.find("E_AILOD_CHANGE") != std::string::npos)
+			return GameEvent::E_AILOD_CHANGE;
+		if (in.find("E_ACTIVE_CAM_CHANGE") != std::string::npos)
+			return GameEvent::E_ACTIVE_CAM_CHANGE;
+		if (in.find("GL_DRAW") != std::string::npos)
+			return GameEvent::GL_DRAW;
+		if (in.find("GP_STATE_CHANGE") != std::string::npos)
+			return GameEvent::GP_STATE_CHANGE;
+		if (in.find("SCI_NODE_ID") != std::string::npos)
+			return GameEvent::SCI_NODE_ID;
+		if (in.find("SCI_DECISION_ID") != std::string::npos)
+			return GameEvent::SCI_DECISION_ID;
+		if (in.find("SCI_DECIDED_ID") != std::string::npos)
+			return GameEvent::SCI_DECIDED_ID;
+		if (in.find("SCI_QUICKTIME_ID") != std::string::npos)
+			return GameEvent::SCI_QUICKTIME_ID;
+		if (in.find("SCI_QUICKTIME_RESULT") != std::string::npos)
+			return GameEvent::SCI_QUICKTIME_RESULT;
+		if (in.find("SCI_BLACKOUT") != std::string::npos)
+			return GameEvent::SCI_BLACKOUT;
+		if (in.find("SCI_END") != std::string::npos)
+			return GameEvent::SCI_END;
+		if (in.find("SCI_MODE") != std::string::npos)
+			return GameEvent::SCI_MODE;
+		if (in.find("SCI_ACTIONSOUND") != std::string::npos)
+			return GameEvent::SCI_ACTIONSOUND;
+		if (in.find("E_SET_PATH_GOAL") != std::string::npos)
+			return GameEvent::E_SET_PATH_GOAL;
+		if (in.find("E_TARGET_REACHED") != std::string::npos)
+			return GameEvent::E_TARGET_REACHED;
+		if (in.find("E_STOP_MOVING") != std::string::npos)
+			return GameEvent::E_STOP_MOVING;
+		if (in.find("E_MOUSE_MOVE") != std::string::npos)
+			return GameEvent::E_MOUSE_MOVE;
+		if (in.find("E_MOUSE_CLICK") != std::string::npos)
+			return GameEvent::E_MOUSE_CLICK;
+		if (in.find("E_GUI_EVENT") != std::string::npos)
+			return GameEvent::E_GUI_EVENT;
+		if (in.find("E_EXITPOINTER") != std::string::npos)
+			return GameEvent::E_EXITPOINTER;
 		return GameEvent::EVENT_COUNT;
 
 	}
-	GameEvent(EventID id, GameEventData* data, GameComponent* sender) : m_id(id), m_pData(data), m_sender(sender), m_owner(false)
-	{
+	GameEvent(EventID id, GameEventData* data, GameComponent* sender) :
+			m_id(id), m_pData(data), m_sender(sender), m_owner(false) {
 	}
 
-	GameEvent(EventID id, const GameEventData& data, GameComponent* sender) : m_id(id), m_pData(data.clone()), m_sender(sender), m_owner(true)
-	{
+	GameEvent(EventID id, const GameEventData& data, GameComponent* sender) :
+			m_id(id), m_pData(data.clone()), m_sender(sender), m_owner(true) {
 	}
 
-	~GameEvent()
-	{
-		if (m_owner) delete m_pData;
+	~GameEvent() {
+		if (m_owner)
+			delete m_pData;
 	}
 
-	const GameEvent& operator= (const GameEvent& other)
-	{
-		if(m_owner) delete m_pData;
+	const GameEvent& operator=(const GameEvent& other) {
+		if (m_owner)
+			delete m_pData;
 		m_pData = other.m_pData ? other.m_pData->clone() : 0;
 		m_owner = true;
 		m_id = other.m_id;
@@ -588,42 +639,42 @@ public:
 		return *this;
 	}
 
-	GameEvent(const GameEvent& other) : m_id(other.m_id), m_pData(other.m_pData ? other.m_pData->clone() : 0x0), m_sender(other.m_sender), m_owner(true)
-	{
+	GameEvent(const GameEvent& other) :
+			m_id(other.m_id), m_pData(other.m_pData ? other.m_pData->clone() : 0x0), m_sender(other.m_sender), m_owner(true) {
 
 	}
 
-	const EventID id() const {return m_id;}
-	void* data() const {return m_pData ? m_pData->data() : 0x0;}
-	const GameComponent* sender() const {return m_sender;}
+	const EventID id() const {
+		return m_id;
+	}
+	void* data() const {
+		return m_pData ? m_pData->data() : 0x0;
+	}
+	const GameComponent* sender() const {
+		return m_sender;
+	}
 
 private:
 
-
-
-	EventID					m_id;
-	bool					m_owner;
-	GameEventData*			m_pData;
-	const GameComponent*	m_sender;
+	EventID m_id;
+	bool m_owner;
+	GameEventData* m_pData;
+	const GameComponent* m_sender;
 };
-
 
 /**
  * Container for Mesh Information provided by E_MESH_DATA
  */
-class MeshData : public GameEventData
-{
+class MeshData: public GameEventData {
 public:
 
-	MeshData() : GameEventData(CUSTOM), NumVertices(0), NumTriangleIndices(0), VertexBase(0), VertRStart(0), TriangleBase16(0), TriangleBase32(0), TriangleMode(4)
-	{
+	MeshData() :
+			GameEventData(CUSTOM), NumVertices(0), NumTriangleIndices(0), VertexBase(0), VertRStart(0), TriangleBase16(0), TriangleBase32(0), TriangleMode(4) {
 		m_data.ptr = this;
 	}
 
-	~MeshData()
-	{
-		if (m_owner)
-		{
+	~MeshData() {
+		if (m_owner) {
 			delete[] VertexBase;
 			if (TriangleBase16)
 				delete[] TriangleBase16;
@@ -643,19 +694,18 @@ public:
 
 	unsigned int TriangleMode;
 
-	virtual GameEventData* clone(  ) const
-	{
+	virtual GameEventData* clone() const {
 		MeshData* clonedData = new MeshData();
 		clonedData->m_owner = true;
 		clonedData->VertexBase = new float[NumVertices];
-		memcpy( (void*) clonedData->VertexBase, VertexBase, sizeof(float) * NumVertices);
+		memcpy((void*) clonedData->VertexBase, VertexBase, sizeof(float) * NumVertices);
 
 		if (TriangleBase32) {
 			clonedData->TriangleBase32 = new unsigned int[NumTriangleIndices];
-			memcpy( (void*) clonedData->TriangleBase32, TriangleBase32, sizeof(unsigned int) * NumVertices);
+			memcpy((void*) clonedData->TriangleBase32, TriangleBase32, sizeof(unsigned int) * NumVertices);
 		} else {
 			clonedData->TriangleBase16 = new unsigned short[NumTriangleIndices];
-			memcpy( (void*) clonedData->TriangleBase16, TriangleBase16, sizeof(unsigned short) * NumVertices);
+			memcpy((void*) clonedData->TriangleBase16, TriangleBase16, sizeof(unsigned short) * NumVertices);
 		}
 
 		clonedData->NumTriangleIndices = NumTriangleIndices;
@@ -674,35 +724,35 @@ public:
  * @date  Jun 2008
  *
  */
-class MorphTarget : public GameEventData
-{
+class MorphTarget: public GameEventData {
 public:
-	MorphTarget(const char* name, float value) : GameEventData(CUSTOM), Name(name), Value(value)
-	{
+	MorphTarget(const char* name, float value) :
+			GameEventData(CUSTOM), Name(name), Value(value) {
 		m_data.ptr = this;
 	}
 
-	MorphTarget(const MorphTarget& copy) : GameEventData(CUSTOM), Value(copy.Value)
-	{
+	MorphTarget(const MorphTarget& copy) :
+			GameEventData(CUSTOM), Value(copy.Value) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t len = copy.Name ? strlen(copy.Name) : 0;
 		Name = new char[len + 1];
-		memcpy( (char*) Name, copy.Name, len );
+		memcpy((char*) Name, copy.Name, len);
 		const_cast<char*>(Name)[len] = '\0';
 	}
 
-	~MorphTarget()
-	{
-		if (m_owner) delete[] Name;
+	~MorphTarget() {
+		if (m_owner)
+			delete[] Name;
 	}
 
-	GameEventData* clone() const {return new MorphTarget(*this);}
+	GameEventData* clone() const {
+		return new MorphTarget(*this);
+	}
 
 	const char* Name; // Maybe this is not a good data type, since this requires the given name pointer to be valid until execute event has been finished
 	float Value;
 };
-
 
 /**
  * \brief Container for MorphTargetAnimation data used by a GameEvent
@@ -711,32 +761,31 @@ public:
  * @date  Aug 2008
  *
  */
-class MorphTargetAnimation : public GameEventData
-{
+class MorphTargetAnimation: public GameEventData {
 public:
-	MorphTargetAnimation(const char* name, float toWeight, float duration)
-		: GameEventData(CUSTOM), Name(name), ToWeight(toWeight), Duration(duration)
-	{
+	MorphTargetAnimation(const char* name, float toWeight, float duration) :
+			GameEventData(CUSTOM), Name(name), ToWeight(toWeight), Duration(duration) {
 		m_data.ptr = this;
 	}
 
-	MorphTargetAnimation(const MorphTargetAnimation& copy)
-		: GameEventData(CUSTOM), ToWeight(copy.ToWeight), Duration(copy.Duration)
-	{
+	MorphTargetAnimation(const MorphTargetAnimation& copy) :
+			GameEventData(CUSTOM), ToWeight(copy.ToWeight), Duration(copy.Duration) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t len = copy.Name ? strlen(copy.Name) : 0;
 		Name = new char[len + 1];
-		memcpy( (char*) Name, copy.Name, len );
+		memcpy((char*) Name, copy.Name, len);
 		const_cast<char*>(Name)[len] = '\0';
 	}
 
-	~MorphTargetAnimation()
-	{
-		if (m_owner) delete[] Name;
+	~MorphTargetAnimation() {
+		if (m_owner)
+			delete[] Name;
 	}
 
-	GameEventData* clone() const {return new MorphTargetAnimation(*this);}
+	GameEventData* clone() const {
+		return new MorphTargetAnimation(*this);
+	}
 
 	const char* Name; // Maybe this is not a good data type, since this requires the given name pointer to be valid until execute event has been finished
 	float ToWeight;
@@ -751,51 +800,45 @@ public:
 //	GameEntity* Obj1;
 //	GameEntity* Obj2;
 //};
-
 /**
  * Container for an Animation configuration used by a GameEvent
  */
-class AnimationSetup : public GameEventData
-{
+class AnimationSetup: public GameEventData {
 public:
-	AnimationSetup(const char* animation, int stage, float speed, float duration, float weight, float timeoffset, int layer = 0) : GameEventData(CUSTOM),
-		Animation(animation), Stage(stage), Speed(speed), Duration(duration), Weight(weight), TimeOffset(timeoffset), Layer(layer), JobID(0)
-	{
+	AnimationSetup(const char* animation, int stage, float speed, float duration, float weight, float timeoffset, int layer = 0, float startFrame = 0) :
+			GameEventData(CUSTOM), Animation(animation), Stage(stage), Speed(speed), Duration(duration), Weight(weight), TimeOffset(timeoffset), Layer(layer), JobID(0), StartFrame(startFrame) {
 		m_data.ptr = this;
 	}
 
-	AnimationSetup(const AnimationSetup& copy) : GameEventData(CUSTOM), Stage(copy.Stage), Speed(copy.Speed), Duration(copy.Duration), Weight(copy.Weight),
-		TimeOffset(copy.TimeOffset), Layer(copy.Layer), JobID(copy.JobID)
-	{
+	AnimationSetup(const AnimationSetup& copy) :
+			GameEventData(CUSTOM), Stage(copy.Stage), Speed(copy.Speed), Duration(copy.Duration), Weight(copy.Weight), TimeOffset(copy.TimeOffset), Layer(copy.Layer), JobID(copy.JobID), StartFrame(
+					copy.StartFrame) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t len = copy.Animation ? strlen(copy.Animation) : 0;
 		Animation = new char[len + 1];
-		memcpy( (char*) Animation, copy.Animation, len );
+		memcpy((char*) Animation, copy.Animation, len);
 		const_cast<char*>(Animation)[len] = '\0';
 	}
 
-	~AnimationSetup()
-	{
+	~AnimationSetup() {
 		if (m_owner)
 			delete[] Animation;
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AnimationSetup(*this);
 	}
 
 	const char* Animation;
-	const int	Stage;
-	float		Speed;
-	float		Duration;
-	const float	Weight;
-	const float	TimeOffset;
-	const int	Layer;
+	const int Stage;
+	float Speed;
+	float Duration;
+	const float Weight;
+	const float TimeOffset;
+	const int Layer;
+	const float StartFrame;
 	int JobID;
-
 
 };
 
@@ -806,34 +849,29 @@ public:
  * @date  Jun 2008
  *
  */
-class AnimationUpdate : public GameEventData
-{
+class AnimationUpdate: public GameEventData {
 public:
-	AnimationUpdate(const int jobID, const int paramType, const float value, const float timeOffset) : GameEventData(CUSTOM), JobID(jobID),
-		ParamType(paramType), Value(value), TimeOffset(timeOffset)
-	{
+	AnimationUpdate(const int jobID, const int paramType, const float value, const float timeOffset) :
+			GameEventData(CUSTOM), JobID(jobID), ParamType(paramType), Value(value), TimeOffset(timeOffset) {
 		m_data.ptr = this;
 	}
 
-	AnimationUpdate(const AnimationUpdate& copy) : GameEventData(CUSTOM), JobID(copy.JobID), ParamType(copy.ParamType), Value(copy.Value), TimeOffset(copy.TimeOffset)
-	{
+	AnimationUpdate(const AnimationUpdate& copy) :
+			GameEventData(CUSTOM), JobID(copy.JobID), ParamType(copy.ParamType), Value(copy.Value), TimeOffset(copy.TimeOffset) {
 		m_data.ptr = this;
 	}
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AnimationUpdate(*this);
 	}
 
-	const AnimationUpdate& operator= (const AnimationUpdate& other)
-	{
+	const AnimationUpdate& operator=(const AnimationUpdate& other) {
 		JobID = other.JobID;
 		ParamType = other.ParamType;
 		Value = other.Value;
 		TimeOffset = other.TimeOffset;
 		return *this;
 	}
-
 
 	unsigned int JobID;
 	int ParamType;
@@ -842,11 +880,51 @@ public:
 
 };
 
-class SetAnimFrame : public GameEventData
-{
+class AnimationBias: public GameEventData {
 public:
-	SetAnimFrame(int stage, float time, float weight) : GameEventData(CUSTOM), Stage(stage), Time(time), Weight(weight)
-	{
+	AnimationBias(const int jobID, float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW) :
+			GameEventData(CUSTOM), JobID(jobID), BiasTransX(biasTransX), BiasTransY(biasTransY), BiasTransZ(biasTransZ),
+			BiasRotX(biasRotX), BiasRotY(biasRotY), BiasRotZ(biasRotZ), BiasRotW(biasRotW){
+		m_data.ptr = this;
+	}
+
+	AnimationBias(const AnimationBias& copy) :
+			GameEventData(CUSTOM), JobID(copy.JobID), BiasTransX(copy.BiasTransX), BiasTransY(copy.BiasTransY), BiasTransZ(copy.BiasTransZ),
+			BiasRotX(copy.BiasRotX), BiasRotY(copy.BiasRotY), BiasRotZ(copy.BiasRotZ), BiasRotW(copy.BiasRotW) {
+		m_data.ptr = this;
+	}
+
+	GameEventData* clone() const {
+		return new AnimationBias(*this);
+	}
+
+	const AnimationBias& operator=(const AnimationBias& other) {
+		JobID = other.JobID;
+		BiasTransX = other.BiasTransX;
+		BiasTransY = other.BiasTransY;
+		BiasTransZ = other.BiasTransZ;
+		BiasRotX = other.BiasRotX;
+		BiasRotY = other.BiasRotY;
+		BiasRotZ = other.BiasRotZ;
+		BiasRotW = other.BiasRotW;
+		return *this;
+	}
+
+	unsigned int JobID;
+	float BiasTransX;
+	float BiasTransY;
+	float BiasTransZ;
+	float BiasRotX;
+	float BiasRotY;
+	float BiasRotZ;
+	float BiasRotW;
+
+};
+
+class SetAnimFrame: public GameEventData {
+public:
+	SetAnimFrame(int stage, float time, float weight) :
+			GameEventData(CUSTOM), Stage(stage), Time(time), Weight(weight) {
 		m_data.ptr = this;
 	}
 
@@ -854,36 +932,32 @@ public:
 	const float Time;
 	const float Weight;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new SetAnimFrame(Stage, Time, Weight);
 	}
 };
 
-class Property : public GameEventData
-{
+class Property: public GameEventData {
 
 public:
-	Property(const char* name, double value ) : GameEventData(CUSTOM), Name(name), Value(value)
-	{
+	Property(const char* name, double value) :
+			GameEventData(CUSTOM), Name(name), Value(value) {
 		m_data.ptr = this;
 	}
 
-	Property(const Property& copy) : GameEventData(CUSTOM), Value(copy.Value)
-	{
+	Property(const Property& copy) :
+			GameEventData(CUSTOM), Value(copy.Value) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t lenName = copy.Name ? strlen(copy.Name) : 0;
 		Name = new char[lenName + 1];
-		memcpy( (char*) Name, copy.Name, lenName );
+		memcpy((char*) Name, copy.Name, lenName);
 		const_cast<char*>(Name)[lenName] = '\0';
 
 	}
 
-	~Property()
-	{
-		if( m_owner )
-		{
+	~Property() {
+		if (m_owner) {
 			delete[] Name;
 		}
 	}
@@ -891,36 +965,33 @@ public:
 	const char* Name;
 	double Value;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new Property(*this);
 
 	}
 };
 
-class GoToPosition : public GameEventData
-{
+class GoToPosition: public GameEventData {
 
 public:
-	GoToPosition(float x, float y, float z, float speed )
-		: GameEventData(CUSTOM), X(x), Y(y), Z(z), Speed(speed), Result(-1)
-	{
+	GoToPosition(float x, float y, float z, float speed) :
+			GameEventData(CUSTOM), X(x), Y(y), Z(z), Speed(speed), Result(-1) {
 		m_data.ptr = this;
 	}
 
-	GoToPosition(float x, float y, float z) : GameEventData(CUSTOM), X(x), Y(y), Z(z), Speed(0.0f), Result(-1)
-	{
+	GoToPosition(float x, float y, float z) :
+			GameEventData(CUSTOM), X(x), Y(y), Z(z), Speed(0.0f), Result(-1) {
 		m_data.ptr = this;
 	}
 
-	GoToPosition(const GoToPosition& copy) : GameEventData(CUSTOM), X(copy.X), Y(copy.Y), Z(copy.Z), Speed(copy.Speed), Result(copy.Result)
-	{
+	GoToPosition(const GoToPosition& copy) :
+			GameEventData(CUSTOM), X(copy.X), Y(copy.Y), Z(copy.Z), Speed(copy.Speed), Result(copy.Result) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
 
-	~GoToPosition()
-	{}
+	~GoToPosition() {
+	}
 
 	float X;
 	float Y;
@@ -928,37 +999,28 @@ public:
 	float Speed;
 	int Result;
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new GoToPosition(*this);
 	}
 
 };
 
-class SuccessData : public GameEventData
-{
+class SuccessData: public GameEventData {
 
 public:
-	SuccessData(int id, bool successful ) : GameEventData(CUSTOM), Id(id), Successful(successful)
-	{
+	SuccessData(int id, bool successful) :
+			GameEventData(CUSTOM), Id(id), Successful(successful) {
 		m_data.ptr = this;
 	}
 
-
-
-	SuccessData(const SuccessData& copy) : GameEventData(CUSTOM), Id(copy.Id), Successful(copy.Successful)
-	{
+	SuccessData(const SuccessData& copy) :
+			GameEventData(CUSTOM), Id(copy.Id), Successful(copy.Successful) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
 
-
-
-	~SuccessData()
-	{
-		if( m_owner )
-		{
+	~SuccessData() {
+		if (m_owner) {
 
 		}
 	}
@@ -966,63 +1028,56 @@ public:
 	int Id;
 	bool Successful;
 
-
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new SuccessData(*this);
 
 	}
 
 };
 
-class GoTo : public GameEventData
-{
+class GoTo: public GameEventData {
 
 public:
-	GoTo(const char* targetID, const char* animName, float speed ) : GameEventData(CUSTOM), TargetID(targetID), AnimName(animName), Speed(speed), Result(-1)
-	{
+	GoTo(const char* targetID, const char* animName, float speed) :
+			GameEventData(CUSTOM), TargetID(targetID), AnimName(animName), Speed(speed), Result(-1) {
 		m_data.ptr = this;
 	}
 
-	GoTo(const char* targetID, float speed ) : GameEventData(CUSTOM), TargetID(targetID), AnimName(0), Speed(speed), Result(-1)
-	{
+	GoTo(const char* targetID, float speed) :
+			GameEventData(CUSTOM), TargetID(targetID), AnimName(0), Speed(speed), Result(-1) {
 		m_data.ptr = this;
 	}
 
-	GoTo(const char* targetID) : GameEventData(CUSTOM), TargetID(targetID), AnimName(0), Speed(0.0f), Result(-1)
-	{
+	GoTo(const char* targetID) :
+			GameEventData(CUSTOM), TargetID(targetID), AnimName(0), Speed(0.0f), Result(-1) {
 		m_data.ptr = this;
 	}
 
-	GoTo(const GoTo& copy) : GameEventData(CUSTOM), Speed(copy.Speed), Result(copy.Result)
-	{
+	GoTo(const GoTo& copy) :
+			GameEventData(CUSTOM), Speed(copy.Speed), Result(copy.Result) {
 		m_data.ptr = this;
 		m_owner = true;
 
 		const size_t lenAnimName = copy.AnimName ? strlen(copy.AnimName) : 0;
 		AnimName = new char[lenAnimName + 1];
-		memcpy( (char*) AnimName, copy.AnimName, lenAnimName );
+		memcpy((char*) AnimName, copy.AnimName, lenAnimName);
 		const_cast<char*>(AnimName)[lenAnimName] = '\0';
 
 		const size_t lenTarget = copy.TargetID ? strlen(copy.TargetID) : 0;
 		TargetID = new char[lenTarget + 1];
-		memcpy( (char*) TargetID, copy.TargetID, lenTarget );
+		memcpy((char*) TargetID, copy.TargetID, lenTarget);
 		const_cast<char*>(TargetID)[lenTarget] = '\0';
 	}
 
-	void setAnimName(const char* name)
-	{
+	void setAnimName(const char* name) {
 		const size_t lenAnimName = strlen(name);
 		AnimName = new char[lenAnimName + 1];
-		memcpy( (char*) AnimName, name, lenAnimName );
+		memcpy((char*) AnimName, name, lenAnimName);
 		const_cast<char*>(AnimName)[lenAnimName] = '\0';
 	}
 
-	~GoTo()
-	{
-		if( m_owner )
-		{
+	~GoTo() {
+		if (m_owner) {
 			delete[] TargetID;
 			delete[] AnimName;
 		}
@@ -1033,47 +1088,39 @@ public:
 	float Speed;
 	int Result;
 
-
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new GoTo(*this);
 
 	}
 
 };
 
-class CharacterAction : public GameEventData
-{
+class CharacterAction: public GameEventData {
 
 public:
-	CharacterAction(const char* action, const char* parameters, unsigned int id ) : GameEventData(CUSTOM), Action(action), Parameters(parameters), Id(id)
-	{
+	CharacterAction(const char* action, const char* parameters, unsigned int id) :
+			GameEventData(CUSTOM), Action(action), Parameters(parameters), Id(id) {
 		m_data.ptr = this;
 	}
 
-
-	CharacterAction(const CharacterAction& copy) : GameEventData(CUSTOM), Id(copy.Id)
-	{
+	CharacterAction(const CharacterAction& copy) :
+			GameEventData(CUSTOM), Id(copy.Id) {
 		m_data.ptr = this;
 		m_owner = true;
 
 		const size_t lenAction = copy.Action ? strlen(copy.Action) : 0;
 		Action = new char[lenAction + 1];
-		memcpy( (char*) Action, copy.Action, lenAction );
+		memcpy((char*) Action, copy.Action, lenAction);
 		const_cast<char*>(Action)[lenAction] = '\0';
 
 		const size_t lenParameters = copy.Parameters ? strlen(copy.Parameters) : 0;
 		Parameters = new char[lenParameters + 1];
-		memcpy( (char*) Parameters, copy.Parameters, lenParameters );
+		memcpy((char*) Parameters, copy.Parameters, lenParameters);
 		const_cast<char*>(Parameters)[lenParameters] = '\0';
 	}
 
-
-	~CharacterAction()
-	{
-		if( m_owner )
-		{
+	~CharacterAction() {
+		if (m_owner) {
 			delete[] Action;
 			delete[] Parameters;
 		}
@@ -1083,47 +1130,39 @@ public:
 	const char* Parameters;
 	unsigned int Id;
 
-
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new CharacterAction(*this);
 
 	}
 
 };
 
-class CheckCondition : public GameEventData
-{
+class CheckCondition: public GameEventData {
 
 public:
-	CheckCondition(const char* condition, const char* parameters) : GameEventData(CUSTOM), Condition(condition), Parameters(parameters)
-	{
+	CheckCondition(const char* condition, const char* parameters) :
+			GameEventData(CUSTOM), Condition(condition), Parameters(parameters) {
 		m_data.ptr = this;
 	}
 
-
-	CheckCondition(const CheckCondition& copy) : GameEventData(CUSTOM), ConditionValue(copy.ConditionValue)
-	{
+	CheckCondition(const CheckCondition& copy) :
+			GameEventData(CUSTOM), ConditionValue(copy.ConditionValue) {
 		m_data.ptr = this;
 		m_owner = true;
 
 		const size_t lenAction = copy.Condition ? strlen(copy.Condition) : 0;
 		Condition = new char[lenAction + 1];
-		memcpy( (char*) Condition, copy.Condition, lenAction );
+		memcpy((char*) Condition, copy.Condition, lenAction);
 		const_cast<char*>(Condition)[lenAction] = '\0';
 
 		const size_t lenParameters = copy.Parameters ? strlen(copy.Parameters) : 0;
 		Parameters = new char[lenParameters + 1];
-		memcpy( (char*) Parameters, copy.Parameters, lenParameters );
+		memcpy((char*) Parameters, copy.Parameters, lenParameters);
 		const_cast<char*>(Parameters)[lenParameters] = '\0';
 	}
 
-
-	~CheckCondition()
-	{
-		if( m_owner )
-		{
+	~CheckCondition() {
+		if (m_owner) {
 			delete[] Condition;
 			delete[] Parameters;
 		}
@@ -1133,44 +1172,37 @@ public:
 	const char* Parameters;
 	bool ConditionValue;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new CheckCondition(*this);
 	}
 };
 
-class Attach : public GameEventData
-{
+class Attach: public GameEventData {
 
 public:
-	Attach( const char* childName, unsigned int entityID, float tx, float ty, float tz, float rx, float ry, float rz, float sx, float sy, float sz )
-		: GameEventData(CUSTOM), Child(childName), EntityID(entityID), Tx(tx), Ty(ty), Tz(tz), Rx(rx), Ry(ry), Rz(rz), Sx(sx), Sy(sy), Sz(sz)
-	{
+	Attach(const char* childName, unsigned int entityID, float tx, float ty, float tz, float rx, float ry, float rz, float sx, float sy, float sz) :
+			GameEventData(CUSTOM), Child(childName), EntityID(entityID), Tx(tx), Ty(ty), Tz(tz), Rx(rx), Ry(ry), Rz(rz), Sx(sx), Sy(sy), Sz(sz) {
 		m_data.ptr = this;
 	}
 
-	Attach( const char* childName, unsigned int id)
-		: GameEventData(CUSTOM), Child(childName), EntityID(id), Tx(0), Ty(0), Tz(0), Rx(0), Ry(0), Rz(0), Sx(1), Sy(1), Sz(1)
-	{
+	Attach(const char* childName, unsigned int id) :
+			GameEventData(CUSTOM), Child(childName), EntityID(id), Tx(0), Ty(0), Tz(0), Rx(0), Ry(0), Rz(0), Sx(1), Sy(1), Sz(1) {
 		m_data.ptr = this;
 	}
 
-	Attach(const Attach& copy) : GameEventData(CUSTOM), Tx(copy.Tx), Ty(copy.Ty), Tz(copy.Tz),
-		Rx(copy.Rx), Ry(copy.Ry), Rz(copy.Rz), Sx(copy.Sx), Sy(copy.Sy), Sz(copy.Sz), EntityID(copy.EntityID)
-	{
+	Attach(const Attach& copy) :
+			GameEventData(CUSTOM), Tx(copy.Tx), Ty(copy.Ty), Tz(copy.Tz), Rx(copy.Rx), Ry(copy.Ry), Rz(copy.Rz), Sx(copy.Sx), Sy(copy.Sy), Sz(copy.Sz), EntityID(copy.EntityID) {
 		m_data.ptr = this;
 		m_owner = true;
 
 		const size_t lenChildname = copy.Child ? strlen(copy.Child) : 0;
 		Child = new char[lenChildname + 1];
-		memcpy( (char*) Child, copy.Child, lenChildname );
+		memcpy((char*) Child, copy.Child, lenChildname);
 		const_cast<char*>(Child)[lenChildname] = '\0';
 	}
 
-	~Attach()
-	{
-		if( m_owner )
-		{
+	~Attach() {
+		if (m_owner) {
 			delete[] Child;
 		}
 	}
@@ -1187,8 +1219,7 @@ public:
 	float Sy;
 	float Sz;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new Attach(*this);
 
 	}
@@ -1201,96 +1232,85 @@ public:
  * @date  April 2010
  *
  */
-class IKData : public GameEventData
-{
+class IKData: public GameEventData {
 public:
 	///Constructor for gaze data
-	IKData(float TargetX, float TargetY, float TargetZ, bool MoveLEye, bool MoveREye, bool MoveHead, int Head_pitch, bool Simulate = false )
-		: GameEventData(CUSTOM), endEffectorName(0), stopName(0),
-		  targetX(TargetX), targetY(TargetY), targetZ(TargetZ), moveLEye(MoveLEye), moveREye(MoveREye), moveHead(MoveHead),
-		  head_pitch(Head_pitch), result(-1), simulate(Simulate)
-	{
+	IKData(float TargetX, float TargetY, float TargetZ, bool MoveLEye, bool MoveREye, bool MoveHead, int Head_pitch, bool Simulate = false) :
+			GameEventData(CUSTOM), endEffectorName(0), stopName(0), targetX(TargetX), targetY(TargetY), targetZ(TargetZ), moveLEye(MoveLEye), moveREye(MoveREye), moveHead(MoveHead), head_pitch(
+					Head_pitch), result(-1), simulate(Simulate) {
 		m_data.ptr = this;
 	}
 	///Constructor for ik data
-	IKData(const char* EndEffectorName,	const char* StopName, float TargetX, float TargetY, float TargetZ, bool Simulate = false )
-		: GameEventData(CUSTOM), endEffectorName(EndEffectorName), stopName(StopName),
-		  targetX(TargetX), targetY(TargetY), targetZ(TargetZ), result(-1), simulate(Simulate)
-	{
+	IKData(const char* EndEffectorName, const char* StopName, float TargetX, float TargetY, float TargetZ, bool Simulate = false) :
+			GameEventData(CUSTOM), endEffectorName(EndEffectorName), stopName(StopName), targetX(TargetX), targetY(TargetY), targetZ(TargetZ), result(-1), simulate(Simulate) {
 		m_data.ptr = this;
 	}
 	///Constructor for ik anim data
-	IKData( int AnimStage, float AnimWeight, float AnimSpeed )
-		: GameEventData(CUSTOM), result(-1),
-		  animStage(AnimStage), animSpeed(AnimSpeed), animWeight(AnimWeight)
-	{
+	IKData(int AnimStage, float AnimWeight, float AnimSpeed) :
+			GameEventData(CUSTOM), result(-1), animStage(AnimStage), animSpeed(AnimSpeed), animWeight(AnimWeight) {
 		m_data.ptr = this;
 	}
 
 	///Constructor for ik param data (look up parameters in IK_Param)
-	IKData( int IK_Parameter, int value )
-		: GameEventData(CUSTOM), endEffectorName(0), stopName(0), ikparam(IK_Parameter), ikparam_valuei(value)
-	{
+	IKData(int IK_Parameter, int value) :
+			GameEventData(CUSTOM), endEffectorName(0), stopName(0), ikparam(IK_Parameter), ikparam_valuei(value) {
 		m_data.ptr = this;
 	}
 	///Constructor for ik param data (look up parameters in IK_Param)
-	IKData( int IK_Parameter, float value )
-		: GameEventData(CUSTOM), endEffectorName(0), stopName(0), ikparam(IK_Parameter), ikparam_valuef(value)
-	{
+	IKData(int IK_Parameter, float value) :
+			GameEventData(CUSTOM), endEffectorName(0), stopName(0), ikparam(IK_Parameter), ikparam_valuef(value) {
 		m_data.ptr = this;
 	}
 
-	IKData(const IKData& copy) : GameEventData(CUSTOM), targetX(copy.targetX), targetY(copy.targetY), targetZ(copy.targetZ),
-		result(copy.result), simulate(copy.simulate), ikparam(copy.ikparam),
-		ikparam_valuei(copy.ikparam_valuei), ikparam_valuef(copy.ikparam_valuef),
-		animStage(copy.animStage), animWeight(copy.animWeight), animSpeed(copy.animSpeed)
-	{
+	IKData(const IKData& copy) :
+			GameEventData(CUSTOM), targetX(copy.targetX), targetY(copy.targetY), targetZ(copy.targetZ), result(copy.result), simulate(copy.simulate), ikparam(copy.ikparam), ikparam_valuei(
+					copy.ikparam_valuei), ikparam_valuef(copy.ikparam_valuef), animStage(copy.animStage), animWeight(copy.animWeight), animSpeed(copy.animSpeed) {
 		m_data.ptr = this;
 		m_owner = true;
 
-		if(copy.endEffectorName != 0)
-		{
+		if (copy.endEffectorName != 0) {
 			const size_t lenEEName = copy.endEffectorName ? strlen(copy.endEffectorName) : 0;
 			endEffectorName = new char[lenEEName + 1];
-			memcpy( (char*) endEffectorName, copy.endEffectorName, lenEEName );
+			memcpy((char*) endEffectorName, copy.endEffectorName, lenEEName);
 			const_cast<char*>(endEffectorName)[lenEEName] = '\0';
-		}
-		else
+		} else
 			endEffectorName = 0;
 
-		if(copy.stopName != 0)
-		{
+		if (copy.stopName != 0) {
 			const size_t lenStopName = copy.stopName ? strlen(copy.stopName) : 0;
 			stopName = new char[lenStopName + 1];
-			memcpy( (char*) stopName, copy.stopName, lenStopName );
+			memcpy((char*) stopName, copy.stopName, lenStopName);
 			const_cast<char*>(stopName)[lenStopName] = '\0';
-		}
-		else
+		} else
 			stopName = 0;
 	}
 
-	~IKData()
-	{
-		if (m_owner)
-		{
-			if(endEffectorName != 0)	delete[] endEffectorName;
-			if(stopName != 0)			delete[] stopName;
+	~IKData() {
+		if (m_owner) {
+			if (endEffectorName != 0)
+				delete[] endEffectorName;
+			if (stopName != 0)
+				delete[] stopName;
 		}
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new IKData(*this);
 	}
 
-	const char* endEffectorName;	const char* stopName;
+	const char* endEffectorName;
+	const char* stopName;
 	float targetX, targetY, targetZ;
-	bool moveLEye, moveREye, moveHead;	int head_pitch;
+	bool moveLEye, moveREye, moveHead;
+	int head_pitch;
 	bool simulate;
-	int animStage;		float animSpeed;		float animWeight;
+	int animStage;
+	float animSpeed;
+	float animWeight;
 	int result;
-	int ikparam;	float ikparam_valuef;	int ikparam_valuei;
+	int ikparam;
+	float ikparam_valuef;
+	int ikparam_valuei;
 };
 
 /**
@@ -1300,17 +1320,10 @@ public:
  * @date  March 2011
  *
  */
-class AgentMovementData : public GameEventData
-{
+class AgentMovementData: public GameEventData {
 public:
-	enum Type
-	{
-		GoTo_Location = 0,
-		GoTo_Entity,
-		GoTo_Formation,
-		Locomotion,
-		Orientation,
-		Rotation,
+	enum Type {
+		GoTo_Location = 0, GoTo_Entity, GoTo_Formation, Locomotion, Orientation, Rotation,
 	};
 
 	///Data container constructor for AG_MOVEMENT
@@ -1320,10 +1333,8 @@ public:
 	///@param putInQueue doesn't start the movement immediately but places it in a queue.
 	///@param orientAnimName the name, as defined in the animation lexicon, of the animation to be played during the orientation (use 0 for default agent walk animation)
 	///@param orientAnimName the name, as defined in the animation lexicon, of the animation to be played during the locomotion (use 0 for default agent walk animation)
-	AgentMovementData(Vec3f target, Type type, float speed, bool putInQueue, const char* walkAnimName, const char* orientAnimName )
-		: GameEventData(CUSTOM), m_targetV(target), m_type(type), m_walkAnimName(walkAnimName), m_orientAnimName(orientAnimName), m_speed(speed), m_putInQueue(putInQueue),
-		m_return(-1)
-	{
+	AgentMovementData(Vec3f target, Type type, float speed, bool putInQueue, const char* walkAnimName, const char* orientAnimName) :
+			GameEventData(CUSTOM), m_targetV(target), m_type(type), m_walkAnimName(walkAnimName), m_orientAnimName(orientAnimName), m_speed(speed), m_putInQueue(putInQueue), m_return(-1) {
 		m_data.ptr = this;
 	}
 
@@ -1334,77 +1345,66 @@ public:
 	///@param putInQueue doesn't start the movement immediately but places it in a queue.
 	///@param orientAnimName the name, as defined in the animation lexicon, of the animation to be played during the orientation (use 0 for default agent walk animation)
 	///@param orientAnimName the name, as defined in the animation lexicon, of the animation to be played during the locomotion (use 0 for default agent walk animation)
-	AgentMovementData(int target, Type type, const char* walkAnimName, const char* orientAnimName, float speed, bool putInQueue )
-		: GameEventData(CUSTOM), m_targetI(target), m_type(type), m_walkAnimName(walkAnimName), m_orientAnimName(orientAnimName), m_speed(speed), m_putInQueue(putInQueue),
-		m_return(-1)
-	{
+	AgentMovementData(int target, Type type, const char* walkAnimName, const char* orientAnimName, float speed, bool putInQueue) :
+			GameEventData(CUSTOM), m_targetI(target), m_type(type), m_walkAnimName(walkAnimName), m_orientAnimName(orientAnimName), m_speed(speed), m_putInQueue(putInQueue), m_return(-1) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_MOVEMENT_GET_STATUS
 	///@param movementID the id of the movement, as returned by a movement call-up
-	AgentMovementData(int movementID) : GameEventData(CUSTOM), m_movementID(movementID), m_return(-1), m_walkAnimName(0), m_orientAnimName(0)
-	{
+	AgentMovementData(int movementID) :
+			GameEventData(CUSTOM), m_movementID(movementID), m_return(-1), m_walkAnimName(0), m_orientAnimName(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_MOVEMENT_GET_SPEED
-	AgentMovementData() : GameEventData(CUSTOM), m_returnF(-1), m_walkAnimName(0), m_orientAnimName(0)
-	{
+	AgentMovementData() :
+			GameEventData(CUSTOM), m_returnF(-1), m_walkAnimName(0), m_orientAnimName(0) {
 		m_data.ptr = this;
 	}
 
-	AgentMovementData(const AgentMovementData& copy) : GameEventData(CUSTOM),
-		m_targetV(copy.m_targetV), m_targetI(copy.m_targetI), m_type(copy.m_type),
-		m_return(copy.m_return), m_movementID(copy.m_movementID), m_speed(copy.m_speed), m_putInQueue(copy.m_putInQueue)
-	{
+	AgentMovementData(const AgentMovementData& copy) :
+			GameEventData(CUSTOM), m_targetV(copy.m_targetV), m_targetI(copy.m_targetI), m_type(copy.m_type), m_return(copy.m_return), m_movementID(copy.m_movementID), m_speed(copy.m_speed), m_putInQueue(
+					copy.m_putInQueue) {
 		m_data.ptr = this;
 		m_owner = true;
 
-		if(copy.m_walkAnimName != 0)
-		{
+		if (copy.m_walkAnimName != 0) {
 			const size_t len = strlen(copy.m_walkAnimName);
 			m_walkAnimName = new char[len + 1];
-			memcpy( (char*) m_walkAnimName, copy.m_walkAnimName, len );
+			memcpy((char*) m_walkAnimName, copy.m_walkAnimName, len);
 			const_cast<char*>(m_walkAnimName)[len] = '\0';
-		}
-		else
+		} else
 			m_walkAnimName = 0;
 
-		if(copy.m_orientAnimName != 0)
-		{
+		if (copy.m_orientAnimName != 0) {
 			const size_t len = strlen(copy.m_orientAnimName);
 			m_orientAnimName = new char[len + 1];
-			memcpy( (char*) m_orientAnimName, copy.m_orientAnimName, len );
+			memcpy((char*) m_orientAnimName, copy.m_orientAnimName, len);
 			const_cast<char*>(m_orientAnimName)[len] = '\0';
-		}
-		else
+		} else
 			m_orientAnimName = 0;
 
 	}
 
-	~AgentMovementData()
-	{
-		if (m_owner)
-		{
-			if(m_walkAnimName != 0)	delete[] m_walkAnimName;
-			if(m_orientAnimName != 0) delete[] m_orientAnimName;
+	~AgentMovementData() {
+		if (m_owner) {
+			if (m_walkAnimName != 0)
+				delete[] m_walkAnimName;
+			if (m_orientAnimName != 0)
+				delete[] m_orientAnimName;
 		}
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AgentMovementData(*this);
 	}
 
-	int getReturnInt()
-	{
+	int getReturnInt() {
 		return m_return;
 	}
 
-	float getReturnFloat()
-	{
+	float getReturnFloat() {
 		return m_returnF;
 	}
 
@@ -1427,15 +1427,10 @@ public:
  * @date  March 2011
  *
  */
-class AgentAnimationData : public GameEventData
-{
+class AgentAnimationData: public GameEventData {
 public:
-	enum SourceType
-	{
-		AnimationName = 0,
-		AnimationResource,
-		AnimationFile,
-		AnimationID,
+	enum SourceType {
+		AnimationName = 0, AnimationResource, AnimationFile, AnimationID,
 	};
 
 	///Data container constructor for AG_ANIM_PLAY
@@ -1446,10 +1441,9 @@ public:
 	///@param strokeRepetitions number of stroke repetitions the animation should perform (0 = normal playback, 1 = one extra stroke is performed, ..), use -1 for agent default
 	///@param startNode the name of the node that represents the starting node of the chain to be animated (ex: startNode=Bip01_L_Clavicle willl result in animating only the left arm). Leave 0 for whole body.
 	///@param syncWord TTS word the animation start should be synchronized with
-	AgentAnimationData(const char* source, SourceType sourceType, int animType, float speed, float spatialExtent, int strokeRepetitions, char* startNode, char* syncWord)
-		: GameEventData(CUSTOM), m_sourceS(source), m_sourceType(sourceType), m_animType(animType), m_startNode(startNode), m_syncWord(syncWord), m_speed(speed), m_spatialExtent(spatialExtent),
-		m_strokeReps(strokeRepetitions), m_returnI(-1)
-	{
+	AgentAnimationData(const char* source, SourceType sourceType, int animType, float speed, float spatialExtent, int strokeRepetitions, char* startNode, char* syncWord) :
+			GameEventData(CUSTOM), m_sourceS(source), m_sourceType(sourceType), m_animType(animType), m_startNode(startNode), m_syncWord(syncWord), m_speed(speed), m_spatialExtent(spatialExtent), m_strokeReps(
+					strokeRepetitions), m_returnI(-1) {
 		m_data.ptr = this;
 	}
 
@@ -1461,99 +1455,87 @@ public:
 	///@param strokeRepetitions number of stroke repetitions the animation should perform (0 = normal playback, 1 = one extra stroke is performed, ..), use -1 for agent default
 	///@param startNode the name of the node that represents the starting node of the chain to be animated (ex: startNode=Bip01_L_Clavicle willl result in animating only the left arm). Leave 0 for whole body.
 	///@param syncWord TTS word the animation start should be synchronized with
-	AgentAnimationData(int source, SourceType sourceType, int animType, float speed, float spatialExtent, int strokeRepetitions, char* startNode, char* syncWord)
-		: GameEventData(CUSTOM), m_sourceI(source), m_sourceType(sourceType), m_animType(animType), m_startNode(startNode), m_syncWord(syncWord), m_speed(speed), m_spatialExtent(spatialExtent),
-		m_strokeReps(strokeRepetitions), m_returnI(-1), m_sourceS(0)
-	{
+	AgentAnimationData(int source, SourceType sourceType, int animType, float speed, float spatialExtent, int strokeRepetitions, char* startNode, char* syncWord) :
+			GameEventData(CUSTOM), m_sourceI(source), m_sourceType(sourceType), m_animType(animType), m_startNode(startNode), m_syncWord(syncWord), m_speed(speed), m_spatialExtent(spatialExtent), m_strokeReps(
+					strokeRepetitions), m_returnI(-1), m_sourceS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_ANIM_STOP, AG_ANIM_GET_STATUS, AG_ANIM_GET_SPEED, AG_ANIM_GET_EXTENT, AG_ANIM_GET_STROKES
 	///@param playbackID the playback id of the animation (use -1 to get agent default)
-	AgentAnimationData(int playbackID) : GameEventData(CUSTOM), m_playbackID(playbackID), m_returnI(-1), m_returnF(-1), m_sourceS(0), m_startNode(0), m_syncWord(0)
-	{
+	AgentAnimationData(int playbackID) :
+			GameEventData(CUSTOM), m_playbackID(playbackID), m_returnI(-1), m_returnF(-1), m_sourceS(0), m_startNode(0), m_syncWord(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_ANIM_SET_STROKES
 	///@param playbackID the playback id of the animation (use -1 to set agent default)
 	///@param value the the value we want to set
-	AgentAnimationData(int playbackID, int value) : GameEventData(CUSTOM), m_playbackID(playbackID), m_valueI(value), m_returnI(-1), m_sourceS(0), m_startNode(0), m_syncWord(0)
-	{
+	AgentAnimationData(int playbackID, int value) :
+			GameEventData(CUSTOM), m_playbackID(playbackID), m_valueI(value), m_returnI(-1), m_sourceS(0), m_startNode(0), m_syncWord(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_ANIM_SET_EXTENT, AG_ANIM_SET_SPEED
 	///@param playbackID the playback id of the animation (use -1 to set agent default)
 	///@param value the the value we want to set
-	AgentAnimationData(int playbackID, float value) : GameEventData(CUSTOM), m_playbackID(playbackID), m_valueF(value), m_returnI(-1), m_sourceS(0), m_startNode(0), m_syncWord(0)
-	{
+	AgentAnimationData(int playbackID, float value) :
+			GameEventData(CUSTOM), m_playbackID(playbackID), m_valueF(value), m_returnI(-1), m_sourceS(0), m_startNode(0), m_syncWord(0) {
 		m_data.ptr = this;
 	}
 
-	AgentAnimationData(const AgentAnimationData& copy) : GameEventData(CUSTOM), m_sourceI(copy.m_sourceI), m_sourceType(copy.m_sourceType),
-		m_animType(copy.m_animType), m_speed(copy.m_speed), m_spatialExtent(copy.m_spatialExtent),
-		m_strokeReps(copy.m_strokeReps), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF), m_valueF(copy.m_valueF), m_valueI(copy.m_valueI),
-		m_playbackID(copy.m_playbackID)
-	{
+	AgentAnimationData(const AgentAnimationData& copy) :
+			GameEventData(CUSTOM), m_sourceI(copy.m_sourceI), m_sourceType(copy.m_sourceType), m_animType(copy.m_animType), m_speed(copy.m_speed), m_spatialExtent(copy.m_spatialExtent), m_strokeReps(
+					copy.m_strokeReps), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF), m_valueF(copy.m_valueF), m_valueI(copy.m_valueI), m_playbackID(copy.m_playbackID) {
 		m_data.ptr = this;
 		m_owner = true;
 
-		if(copy.m_sourceS != 0)
-		{
+		if (copy.m_sourceS != 0) {
 			const size_t len = strlen(copy.m_sourceS);
 			m_sourceS = new char[len + 1];
-			memcpy( (char*) m_sourceS, copy.m_sourceS, len );
+			memcpy((char*) m_sourceS, copy.m_sourceS, len);
 			const_cast<char*>(m_sourceS)[len] = '\0';
-		}
-		else
+		} else
 			m_sourceS = 0;
 
-		if(copy.m_startNode != 0)
-		{
+		if (copy.m_startNode != 0) {
 			const size_t len = strlen(copy.m_startNode);
 			m_startNode = new char[len + 1];
-			memcpy( (char*) m_startNode, copy.m_startNode, len );
+			memcpy((char*) m_startNode, copy.m_startNode, len);
 			const_cast<char*>(m_startNode)[len] = '\0';
-		}
-		else
+		} else
 			m_startNode = 0;
 
-		if(copy.m_syncWord != 0)
-		{
+		if (copy.m_syncWord != 0) {
 			const size_t len = strlen(copy.m_syncWord);
 			m_syncWord = new char[len + 1];
-			memcpy( (char*) m_syncWord, copy.m_syncWord, len );
+			memcpy((char*) m_syncWord, copy.m_syncWord, len);
 			const_cast<char*>(m_syncWord)[len] = '\0';
-		}
-		else
+		} else
 			m_syncWord = 0;
 
 	}
 
-	~AgentAnimationData()
-	{
-		if (m_owner)
-		{
-			if(m_sourceS != 0) delete[] m_sourceS;
-			if(m_startNode != 0) delete[] m_startNode;
-			if(m_syncWord != 0) delete[] m_syncWord;
+	~AgentAnimationData() {
+		if (m_owner) {
+			if (m_sourceS != 0)
+				delete[] m_sourceS;
+			if (m_startNode != 0)
+				delete[] m_startNode;
+			if (m_syncWord != 0)
+				delete[] m_syncWord;
 		}
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AgentAnimationData(*this);
 	}
 
-	int getReturnInt()
-	{
+	int getReturnInt() {
 		return m_returnI;
 	}
 
-	float getReturnFloat()
-	{
+	float getReturnFloat() {
 		return m_returnF;
 	}
 
@@ -1580,13 +1562,10 @@ public:
  * @date  March 2011
  *
  */
-class AgentGazeData : public GameEventData
-{
+class AgentGazeData: public GameEventData {
 public:
-	enum Type
-	{
-		GazeToPoint = 0,
-		GazeToEntity
+	enum Type {
+		GazeToPoint = 0, GazeToEntity
 	};
 
 	///Data container constructor for AG_GAZE
@@ -1594,9 +1573,8 @@ public:
 	///@param target the coordinates of the target position
 	///@param speed the gazing speed (use -1 for agent default)
 	///@param duration the gazing duration in seconds, use -1 for constant gazing (default 10.0f)
-	AgentGazeData(Vec3f target, float speed, float duration )
-		: GameEventData(CUSTOM), m_targetV(target), m_speed(speed), m_duration(duration), m_returnI(-1), m_type(GazeToPoint)
-	{
+	AgentGazeData(Vec3f target, float speed, float duration) :
+			GameEventData(CUSTOM), m_targetV(target), m_speed(speed), m_duration(duration), m_returnI(-1), m_type(GazeToPoint) {
 		m_data.ptr = this;
 	}
 
@@ -1605,9 +1583,8 @@ public:
 	///@param targetEntityID the target entity
 	///@param speed the gazing speed (use -1 for agent default)
 	///@param duration the gazing duration in seconds, use -1 for constant gazing (default 10.0f)
-	AgentGazeData(int target, float speed, float duration )
-		: GameEventData(CUSTOM), m_targetI(target), m_speed(speed), m_duration(duration), m_returnI(-1), m_type(GazeToEntity)
-	{
+	AgentGazeData(int target, float speed, float duration) :
+			GameEventData(CUSTOM), m_targetI(target), m_speed(speed), m_duration(duration), m_returnI(-1), m_type(GazeToEntity) {
 		m_data.ptr = this;
 	}
 
@@ -1618,50 +1595,43 @@ public:
 	///@param count the number of motions  (use -1 for default)
 	///@param speed the motion speed (use -1 for agent default)
 	///@param duration the duration in seconds of a single motion (use -1 for default)
-	AgentGazeData(int axis, float extent, int count, float speed, float duration )
-		: GameEventData(CUSTOM), m_axis(axis), m_extent(extent), m_count(count), m_speed(speed), m_duration(duration)
-	{
+	AgentGazeData(int axis, float extent, int count, float speed, float duration) :
+			GameEventData(CUSTOM), m_axis(axis), m_extent(extent), m_count(count), m_speed(speed), m_duration(duration) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_GAZE_GET_STATUS
 	///@param gazeID the playback id of the gaze node
-	AgentGazeData(int gazeID) : GameEventData(CUSTOM), m_gazeID(gazeID), m_returnI(-1)
-	{
+	AgentGazeData(int gazeID) :
+			GameEventData(CUSTOM), m_gazeID(gazeID), m_returnI(-1) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_GAZE_GET_SPEED
-	AgentGazeData() : GameEventData(CUSTOM), m_returnF(-1)
-	{
+	AgentGazeData() :
+			GameEventData(CUSTOM), m_returnF(-1) {
 		m_data.ptr = this;
 	}
 
-	AgentGazeData(const AgentGazeData& copy) : GameEventData(CUSTOM),
-		m_targetV(copy.m_targetV), m_targetI(copy.m_targetI), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF),
-		m_speed(copy.m_speed), m_duration(copy.m_duration), m_gazeID(copy.m_gazeID), m_type(copy.m_type),
-		m_axis(copy.m_axis), m_extent(copy.m_extent), m_count(copy.m_count)
-	{
+	AgentGazeData(const AgentGazeData& copy) :
+			GameEventData(CUSTOM), m_targetV(copy.m_targetV), m_targetI(copy.m_targetI), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF), m_speed(copy.m_speed), m_duration(copy.m_duration), m_gazeID(
+					copy.m_gazeID), m_type(copy.m_type), m_axis(copy.m_axis), m_extent(copy.m_extent), m_count(copy.m_count) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
 
-	~AgentGazeData()
-	{}
+	~AgentGazeData() {
+	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AgentGazeData(*this);
 	}
 
-	int getReturnInt()
-	{
+	int getReturnInt() {
 		return m_returnI;
 	}
 
-	float getReturnFloat()
-	{
+	float getReturnFloat() {
 		return m_returnF;
 	}
 
@@ -1685,92 +1655,82 @@ public:
  * @date  March 2011
  *
  */
-class AgentFormationData : public GameEventData
-{
-public:;
+class AgentFormationData: public GameEventData {
+public:
+	;
 	///Data container constructor for AG_FORMATION_REACT
 	///@param entityID the entity id of the event sender
 	///@param _event the event to react to
-	AgentFormationData(int entityID, int _event) : GameEventData(CUSTOM), m_entityID(entityID), m_event(_event), m_returnS(0)
-	{
+	AgentFormationData(int entityID, int _event) :
+			GameEventData(CUSTOM), m_entityID(entityID), m_event(_event), m_returnS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_FORMATION_GET_AGENTS
 	///@param members a pointer to an integer array
-	AgentFormationData(int** members) : GameEventData(CUSTOM), m_members(members), m_returnI(-1), m_returnS(0)
-	{
+	AgentFormationData(int** members) :
+			GameEventData(CUSTOM), m_members(members), m_returnI(-1), m_returnS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_FORMATION_GET_TYPE, AG_FORMATION_GET_ENTRY, AG_GET_IPDIST, AG_GET_ORIENTCUST, AG_GET_REPOSANIM
-	AgentFormationData() : GameEventData(CUSTOM), m_returnI(-1), m_returnF1(-1), m_returnF2(-1), m_returnS(0)
-	{
+	AgentFormationData() :
+			GameEventData(CUSTOM), m_returnI(-1), m_returnF1(-1), m_returnF2(-1), m_returnS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_SET_IPDIST
 	///@param min the minimal ipdistance value
 	///@param max the maximal ipdistance value
-	AgentFormationData(float min, float max) : GameEventData(CUSTOM), m_min(min), m_max(max), m_returnS(0)
-	{
+	AgentFormationData(float min, float max) :
+			GameEventData(CUSTOM), m_min(min), m_max(max), m_returnS(0) {
 		m_data.ptr = this;
 	}
 
-	AgentFormationData(const AgentFormationData& copy) : GameEventData(CUSTOM),
-		m_returnV(copy.m_returnV), m_returnI(copy.m_returnI), m_returnF1(copy.m_returnF1), m_returnF2(copy.m_returnF2),
-		m_members(copy.m_members), m_event(copy.m_event), m_entityID(copy.m_entityID), m_min(copy.m_min), m_max(copy.m_max)
-	{
+	AgentFormationData(const AgentFormationData& copy) :
+			GameEventData(CUSTOM), m_returnV(copy.m_returnV), m_returnI(copy.m_returnI), m_returnF1(copy.m_returnF1), m_returnF2(copy.m_returnF2), m_members(copy.m_members), m_event(copy.m_event), m_entityID(
+					copy.m_entityID), m_min(copy.m_min), m_max(copy.m_max) {
 		m_data.ptr = this;
 		m_owner = true;
 
-		if(copy.m_returnS != 0)
-		{
+		if (copy.m_returnS != 0) {
 			const size_t len = strlen(copy.m_returnS);
 			m_returnS = new char[len + 1];
-			memcpy( (char*) m_returnS, copy.m_returnS, len );
+			memcpy((char*) m_returnS, copy.m_returnS, len);
 			const_cast<char*>(m_returnS)[len] = '\0';
-		}
-		else
+		} else
 			m_returnS = 0;
 
 	}
 
-	~AgentFormationData()
-	{
-		if (m_owner)
-		{
-			if(m_returnS != 0) delete[] m_returnS;
+	~AgentFormationData() {
+		if (m_owner) {
+			if (m_returnS != 0)
+				delete[] m_returnS;
 		}
 	}
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AgentFormationData(*this);
 	}
 
-	Vec3f getReturnVect()
-	{
+	Vec3f getReturnVect() {
 		return m_returnV;
 	}
 
-	int getReturnInt()
-	{
+	int getReturnInt() {
 		return m_returnI;
 	}
 
-	float getReturnFloat1()
-	{
+	float getReturnFloat1() {
 		return m_returnF1;
 	}
 
-	float getReturnFloat2()
-	{
+	float getReturnFloat2() {
 		return m_returnF2;
 	}
 
-	char* getReturnString()
-	{
+	char* getReturnString() {
 		return m_returnS;
 	}
 
@@ -1791,94 +1751,81 @@ public:;
  * @date  March 2011
  *
  */
-class AgentConfigData : public GameEventData
-{
+class AgentConfigData: public GameEventData {
 public:
-	enum Type
-	{
-		INT = 0,
-		FLOAT,
-		STRING
+	enum Type {
+		INT = 0, FLOAT, STRING
 	};
 
 	///Data container constructor for AG_GET_PARAM, AG_SET_PARAM
 	///@param param the parameter of type Agent_Param
 	///@param value the value to set
-	AgentConfigData(int param, int value) : GameEventData(CUSTOM), m_type(INT), m_param(param), m_valueI(value), m_returnI(-1), m_returnF(-1), m_returnS(0), m_valueS(0)
-	{
+	AgentConfigData(int param, int value) :
+			GameEventData(CUSTOM), m_type(INT), m_param(param), m_valueI(value), m_returnI(-1), m_returnF(-1), m_returnS(0), m_valueS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_GET_PARAM, AG_SET_PARAM
 	///@param param the parameter of type Agent_Param
 	///@param value the value to set
-	AgentConfigData(int param, float value) : GameEventData(CUSTOM), m_type(FLOAT), m_param(param), m_valueF(value), m_returnI(-1), m_returnF(-1), m_returnS(0), m_valueS(0)
-	{
+	AgentConfigData(int param, float value) :
+			GameEventData(CUSTOM), m_type(FLOAT), m_param(param), m_valueF(value), m_returnI(-1), m_returnF(-1), m_returnS(0), m_valueS(0) {
 		m_data.ptr = this;
 	}
 
 	///Data container constructor for AG_GET_PARAM, AG_SET_PARAM
 	///@param param the parameter of type Agent_Param
 	///@param value the value to set
-	AgentConfigData(int param, const char* value) : GameEventData(CUSTOM), m_type(STRING), m_param(param), m_valueS(value), m_returnI(-1), m_returnF(-1), m_returnS(0)
-	{
+	AgentConfigData(int param, const char* value) :
+			GameEventData(CUSTOM), m_type(STRING), m_param(param), m_valueS(value), m_returnI(-1), m_returnF(-1), m_returnS(0) {
 		m_data.ptr = this;
 	}
 
-	AgentConfigData(const AgentConfigData& copy) : GameEventData(CUSTOM),
-		m_valueI(copy.m_valueI), m_valueF(copy.m_valueF), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF), m_type(copy.m_type)
-	{
+	AgentConfigData(const AgentConfigData& copy) :
+			GameEventData(CUSTOM), m_valueI(copy.m_valueI), m_valueF(copy.m_valueF), m_returnI(copy.m_returnI), m_returnF(copy.m_returnF), m_type(copy.m_type) {
 		m_data.ptr = this;
 		m_owner = true;
 
-		if(copy.m_returnS != 0)
-		{
+		if (copy.m_returnS != 0) {
 			const size_t len = strlen(copy.m_returnS);
 			m_returnS = new char[len + 1];
-			memcpy( (char*) m_returnS, copy.m_returnS, len );
+			memcpy((char*) m_returnS, copy.m_returnS, len);
 			const_cast<char*>(m_returnS)[len] = '\0';
-		}
-		else
+		} else
 			m_returnS = 0;
 
-		if(copy.m_valueS != 0)
-		{
+		if (copy.m_valueS != 0) {
 			const size_t len = strlen(copy.m_valueS);
 			m_valueS = new char[len + 1];
-			memcpy( (char*) m_valueS, copy.m_valueS, len );
+			memcpy((char*) m_valueS, copy.m_valueS, len);
 			const_cast<char*>(m_valueS)[len] = '\0';
-		}
-		else
+		} else
 			m_valueS = 0;
 
 	}
 
-	~AgentConfigData()
-	{
-		if (m_owner)
-		{
-			if(m_returnS != 0) delete[] m_returnS;
-			if(m_valueS != 0) delete[] m_valueS;
+	~AgentConfigData() {
+		if (m_owner) {
+			if (m_returnS != 0)
+				delete[] m_returnS;
+			if (m_valueS != 0)
+				delete[] m_valueS;
 		}
 	}
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new AgentConfigData(*this);
 	}
 
-	int getReturnInt()
-	{
+	int getReturnInt() {
 		return m_returnI;
 	}
 
-	float getReturnFloat()
-	{
+	float getReturnFloat() {
 		return m_returnF;
 	}
 
-	const char* getReturnString()
-	{
+	const char* getReturnString() {
 		return m_returnS;
 	}
 
@@ -1889,60 +1836,52 @@ public:
 	Type m_type;
 };
 
-class Vec3fData : public GameEventData
-{
+class Vec3fData: public GameEventData {
 public:
-	Vec3fData(const float& x, const float& y, const float& z ) : GameEventData(CUSTOM), m_vector(Vec3f(x, y, z))
-	{
+	Vec3fData(const float& x, const float& y, const float& z) :
+			GameEventData(CUSTOM), m_vector(Vec3f(x, y, z)) {
 		m_data.ptr = &m_vector;
 	}
 
-	Vec3fData(const Vec3f& vec) : GameEventData(CUSTOM), m_vector(vec)
-	{
+	Vec3fData(const Vec3f& vec) :
+			GameEventData(CUSTOM), m_vector(vec) {
 		m_data.ptr = &m_vector;
 	}
 
-	Vec3fData(Vec3f* vec) : GameEventData(CUSTOM)
-	{
+	Vec3fData(Vec3f* vec) :
+			GameEventData(CUSTOM) {
 		m_data.ptr = vec;
 	}
 
-	virtual GameEventData* clone() const
-	{
-		return new Vec3fData( * ( (Vec3f*) m_data.ptr ) );
+	virtual GameEventData* clone() const {
+		return new Vec3fData(*((Vec3f*) m_data.ptr));
 	}
 
 private:
-	Vec3f	m_vector;
+	Vec3f m_vector;
 };
 
-class Interaction : public GameEventData
-{
+class Interaction: public GameEventData {
 
 public:
-	Interaction(unsigned int targetID, const std::string& interactionName, const std::string& satisfies, unsigned int interactionID, int slotID = -1) : GameEventData(CUSTOM),
-		TargetID(targetID), InteractionName(interactionName), SlotID(slotID),
-		InteractionID(interactionID), Satisfies(satisfies)
-	{
+	Interaction(unsigned int targetID, const std::string& interactionName, const std::string& satisfies, unsigned int interactionID, int slotID = -1) :
+			GameEventData(CUSTOM), TargetID(targetID), InteractionName(interactionName), SlotID(slotID), InteractionID(interactionID), Satisfies(satisfies) {
 		m_data.ptr = this;
 	}
 
-	Interaction(const std::string& target, const std::string& interactionName, const std::string& satisfies, unsigned int interactionID, int slotID = -1) : GameEventData(CUSTOM),
-		Target(target), TargetID(0), InteractionName(interactionName), SlotID(slotID),
-		InteractionID(interactionID), Satisfies(satisfies)
-	{
+	Interaction(const std::string& target, const std::string& interactionName, const std::string& satisfies, unsigned int interactionID, int slotID = -1) :
+			GameEventData(CUSTOM), Target(target), TargetID(0), InteractionName(interactionName), SlotID(slotID), InteractionID(interactionID), Satisfies(satisfies) {
 		m_data.ptr = this;
 	}
 
-	Interaction(const Interaction& copy) : GameEventData(CUSTOM),
-		TargetID(copy.TargetID), Target(copy.Target), InteractionName(copy.InteractionName), SlotID(copy.SlotID),
-		InteractionID(copy.InteractionID), Satisfies(copy.Satisfies)
-	{
+	Interaction(const Interaction& copy) :
+			GameEventData(CUSTOM), TargetID(copy.TargetID), Target(copy.Target), InteractionName(copy.InteractionName), SlotID(copy.SlotID), InteractionID(copy.InteractionID), Satisfies(
+					copy.Satisfies) {
 		m_data.ptr = this;
 	}
 
-	~Interaction()
-	{}
+	~Interaction() {
+	}
 
 	unsigned int TargetID;
 	std::string Target;
@@ -1951,62 +1890,48 @@ public:
 	int SlotID;
 	unsigned int InteractionID;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new Interaction(*this);
 	}
 };
 
-class GLFunction : public GameEventData
-{
+class GLFunction: public GameEventData {
 
 public:
 	enum functions {
-		drawCross = 0,
-		drawCircle,
-		drawLine,
-		drawNumber,
-		setColor,
-		drawCircleFilled
+		drawCross = 0, drawCircle, drawLine, drawNumber, setColor, drawCircleFilled
 	};
 
 	/* function drawCross uses param0 as x, param1 as y and param2 as z
-	function setColor uses param0 as r, param2 as g and param3 as b */
-	GLFunction( unsigned int functionID, float param0, float param1, float param2 )
-		: GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(0), Param4(0),
-		Param5(0), Param6(0), Param7(0), Param8(0), Param9(0)
-	{
+	 function setColor uses param0 as r, param2 as g and param3 as b */
+	GLFunction(unsigned int functionID, float param0, float param1, float param2) :
+			GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(0), Param4(0), Param5(0), Param6(0), Param7(0), Param8(0), Param9(0) {
 		m_data.ptr = this;
 	}
 
 	/* function drawCircle uses param0 as x, param1 as y, param2 as z and param3 as radius
-	function drawNumber uses param0 as number, param1 as x, param2 as y, param3 as z*/
-	GLFunction( unsigned int functionID, float param0, float param1, float param2, float param3 )
-		: GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(param3), Param4(0),
-		Param5(0), Param6(0), Param7(0), Param8(0), Param9(0)
-	{
+	 function drawNumber uses param0 as number, param1 as x, param2 as y, param3 as z*/
+	GLFunction(unsigned int functionID, float param0, float param1, float param2, float param3) :
+			GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(param3), Param4(0), Param5(0), Param6(0), Param7(0), Param8(0), Param9(0) {
 		m_data.ptr = this;
 	}
 
 	/* function drawLine uses param0 as x0, param1 as y0, param2 as z0, param3 as x1, param4 as y1, param5 as z1*/
-	GLFunction( unsigned int functionID, float param0, float param1, float param2, float param3, float param4, float param5 )
-		: GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(param3), Param4(param4),
-		Param5(param5), Param6(0), Param7(0), Param8(0), Param9(0)
-	{
+	GLFunction(unsigned int functionID, float param0, float param1, float param2, float param3, float param4, float param5) :
+			GameEventData(CUSTOM), FunctionID(functionID), Param0(param0), Param1(param1), Param2(param2), Param3(param3), Param4(param4), Param5(param5), Param6(0), Param7(0), Param8(0), Param9(0) {
 		m_data.ptr = this;
 	}
 
-	GLFunction(const GLFunction& copy) : GameEventData(CUSTOM), FunctionID(copy.FunctionID), Param0(copy.Param0), Param1(copy.Param1),
-		Param2(copy.Param2), Param3(copy.Param3), Param4(copy.Param4), Param5(copy.Param5), Param6(copy.Param6), Param7(copy.Param7),
-		Param8(copy.Param8), Param9(copy.Param9)
-	{
+	GLFunction(const GLFunction& copy) :
+			GameEventData(CUSTOM), FunctionID(copy.FunctionID), Param0(copy.Param0), Param1(copy.Param1), Param2(copy.Param2), Param3(copy.Param3), Param4(copy.Param4), Param5(copy.Param5), Param6(
+					copy.Param6), Param7(copy.Param7), Param8(copy.Param8), Param9(copy.Param9) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
 
-	~GLFunction()
-	{
-		if( m_owner ) { }
+	~GLFunction() {
+		if (m_owner) {
+		}
 	}
 
 	unsigned int FunctionID;
@@ -2021,45 +1946,38 @@ public:
 	const float Param8;
 	const float Param9;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new GLFunction(*this);
 
 	}
 };
 
-class GamepadData : public GameEventData
-{
+class GamepadData: public GameEventData {
 	//the values for Sticks and Triggers is in a range between 0 and 1
 	//the values for buttons may be 0 for not pressed, 1 for newly pressed
 	//index is used as indicator, if controller is connected. if index is -1, then its not. Else index is the index of the controller (0-3)
 
 public:
-	GamepadData()
-		: GameEventData(CUSTOM), Index(-1), Connected(0), StickLeftX(0), StickLeftY(0), StickRightX(0), StickRightY(0),
-		DigitalPadX(0), DigitalPadY(0), ButtonA(0), ButtonB(0), ButtonX(0), ButtonY(0), ButtonStart(0), ButtonBack(0),
-		TriggerLeft(0), TriggerRight(0), ShoulderRight(0), ShoulderLeft(0), StickLeftClick(0), StickRightClick(0),
-		VibratorLeft(0), VibratorRight(0)
-	{
+	GamepadData() :
+			GameEventData(CUSTOM), Index(-1), Connected(0), StickLeftX(0), StickLeftY(0), StickRightX(0), StickRightY(0), DigitalPadX(0), DigitalPadY(0), ButtonA(0), ButtonB(0), ButtonX(0), ButtonY(
+					0), ButtonStart(0), ButtonBack(0), TriggerLeft(0), TriggerRight(0), ShoulderRight(0), ShoulderLeft(0), StickLeftClick(0), StickRightClick(0), VibratorLeft(0), VibratorRight(0) {
 		m_data.ptr = this;
 	}
 
-	GamepadData( unsigned int gamepadIndex, bool connected, float thumbStickLX, float thumbStickLY, float thumbStickRX, float thumbStickRY, float dPadX, float dPadY,
-		unsigned int butA, unsigned int butB, unsigned int butX, unsigned int butY, unsigned int butStart, unsigned int butBack,
-		float triggerL, float triggerR, unsigned int shoulderR, unsigned int shoulderL, unsigned int thumbStickLClick, unsigned int thumbStickRClick )
-		: GameEventData(CUSTOM), Index(gamepadIndex), StickLeftX(thumbStickLX), StickLeftY(thumbStickLY), StickRightX(thumbStickRX), StickRightY(thumbStickRY),
-		DigitalPadX(dPadX), DigitalPadY(dPadY), ButtonA(butA), ButtonB(butB), ButtonX(butX), ButtonY(butY), ButtonStart(butStart), ButtonBack(butBack),
-		TriggerLeft(triggerL), TriggerRight(triggerR), ShoulderRight(shoulderL), ShoulderLeft(shoulderR), StickLeftClick( thumbStickLClick ), StickRightClick( thumbStickRClick),
-		VibratorLeft(0), VibratorRight(0)
-	{
+	GamepadData(unsigned int gamepadIndex, bool connected, float thumbStickLX, float thumbStickLY, float thumbStickRX, float thumbStickRY, float dPadX, float dPadY, unsigned int butA,
+			unsigned int butB, unsigned int butX, unsigned int butY, unsigned int butStart, unsigned int butBack, float triggerL, float triggerR, unsigned int shoulderR, unsigned int shoulderL,
+			unsigned int thumbStickLClick, unsigned int thumbStickRClick) :
+			GameEventData(CUSTOM), Index(gamepadIndex), StickLeftX(thumbStickLX), StickLeftY(thumbStickLY), StickRightX(thumbStickRX), StickRightY(thumbStickRY), DigitalPadX(dPadX), DigitalPadY(
+					dPadY), ButtonA(butA), ButtonB(butB), ButtonX(butX), ButtonY(butY), ButtonStart(butStart), ButtonBack(butBack), TriggerLeft(triggerL), TriggerRight(triggerR), ShoulderRight(
+					shoulderL), ShoulderLeft(shoulderR), StickLeftClick(thumbStickLClick), StickRightClick(thumbStickRClick), VibratorLeft(0), VibratorRight(0) {
 		m_data.ptr = this;
 	}
 
-	GamepadData(const GamepadData& copy) : GameEventData(CUSTOM), Index(copy.Index), Connected(0), StickLeftX(copy.StickLeftX), StickLeftY(copy.StickLeftY), StickRightX(copy.StickRightX), StickRightY(copy.StickRightY),
-		DigitalPadX(copy.DigitalPadX), DigitalPadY(copy.DigitalPadY), ButtonA(copy.ButtonA), ButtonB(copy.ButtonB), ButtonX(copy.ButtonX), ButtonY(copy.ButtonY), ButtonStart(copy.ButtonStart), ButtonBack(copy.ButtonBack),
-		TriggerLeft(copy.TriggerLeft), TriggerRight(copy.TriggerRight), ShoulderRight(copy.ShoulderRight), ShoulderLeft(copy.ShoulderLeft), StickLeftClick( copy.StickLeftClick ), StickRightClick( copy.StickRightClick ),
-		VibratorLeft(copy.VibratorLeft), VibratorRight(copy.VibratorRight)
-	{
+	GamepadData(const GamepadData& copy) :
+			GameEventData(CUSTOM), Index(copy.Index), Connected(0), StickLeftX(copy.StickLeftX), StickLeftY(copy.StickLeftY), StickRightX(copy.StickRightX), StickRightY(copy.StickRightY), DigitalPadX(
+					copy.DigitalPadX), DigitalPadY(copy.DigitalPadY), ButtonA(copy.ButtonA), ButtonB(copy.ButtonB), ButtonX(copy.ButtonX), ButtonY(copy.ButtonY), ButtonStart(copy.ButtonStart), ButtonBack(
+					copy.ButtonBack), TriggerLeft(copy.TriggerLeft), TriggerRight(copy.TriggerRight), ShoulderRight(copy.ShoulderRight), ShoulderLeft(copy.ShoulderLeft), StickLeftClick(
+					copy.StickLeftClick), StickRightClick(copy.StickRightClick), VibratorLeft(copy.VibratorLeft), VibratorRight(copy.VibratorRight) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
@@ -2087,39 +2005,34 @@ public:
 	unsigned int StickLeftClick;
 	unsigned int StickRightClick;
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new GamepadData(*this);
 	}
 };
 
-
 /**
  * \brief Data container for the E_GET_ANIM_LENGTH event
  */
-class AnimLengthData : public GameEventData
-{
+class AnimLengthData: public GameEventData {
 
 public:
-	AnimLengthData(const char* name, float* length, float speed = 0 ) : GameEventData(CUSTOM), Name(name), Length(length), Speed(speed)
-	{
+	AnimLengthData(const char* name, float* length, float speed = 0) :
+			GameEventData(CUSTOM), Name(name), Length(length), Speed(speed) {
 		m_data.ptr = this;
 	}
 
-	AnimLengthData(const AnimLengthData& copy) : GameEventData(CUSTOM), Length(copy.Length), Speed(copy.Speed)
-	{
+	AnimLengthData(const AnimLengthData& copy) :
+			GameEventData(CUSTOM), Length(copy.Length), Speed(copy.Speed) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t lenName = copy.Name ? strlen(copy.Name) : 0;
 		Name = new char[lenName + 1];
-		memcpy( (char*) Name, copy.Name, lenName );
+		memcpy((char*) Name, copy.Name, lenName);
 		const_cast<char*>(Name)[lenName] = '\0';
 	}
 
-	~AnimLengthData()
-	{
-		if( m_owner )
-		{
+	~AnimLengthData() {
+		if (m_owner) {
 			delete[] Name;
 		}
 	}
@@ -2128,8 +2041,7 @@ public:
 	float Speed;
 	float* Length;
 
-	AnimLengthData* clone() const
-	{
+	AnimLengthData* clone() const {
 		return new AnimLengthData(*this);
 
 	}
@@ -2138,34 +2050,29 @@ public:
 /**
  * Container for Emotion Data used by a GameEvent
  */
-class EmotionData : public GameEventData
-{
+class EmotionData: public GameEventData {
 public:
-	EmotionData(const char* emotionName, bool checkIntensifier) : GameEventData(CUSTOM),
-		emotion(emotionName), intensifier(checkIntensifier)
-	{
+	EmotionData(const char* emotionName, bool checkIntensifier) :
+			GameEventData(CUSTOM), emotion(emotionName), intensifier(checkIntensifier) {
 		m_data.ptr = this;
 	}
 
-	EmotionData(const EmotionData& copy) : GameEventData(CUSTOM), emotion(copy.emotion), intensifier(copy.intensifier)
-	{
+	EmotionData(const EmotionData& copy) :
+			GameEventData(CUSTOM), emotion(copy.emotion), intensifier(copy.intensifier) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t len = copy.emotion ? strlen(copy.emotion) : 0;
 		emotion = new char[len + 1];
-		memcpy( (char*) emotion, copy.emotion, len );
+		memcpy((char*) emotion, copy.emotion, len);
 		const_cast<char*>(emotion)[len] = '\0';
 	}
 
-	~EmotionData()
-	{
+	~EmotionData() {
 		if (m_owner)
 			delete[] emotion;
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new EmotionData(*this);
 	}
 
@@ -2173,35 +2080,29 @@ public:
 	bool intensifier;
 };
 
-
-class SentenceData : public GameEventData
-{
+class SentenceData: public GameEventData {
 public:
-	SentenceData(const char* sentence, unsigned int partnerId) : GameEventData(CUSTOM),
-		text(sentence), partnerID(partnerId)
-	{
+	SentenceData(const char* sentence, unsigned int partnerId) :
+			GameEventData(CUSTOM), text(sentence), partnerID(partnerId) {
 		m_data.ptr = this;
 	}
 
-	SentenceData(const SentenceData& copy) : GameEventData(CUSTOM), text(copy.text), partnerID(copy.partnerID)
-	{
+	SentenceData(const SentenceData& copy) :
+			GameEventData(CUSTOM), text(copy.text), partnerID(copy.partnerID) {
 		m_data.ptr = this;
 		m_owner = true;
 		const size_t len = copy.text ? strlen(copy.text) : 0;
 		text = new char[len + 1];
-		memcpy( (char*) text, copy.text, len );
+		memcpy((char*) text, copy.text, len);
 		const_cast<char*>(text)[len] = '\0';
 	}
 
-	~SentenceData()
-	{
+	~SentenceData() {
 		if (m_owner)
 			delete[] text;
 	}
 
-
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new SentenceData(*this);
 	}
 
@@ -2209,28 +2110,24 @@ public:
 	unsigned int partnerID;
 };
 
-class SoundResourceData : public GameEventData
-{
+class SoundResourceData: public GameEventData {
 public:
-	SoundResourceData(const char* userData,	int dataSize, int samplesPerSec, int bitsPerSample,	int numChannels) : GameEventData(CUSTOM),
-		m_userData(userData), m_dataSize(dataSize), m_samplesPerSec(samplesPerSec), m_bitsPerSample(bitsPerSample), m_numChannels(numChannels)
-	{
+	SoundResourceData(const char* userData, int dataSize, int samplesPerSec, int bitsPerSample, int numChannels) :
+			GameEventData(CUSTOM), m_userData(userData), m_dataSize(dataSize), m_samplesPerSec(samplesPerSec), m_bitsPerSample(bitsPerSample), m_numChannels(numChannels) {
 		m_data.ptr = this;
 	}
 
-	SoundResourceData(const SoundResourceData& copy) : GameEventData(CUSTOM), m_userData(copy.m_userData), m_dataSize(copy.m_dataSize),
-		m_samplesPerSec(copy.m_samplesPerSec), m_bitsPerSample(copy.m_bitsPerSample), m_numChannels(copy.m_numChannels)
-	{
+	SoundResourceData(const SoundResourceData& copy) :
+			GameEventData(CUSTOM), m_userData(copy.m_userData), m_dataSize(copy.m_dataSize), m_samplesPerSec(copy.m_samplesPerSec), m_bitsPerSample(copy.m_bitsPerSample), m_numChannels(
+					copy.m_numChannels) {
 		m_data.ptr = this;
 		m_owner = true;
 	}
 
-	~SoundResourceData()
-	{
+	~SoundResourceData() {
 	}
 
-	GameEventData* clone() const
-	{
+	GameEventData* clone() const {
 		return new SoundResourceData(*this);
 	}
 
@@ -2244,19 +2141,15 @@ public:
 	int m_numChannels;
 };
 
-
-
 /**
  * Exchange container for KinectWorld smart object actions, used in a KW_GET_ACTIONS event.
  * Contains the action name, its availability and the inputs necessary to trigger it.
  */
-class KWActionData: public GameEventData
-{
+class KWActionData: public GameEventData {
 
 public:
-	KWActionData(std::string actionName, std::string keyword, std::string gestureName, bool enabled):
-	  GameEventData(CUSTOM)
-	{
+	KWActionData(std::string actionName, std::string keyword, std::string gestureName, bool enabled) :
+			GameEventData(CUSTOM) {
 		m_data.ptr = this;
 		_actionName = actionName;
 		_keyword = keyword;
@@ -2264,32 +2157,36 @@ public:
 		_enabled = enabled;
 	}
 
-	~KWActionData()
-	{ }
+	~KWActionData() {
+	}
 
-	KWActionData(KWActionData const& kwa): GameEventData(CUSTOM)
-	{
+	KWActionData(KWActionData const& kwa) :
+			GameEventData(CUSTOM) {
 		_actionName.assign(kwa.getActionName());
 		_keyword.assign(kwa.getKeyword());
 		_gestureName.assign(kwa.getGestureName());
 		_enabled = kwa.isEnabled();
 	}
 
-	const std::string& getActionName() const
-	{	return _actionName;	}
+	const std::string& getActionName() const {
+		return _actionName;
+	}
 
-	const std::string& getKeyword() const
-	{	return _keyword;	}
+	const std::string& getKeyword() const {
+		return _keyword;
+	}
 
-	const std::string& getGestureName() const
-	{	return _gestureName;	}
+	const std::string& getGestureName() const {
+		return _gestureName;
+	}
 
+	void setEnabled(bool enabled) {
+		_enabled = enabled;
+	}
 
-	void setEnabled(bool enabled)
-	{	_enabled = enabled;	}
-
-	bool isEnabled() const
-	{	return _enabled;	}
+	bool isEnabled() const {
+		return _enabled;
+	}
 
 private:
 	KWActionData();
@@ -2301,40 +2198,38 @@ private:
 	bool _enabled;
 };
 
-
 /**
  * Exchange container for KinectWorld smart object dialogue actions, used in a KW_GET_ACTIONS event.
  * In addition to the information of KWActionData it contains the full sentence used for input.
  */
-class KWDialogueActionData: public KWActionData
-{
+class KWDialogueActionData: public KWActionData {
 
 public:
-	KWDialogueActionData(std::string actionName, std::string sentence, std::vector<std::string> keywords, std::string gestureName, bool enabled):
-	  KWActionData(actionName, "", gestureName, enabled)
-	{
+	KWDialogueActionData(std::string actionName, std::string sentence, std::vector<std::string> keywords, std::string gestureName, bool enabled) :
+			KWActionData(actionName, "", gestureName, enabled) {
 		_fullSentence = sentence;
-		for(size_t i=0; i<keywords.size(); i++)
+		for (size_t i = 0; i < keywords.size(); i++)
 			_sentenceKeywords.push_back(keywords.at(i));
 	}
 
-	~KWDialogueActionData()
-	{ }
+	~KWDialogueActionData() {
+	}
 
-	KWDialogueActionData(KWDialogueActionData const& kwa):
-		KWActionData(kwa.getActionName(), kwa.getKeyword(), kwa.getGestureName(), kwa.isEnabled())
-	{
+	KWDialogueActionData(KWDialogueActionData const& kwa) :
+			KWActionData(kwa.getActionName(), kwa.getKeyword(), kwa.getGestureName(), kwa.isEnabled()) {
 		_fullSentence.assign(kwa.getFullSentence());
-		for(size_t i=0; i<kwa.getSentenceKeywords().size(); i++)
+		for (size_t i = 0; i < kwa.getSentenceKeywords().size(); i++)
 			_sentenceKeywords.push_back(kwa.getSentenceKeywords().at(i));
 
 	}
 
-	const std::string& getFullSentence() const
-	{	return _fullSentence;	}
+	const std::string& getFullSentence() const {
+		return _fullSentence;
+	}
 
-	const std::vector<std::string>& getSentenceKeywords() const
-	{	return _sentenceKeywords;	}
+	const std::vector<std::string>& getSentenceKeywords() const {
+		return _sentenceKeywords;
+	}
 
 private:
 	KWDialogueActionData();
@@ -2344,41 +2239,44 @@ private:
 	std::vector<std::string> _sentenceKeywords;
 };
 
-
 /**
  * Exchange container for the KW_IS_VISIBLE event.
  */
-class KWVisibleData: public GameEventData
-{
+class KWVisibleData: public GameEventData {
 
 public:
-	KWVisibleData(unsigned int cameraNode): GameEventData(CUSTOM)
-	{
+	KWVisibleData(unsigned int cameraNode) :
+			GameEventData(CUSTOM) {
 		m_data.ptr = this;
 		_cameraNode = cameraNode;
 		_visible = false;
 	}
 
-	~KWVisibleData()	{ }
+	~KWVisibleData() {
+	}
 
-	KWVisibleData(KWVisibleData const& kv): GameEventData(CUSTOM)
-	{
+	KWVisibleData(KWVisibleData const& kv) :
+			GameEventData(CUSTOM) {
 		m_data.ptr = this;
 		_cameraNode = kv.getCameraNode();
 		_visible = kv.getVisible();
 	}
 
-	const unsigned int getCameraNode() const
-	{	return _cameraNode;	}
+	const unsigned int getCameraNode() const {
+		return _cameraNode;
+	}
 
-	void setCameraNode(unsigned int cameraNode)
-	{ _cameraNode = cameraNode; }
+	void setCameraNode(unsigned int cameraNode) {
+		_cameraNode = cameraNode;
+	}
 
-	const bool getVisible() const
-	{	return _visible;	}
+	const bool getVisible() const {
+		return _visible;
+	}
 
-	void setVisible(bool visible)
-	{ _visible = visible; }
+	void setVisible(bool visible) {
+		_visible = visible;
+	}
 
 private:
 	KWVisibleData();
@@ -2388,26 +2286,35 @@ private:
 	bool _visible;
 };
 
-
 /**
  * Base container for querying (KW_GET_PROPERTY) or setting (KW_SET_PROPERTY)
  * a property of a KinectWorld smart object.
  * For such an event the subclasses have to be used.
  */
-class KWPropertyData: public GameEventData
-{
+class KWPropertyData: public GameEventData {
 public:
-	enum PropertyType {NUMBER, BOOL, STRING};
-	virtual ~KWPropertyData() {}
+	enum PropertyType {
+		NUMBER, BOOL, STRING
+	};
+	virtual ~KWPropertyData() {
+	}
 
-	const std::string& getName() {return _name;}
-	PropertyType getType() {return _type;}
-	void setFound(bool found) {_found = found;}
-	bool getFound() {return _found;}
+	const std::string& getName() {
+		return _name;
+	}
+	PropertyType getType() {
+		return _type;
+	}
+	void setFound(bool found) {
+		_found = found;
+	}
+	bool getFound() {
+		return _found;
+	}
 
 protected:
-	KWPropertyData(std::string name, PropertyType type): GameEventData(CUSTOM)
-	{
+	KWPropertyData(std::string name, PropertyType type) :
+			GameEventData(CUSTOM) {
 		m_data.ptr = this;
 		_name.assign(name);
 		_type = type;
@@ -2420,64 +2327,81 @@ protected:
 	bool _found;
 };
 
-
 /**
  * Container for a numerical property of a KinectWorld smart object.
  */
-class KWNumPropertyData: public KWPropertyData
-{
+class KWNumPropertyData: public KWPropertyData {
 public:
-	KWNumPropertyData(std::string name, float value):
-	  KWPropertyData(name, KWPropertyData::NUMBER)
-	{	_value = value;	}
+	KWNumPropertyData(std::string name, float value) :
+			KWPropertyData(name, KWPropertyData::NUMBER) {
+		_value = value;
+	}
 
-	~KWNumPropertyData() {}
+	~KWNumPropertyData() {
+	}
 
-	float getValue(){return _value;}
-	void setValue(float value) {_value=value;}
+	float getValue() {
+		return _value;
+	}
+	void setValue(float value) {
+		_value = value;
+	}
 
 private:
-	KWNumPropertyData(){}
+	KWNumPropertyData() {
+	}
 	float _value;
 };
 
 /**
  * Container for a boolean property of a KinectWorld smart object.
  */
-class KWBoolPropertyData: public KWPropertyData
-{
+class KWBoolPropertyData: public KWPropertyData {
 public:
-	KWBoolPropertyData(std::string name, bool value):
-	  KWPropertyData(name, KWPropertyData::BOOL)
-	{	_value = value;	}
+	KWBoolPropertyData(std::string name, bool value) :
+			KWPropertyData(name, KWPropertyData::BOOL) {
+		_value = value;
+	}
 
-	~KWBoolPropertyData() {}
+	~KWBoolPropertyData() {
+	}
 
-	bool getValue() {return _value;}
-	void setValue(bool value) {_value=value;}
+	bool getValue() {
+		return _value;
+	}
+	void setValue(bool value) {
+		_value = value;
+	}
 
 private:
-	KWBoolPropertyData(){}
+	KWBoolPropertyData() {
+	}
 	bool _value;
 };
 
 /**
  * Container for a string property of a KinectWorld smart object.
  */
-class KWStrPropertyData: public KWPropertyData
-{
+class KWStrPropertyData: public KWPropertyData {
 public:
-	KWStrPropertyData(std::string name, std::string value):
-	  KWPropertyData(name, KWPropertyData::STRING)
-	{	_value.assign(value);	}
+	KWStrPropertyData(std::string name, std::string value) :
+			KWPropertyData(name, KWPropertyData::STRING) {
+		_value.assign(value);
+	}
 
-	~KWStrPropertyData() {}
+	~KWStrPropertyData() {
+	}
 
-	const std::string& getValue() {return _value;}
-	void setValue(std::string value) {_value.assign(value);}
+	const std::string& getValue() {
+		return _value;
+	}
+	void setValue(std::string value) {
+		_value.assign(value);
+	}
 
 private:
-	KWStrPropertyData(){}
+	KWStrPropertyData() {
+	}
 	std::string _value;
 };
 

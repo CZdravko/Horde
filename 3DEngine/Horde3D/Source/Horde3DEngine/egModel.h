@@ -91,7 +91,8 @@ public:
 	void recreateNodeList();
 	void setupAnimStage( int stage, AnimationResource *anim, int layer,
 	                     const std::string &startNode, bool additive );
-	void setAnimParams( int stage, float time, float weight );
+	void setAnimParams( int stage, float time, float weight);
+	void setAnimBias(int stage, float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW);
 	bool setMorphParam( const std::string &targetName, float weight );
 
 	int getParamI( int param );

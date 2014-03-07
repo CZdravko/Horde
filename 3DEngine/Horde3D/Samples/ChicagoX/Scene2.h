@@ -24,6 +24,8 @@
 #include <GameEngine/AnimationPlugin.h>
 #include <GameEngine/IKPlugin.h>
 
+#include "CController.h"
+
 
 using namespace Horde3D;
 
@@ -52,6 +54,7 @@ public:
 
 private:
 	void keyHandler();
+	void startAnimation();
 
 private:
 	bool _keys[cocos2d::Key::Count], _prevKeys[cocos2d::Key::Count];
@@ -89,6 +92,20 @@ private:
 	GameEngine::IKPlugin* ikPlugin;
 
 	int i;
+
+
+
+	//////Animation controller/////////////
+	Vec3f wL2R_root_start, wL2R_root_left, wL2R_root_right, wL2R_left_foot_rel, wL2R_right_foot_rel;
+	Vec3f wR2L_root_start, wR2L_root_left, wR2L_root_right, wR2L_left_foot_rel, wR2L_right_foot_rel;
+	Vec3f startPoint;
+
+	bool done;
+
+	int l2r_cfl, l2r_cfr, r2l_cfr, r2l_cfl;
+	int num_frames_l2r, num_frames_r2l;
+
+	CController* cc;
 };
 
 #endif /* SCENE2_H_ */

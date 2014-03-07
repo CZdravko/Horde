@@ -13,7 +13,6 @@
 // *************************************************************************************************
 //
 
-
 // ****************************************************************************************
 //
 // GameEngine Animation Component of the University of Augsburg
@@ -29,104 +28,116 @@
 
 #include "KeyframeAnimComponent.h"
 
-namespace GameEngine
-{
-	ANIMATIONSAPI int playAnim(unsigned int entityWorldID, const char* animation, const int stage /*= 0*/, const float weight /*= 1.0f*/, 
-		const float duration /*= -1.0f*/, const float speed /*= 30.0f*/, const float timeoffset /*= 0.0f*/)
-	{		
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			AnimationSetup anim( animation, stage, speed, duration, weight, timeoffset );
-			GameEvent event(GameEvent::E_PLAY_ANIM, &anim, 0);
-			if( entity->checkEvent( &event ) )
-				entity->executeEvent( &event );
-			return anim.JobID;
-		}		
-		return -1;
+namespace GameEngine {
+ANIMATIONSAPI int playAnim(unsigned int entityWorldID, const char* animation, const int stage /*= 0*/, const float weight /*= 1.0f*/, const float duration /*= -1.0f*/, const float speed /*= 30.0f*/,
+		const float timeoffset /*= 0.0f*/, const float startFrame /*= 0.0f*/) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		AnimationSetup anim(animation, stage, speed, duration, weight, timeoffset, 0, startFrame);
+		GameEvent event(GameEvent::E_PLAY_ANIM, &anim, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
+		return anim.JobID;
 	}
+	return -1;
+}
 
-	ANIMATIONSAPI void stopAnim(unsigned int entityWorldID, const int stage /*= 0*/)
-	{		
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			GameEvent event(GameEvent::E_STOP_ANIM, (GameEventData)stage, 0);
-			if( entity->checkEvent( &event ) )
-				entity->executeEvent( &event );
-		}
+ANIMATIONSAPI void stopAnim(unsigned int entityWorldID, const int stage /*= 0*/) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		GameEvent event(GameEvent::E_STOP_ANIM, (GameEventData) stage, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
 	}
+}
 
-	ANIMATIONSAPI void pauseAnim(unsigned int entityWorldID, const int stage /*= 0*/)
-	{
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			GameEvent event(GameEvent::E_PAUSE_ANIM, (GameEventData)stage, 0);
-			if( entity->checkEvent( &event ) )
-				entity->executeEvent( &event );
-		}
+ANIMATIONSAPI void pauseAnim(unsigned int entityWorldID, const int stage /*= 0*/) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		GameEvent event(GameEvent::E_PAUSE_ANIM, (GameEventData) stage, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
 	}
+}
 
-	ANIMATIONSAPI void resumeAnim(unsigned int entityWorldID, const int stage /*= 0*/)
-	{
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			GameEvent event(GameEvent::E_RESUME_ANIM, (GameEventData)stage, 0);
-			if( entity->checkEvent( &event ) )
-				entity->executeEvent( &event );
-		}
+ANIMATIONSAPI void resumeAnim(unsigned int entityWorldID, const int stage /*= 0*/) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		GameEvent event(GameEvent::E_RESUME_ANIM, (GameEventData) stage, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
 	}
+}
 
-	ANIMATIONSAPI void updateAnim(unsigned int entityWorldID, const int jobID, const GameEngineAnimParams::List paramType, const float value, const float timeoffset /*= 0*/)
-	{		
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			AnimationUpdate data(jobID, paramType, value, timeoffset);
-			GameEvent event(GameEvent::E_UPDATE_ANIM, &data, 0);
-			if( entity->checkEvent( &event ) )
-				entity->executeEvent( &event );
-		}		
+ANIMATIONSAPI void updateAnim(unsigned int entityWorldID, const int jobID, const GameEngineAnimParams::List paramType, const float value, const float timeoffset /*= 0*/) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		AnimationUpdate data(jobID, paramType, value, timeoffset);
+		GameEvent event(GameEvent::E_UPDATE_ANIM, &data, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
 	}
+}
 
-	ANIMATIONSAPI bool isPlaying( unsigned int entityWorldID, const char* animation )
-	{
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			return component->isPlaying(animation);
-		}
-		return false;
+ANIMATIONSAPI void setBias(unsigned int entityWorldID, const int jobID, float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		AnimationBias data(jobID, biasTransX, biasTransY, biasTransZ, biasRotX, biasRotY, biasRotZ, biasRotW);
+		GameEvent event(GameEvent::E_SET_ANIM_BIAS, &data, 0);
+		if (entity->checkEvent(&event))
+			entity->executeEvent(&event);
 	}
+}
 
-	ANIMATIONSAPI float getAnimLength( unsigned int entityWorldID, const char* animation)
-	{
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			return component->getAnimLength(animation);
-		}
-		return 0;
+ANIMATIONSAPI bool isPlaying(unsigned int entityWorldID, const char* animation) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		return component->isPlaying(animation);
 	}
+	return false;
+}
 
-	ANIMATIONSAPI float getAnimSpeed( unsigned int entityWorldID, const char* animation)
-	{
-		KeyframeAnimComponent* component = 0;
-		GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
-		if( entity && ( component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent")) ) != 0 )
-		{
-			return component->getAnimSpeed(animation);
-		}
-		return 0;
+ANIMATIONSAPI KeyframeAnimationMeta* getAnimResMeta(unsigned int entityWorldID, const char* animation) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		return component->getAnimResMeta(animation);
 	}
+	return NULL;
+}
+
+ANIMATIONSAPI float getAnimLength(unsigned int entityWorldID, const char* animation) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		return component->getAnimLength(animation);
+	}
+	return 0;
+}
+
+ANIMATIONSAPI float getAnimSpeed(unsigned int entityWorldID, const char* animation) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		return component->getAnimSpeed(animation);
+	}
+	return 0;
+}
+
+ANIMATIONSAPI void registerCharacterControler(unsigned int entityWorldID, ICharacterControllerEvent* charCont) {
+	KeyframeAnimComponent* component = 0;
+	GameEntity* entity = GameModules::gameWorld()->entity(entityWorldID);
+	if (entity && (component = static_cast<KeyframeAnimComponent*>(entity->component("KeyframeAnimComponent"))) != 0) {
+		component->registerCharacterController(charCont);
+	}
+}
+
 }
 

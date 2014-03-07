@@ -13,7 +13,6 @@
 // *************************************************************************************************
 //
 
-
 // ****************************************************************************************
 //
 // GameEngine Animation Component of the University of Augsburg
@@ -29,7 +28,6 @@
 #include <GameEngine/GameEntity.h>
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameLog.h>
-
 
 #include <Horde3D/Horde3D.h>
 #include <Horde3D/Horde3DUtils.h>
@@ -48,26 +46,25 @@
 #include "KeyframeAnimationJob.h"
 #include "KeyframeAnimationResource.h"
 
-GameComponent* KeyframeAnimComponent::createComponent( GameEntity* owner )
-{
-	return new KeyframeAnimComponent( owner );
+GameComponent* KeyframeAnimComponent::createComponent(GameEntity* owner) {
+	return new KeyframeAnimComponent(owner);
 }
 
-KeyframeAnimComponent::KeyframeAnimComponent(GameEntity* owner) : GameComponent(owner, "KeyframeAnimComponent"), MAX_STAGES(16)
-{
+KeyframeAnimComponent::KeyframeAnimComponent(GameEntity* owner) :
+		GameComponent(owner, "KeyframeAnimComponent"), MAX_STAGES(16) {
 	owner->addListener(GameEvent::E_PLAY_ANIM, this);
 	owner->addListener(GameEvent::E_STOP_ANIM, this);
 	owner->addListener(GameEvent::E_PAUSE_ANIM, this);
 	owner->addListener(GameEvent::E_RESUME_ANIM, this);
 	owner->addListener(GameEvent::E_UPDATE_ANIM, this);
+	owner->addListener(GameEvent::E_SET_ANIM_BIAS, this);
 	owner->addListener(GameEvent::E_GET_ANIM_LENGTH, this);
 
 	m_stageControllers = new KeyframeStageController[MAX_STAGES];
 
 	m_initTimestamps = new float[MAX_STAGES];
 
-	for (int i=0; i<MAX_STAGES; ++i)
-	{
+	for (int i = 0; i < MAX_STAGES; ++i) {
 		m_stageControllers[i].StageID = i;
 		m_stageControllers[i].Owner = this;
 
@@ -75,22 +72,21 @@ KeyframeAnimComponent::KeyframeAnimComponent(GameEntity* owner) : GameComponent(
 	}
 
 	KeyframeAnimManager::instance()->addObject(this);
+
+	m_charCont = 0x0;
 }
 
-KeyframeAnimComponent::~KeyframeAnimComponent()
-{
+KeyframeAnimComponent::~KeyframeAnimComponent() {
 	KeyframeAnimManager::instance()->removeObject(this);
 	release();
 	delete[] m_stageControllers;
 }
 
-void KeyframeAnimComponent::release()
-{
-	for (int i=0; i<MAX_STAGES; ++i)
+void KeyframeAnimComponent::release() {
+	for (int i = 0; i < MAX_STAGES; ++i)
 		m_stageControllers[i].clear();
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.begin();
-	while (iter != m_animationResources.end())
-	{
+	while (iter != m_animationResources.end()) {
 		h3dRemoveResource(iter->second->AnimResourceID);
 		delete iter->second;
 		++iter;
@@ -99,119 +95,149 @@ void KeyframeAnimComponent::release()
 	h3dReleaseUnusedResources();
 }
 
-void KeyframeAnimComponent::executeEvent(GameEvent *event)
-{
-	switch(event->id())
-	{
+void KeyframeAnimComponent::executeEvent(GameEvent *event) {
+	switch (event->id()) {
 	case GameEvent::E_PLAY_ANIM:
 		setupAnim(static_cast<AnimationSetup*>(event->data()));
 		break;
 	case GameEvent::E_STOP_ANIM:
-		stopAnim(*((const int*)event->data()));
+		stopAnim(*((const int*) event->data()));
 		break;
 	case GameEvent::E_PAUSE_ANIM:
-		pauseAnim(*((const int*)event->data()));
+		pauseAnim(*((const int*) event->data()));
 		break;
 	case GameEvent::E_RESUME_ANIM:
-		resumeAnim(*((const int*)event->data()));
+		resumeAnim(*((const int*) event->data()));
 		break;
 	case GameEvent::E_UPDATE_ANIM:
 		updateAnim(static_cast<AnimationUpdate*>(event->data()));
 		break;
-	case GameEvent::E_GET_ANIM_LENGTH:
-		{
-			AnimLengthData* data = static_cast<AnimLengthData*>(event->data());
-			*(data->Length) = getAnimLength(data->Name, data->Speed);
-		}
+	case GameEvent::E_SET_ANIM_BIAS:
+		setAnimBias(static_cast<AnimationBias*>(event->data()));
+		break;
+	case GameEvent::E_GET_ANIM_LENGTH: {
+		AnimLengthData* data = static_cast<AnimLengthData*>(event->data());
+		*(data->Length) = getAnimLength(data->Name, data->Speed);
+	}
 		break;
 	}
 }
 
-void KeyframeAnimComponent::loadFromXml(const XMLNode* description)
-{
+void KeyframeAnimComponent::loadFromXml(const XMLNode* description) {
 	release();
 	int animCount = description->nChildNode("StaticAnimation");
-	for (int i=0; i<animCount; ++i)
-	{
+	for (int i = 0; i < animCount; ++i) {
 		XMLNode animation = description->getChildNode("StaticAnimation", i);
 		const char* file = animation.getAttribute("file", "");
 		const char* name = animation.getAttribute("name", "");
-		if (m_animationResources.find(name) != m_animationResources.end())
-		{
+		if (m_animationResources.find(name) != m_animationResources.end()) {
 			GameLog::errorMessage("Another animation with the name '%s' has been already loaded!", name);
 			return;
 		}
 		std::string path = h3dutGetResourcePath(H3DResTypes::Animation);
-		if ( path.size() > 0 && path[path.size()-1] != '\\' && path[path.size()-1] != '/' )
+		if (path.size() > 0 && path[path.size() - 1] != '\\' && path[path.size() - 1] != '/')
 			path += '/';
 		// Open resource file
-		std::ifstream inf( (path + file).c_str(), std::ios::binary );
-		if( inf ) // Resource file found
+		std::ifstream inf((path + file).c_str(), std::ios::binary);
+		if (inf) // Resource file found
 		{
 			// Find size of resource file
-			inf.seekg( 0, std::ios::end );
+			inf.seekg(0, std::ios::end);
 			const int size = (int) inf.tellg();
 			// Copy resource file to memory
 			char *data = new char[size + 1];
-			inf.seekg( 0 );
-			inf.read( data, size );
+			inf.seekg(0);
+			inf.read(data, size);
 			inf.close();
 			// Null-terminate buffer - this is important for XML parsers
 			data[size] = '\0';
 			// Add animation resources to horde resource manager
-			const int resourceID = h3dAddResource( H3DResTypes::Animation, file, 0 );
+			const int resourceID = h3dAddResource(H3DResTypes::Animation, file, 0);
 			// Send resource data to engine
-			h3dLoadResource( resourceID, data, size );
+			h3dLoadResource(resourceID, data, size);
 			delete[] data;
 			int frames = h3dGetResParamI(resourceID, H3DAnimRes::EntityElem, 0, H3DAnimRes::EntFrameCountI);
-			KeyframeAnimationResource* anim = new KeyframeAnimationResource( owner(), resourceID, frames, static_cast<float>(atof(animation.getAttribute("fps","30.0"))) );
+			KeyframeAnimationResource* anim = new KeyframeAnimationResource(owner(), resourceID, frames, static_cast<float>(atof(animation.getAttribute("fps", "30.0"))));
+
+			KeyframeAnimationMeta* kfm = new KeyframeAnimationMeta();
+			//Parse Meta
+			XMLNode meta = animation.getChildNode("Meta");
+			float dx = static_cast<float>(atof(meta.getAttribute("dx", "0.0")));
+			float dy = static_cast<float>(atof(meta.getAttribute("dy", "0.0")));
+			float dz = static_cast<float>(atof(meta.getAttribute("dz", "0.0")));
+
+			kfm->numFrames = static_cast<int>(atoi(meta.getAttribute("frames", "0")));
+
+			int keyFrameCount = meta.nChildNode("KeyFrame");
+			for (int kf = 0; kf < keyFrameCount; kf++) {
+				XMLNode keyFrm = meta.getChildNode("KeyFrame", kf);
+				ConstraintFrame cs;
+
+				const char* cnode = keyFrm.getAttribute("cnode", "");
+				cs.constraintNode = string(cnode);
+				cs.constraintChild = keyFrm.getAttribute("cchild", "");
+
+				printf("CNODE: %s\n", cnode);
+
+				cs.frameNumber = static_cast<int>(atoi(keyFrm.getAttribute("frame", "0")));
+
+				//Root Position
+				float rx = static_cast<float>(atof(keyFrm.getAttribute("x", "0.0")));
+				float ry = static_cast<float>(atof(keyFrm.getAttribute("y", "0.0")));
+				float rz = static_cast<float>(atof(keyFrm.getAttribute("z", "0.0")));
+				cs.ROOTpos = Vec3f( rx, ry, rz);
+
+				//Relative CJ position
+				float cjx = static_cast<float>(atof(keyFrm.getAttribute("cjx", "0.0")));
+				float cjy = static_cast<float>(atof(keyFrm.getAttribute("cjy", "0.0")));
+				float cjz = static_cast<float>(atof(keyFrm.getAttribute("cjz", "0.0")));
+				cs.CJpos = Vec3f(cjx, cjy, cjz);
+
+				kfm->ConstraintFrames.push_back(cs);
+			}
+			anim->kfam = kfm;
+
 			m_animationResources.insert(std::make_pair(name, anim));
-		}
-		else // Resource file not found
+		} else
+			// Resource file not found
 			GameLog::errorMessage("Animation file %s not found ", file);
+
 	}
 }
 
-void KeyframeAnimComponent::applyChanges(const float timestamp)
-{
+void KeyframeAnimComponent::applyChanges(const float timestamp) {
 	std::vector<AnimationUpdate>::iterator iter = m_pendingAnimUpdates.begin();
-	while( iter != m_pendingAnimUpdates.end() )
-	{
-		if (iter->TimeOffset <=  timestamp)
-		{
+	while (iter != m_pendingAnimUpdates.end()) {
+		if (iter->TimeOffset <= timestamp) {
 			iter->TimeOffset = 0;
 			updateAnim(&(*iter));
 			iter = m_pendingAnimUpdates.erase(iter);
-		}
-		else ++iter;
+		} else
+			++iter;
 	}
 }
-void KeyframeAnimComponent::update(const float timestamp)
-{
-	for (int i=0; i<MAX_STAGES; ++i)
+void KeyframeAnimComponent::update(const float timestamp) {
+	for (int i = 0; i < MAX_STAGES; ++i)
 		m_stageControllers[i].update(timestamp);
 }
 
-bool KeyframeAnimComponent::isPlaying(const char *animation)
-{
+bool KeyframeAnimComponent::isPlaying(const char *animation) {
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(animation);
-	if(iter == m_animationResources.end()) return false;
+	if (iter == m_animationResources.end())
+		return false;
 
-	for (int i=0; i<MAX_STAGES; ++i)
-	{
-		if( !m_stageControllers[i].Animations.empty() &&
-			m_stageControllers[i].Animations.front()->m_animation->AnimResourceID == iter->second->AnimResourceID)
-		{
+	for (int i = 0; i < MAX_STAGES; ++i) {
+		if (!m_stageControllers[i].Animations.empty() && m_stageControllers[i].Animations.front()->m_animation->AnimResourceID == iter->second->AnimResourceID) {
 			return true;
 		}
 	}
 	return false;
 }
 
-float KeyframeAnimComponent::getAnimLength(const char *animation, float speed /*= 0*/)
-{
+float KeyframeAnimComponent::getAnimLength(const char *animation, float speed /*= 0*/) {
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(animation);
-	if(iter == m_animationResources.end()) return 0;
+	if (iter == m_animationResources.end())
+		return 0;
 
 	if (speed > 0)
 		return iter->second->Frames / speed;
@@ -220,24 +246,29 @@ float KeyframeAnimComponent::getAnimLength(const char *animation, float speed /*
 	return 0;
 }
 
-float KeyframeAnimComponent::getAnimSpeed(const char *animation)
-{
+KeyframeAnimationMeta* KeyframeAnimComponent::getAnimResMeta(const char* animation) {
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(animation);
-	if(iter == m_animationResources.end()) return 0;
+	if (iter == m_animationResources.end())
+		return 0;
+
+	return  iter->second->kfam;
+}
+
+float KeyframeAnimComponent::getAnimSpeed(const char *animation) {
+	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(animation);
+	if (iter == m_animationResources.end())
+		return 0;
 
 	return iter->second->Speed;
 }
 
-void KeyframeAnimComponent::setupAnim(AnimationSetup *command)
-{
+void KeyframeAnimComponent::setupAnim(AnimationSetup *command) {
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(command->Animation);
-	if (command->Stage >= MAX_STAGES || command->Stage < 0)
-	{
+	if (command->Stage >= MAX_STAGES || command->Stage < 0) {
 		GameLog::errorMessage("Invalid Stage ID '%d'! Value must between 0 and %d", command->Stage, MAX_STAGES);
 		return;
 	}
-	if (iter == m_animationResources.end())
-	{
+	if (iter == m_animationResources.end()) {
 		GameLog::errorMessage("setupAnim: Animation %s not found!", command->Animation);
 		return;
 	}
@@ -246,16 +277,12 @@ void KeyframeAnimComponent::setupAnim(AnimationSetup *command)
 	m_stageControllers[command->Stage].addAnimationJob(job);
 }
 
-void KeyframeAnimComponent::updateAnim(AnimationUpdate *command)
-{
+void KeyframeAnimComponent::updateAnim(AnimationUpdate *command) {
 	const float time = GameEngine::timeStamp();
-	if (m_animationRegistry.size() >= command->JobID && command->JobID > 0)
-	{
+	if (m_animationRegistry.size() >= command->JobID && command->JobID > 0) {
 		KeyframeAnimationJob* job = m_animationRegistry[command->JobID - 1];
-		if (job)
-		{
-			switch (command->ParamType)
-			{
+		if (job) {
+			switch (command->ParamType) {
 			case GameEngineAnimParams::Weight:
 				job->addTimelinePoint(time + command->TimeOffset, command->Value);
 				break;
@@ -276,8 +303,18 @@ void KeyframeAnimComponent::updateAnim(AnimationUpdate *command)
 	}
 }
 
-void KeyframeAnimComponent::stopAnim(const int stage)
-{
+void KeyframeAnimComponent::setAnimBias(AnimationBias *command) {
+	const float time = GameEngine::timeStamp();
+	if (m_animationRegistry.size() >= command->JobID && command->JobID > 0) {
+		KeyframeAnimationJob* job = m_animationRegistry[command->JobID - 1];
+		if (job) { //
+			printf("BIAS set: %f, %f, %f, %f, %f, %f, %f\n", command->BiasTransX, command->BiasTransY, command->BiasTransZ, command->BiasRotX, command->BiasRotY, command->BiasRotZ, command->BiasRotW);
+			job->setAnimBias(command->BiasTransX, command->BiasTransY, command->BiasTransZ, command->BiasRotX, command->BiasRotY, command->BiasRotZ, command->BiasRotW);
+		}
+	}
+}
+
+void KeyframeAnimComponent::stopAnim(const int stage) {
 	if (stage >= MAX_STAGES)
 		return;
 
@@ -287,8 +324,7 @@ void KeyframeAnimComponent::stopAnim(const int stage)
 	m_stageControllers[stage].popAnimationJob();
 }
 
-void KeyframeAnimComponent::pauseAnim(const int stage)
-{
+void KeyframeAnimComponent::pauseAnim(const int stage) {
 	if (stage >= MAX_STAGES)
 		return;
 
@@ -300,8 +336,7 @@ void KeyframeAnimComponent::pauseAnim(const int stage)
 	job->pause();
 }
 
-void KeyframeAnimComponent::resumeAnim(const int stage)
-{
+void KeyframeAnimComponent::resumeAnim(const int stage) {
 	if (stage >= MAX_STAGES)
 		return;
 
@@ -313,14 +348,12 @@ void KeyframeAnimComponent::resumeAnim(const int stage)
 	job->unPause();
 }
 
-int KeyframeAnimComponent::getJobID(std::string animName)
-{
+int KeyframeAnimComponent::getJobID(std::string animName) {
 	std::map<std::string, KeyframeAnimationResource*>::iterator iter = m_animationResources.find(animName);
-	if(iter != m_animationResources.end())
-	{
-		for(unsigned int i = 0; i < m_animationRegistry.size(); ++i)
-		{
-			if(m_animationRegistry[i]->m_animation = iter->second) return i+1;
+	if (iter != m_animationResources.end()) {
+		for (unsigned int i = 0; i < m_animationRegistry.size(); ++i) {
+			if (m_animationRegistry[i]->m_animation = iter->second)
+				return i + 1;
 		}
 	}
 	return 0;
@@ -377,7 +410,7 @@ void KeyframeAnimComponent::setSerializedState(GameState& state) {
 
 	for (int i = 0; i < MAX_STAGES; i++) {
 		unsigned int stage_length;
-		if(state.readUInt32(&stage_length))
+		if (state.readUInt32(&stage_length))
 			return;
 		if (stage_length == 0) {
 			// empty stage controller
@@ -410,7 +443,7 @@ void KeyframeAnimComponent::setSerializedState(GameState& state) {
 
 				// skip to next stage controller
 				for (size_t j = 1; j < tlsize; j++) {
-					state.skipBytes(sizeof(float)*2);
+					state.skipBytes(sizeof(float) * 2);
 				}
 
 				continue;
@@ -428,7 +461,7 @@ void KeyframeAnimComponent::setSerializedState(GameState& state) {
 			if (m_stageControllers[i].Animations.size() == 0) {		// something went terribly wrong
 				// skip to next stage controller
 				for (size_t j = 1; j < tlsize; j++) {
-					state.skipBytes(sizeof(float)*2);
+					state.skipBytes(sizeof(float) * 2);
 				}
 
 				continue;

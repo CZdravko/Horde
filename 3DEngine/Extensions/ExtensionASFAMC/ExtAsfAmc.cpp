@@ -13,6 +13,7 @@
 #include <egPrerequisites.h>
 #include "utMath.h"
 
+
 namespace Horde3DAsfAmc {
 
 using namespace Horde3D;
@@ -50,13 +51,13 @@ using namespace Horde3DAsfAmc;
 
 
 
-DLLEXP void h3dextBuildJointIdxMap(ResHandle asfRes) {
+DLLEXP void h3dextBuildJointIdxMap(ResHandle asfRes, std::map<std::string, Horde3D::Vec3f>* pJointMap, int frame) {
 
 	Resource *aRes = Modules::resMan().resolveResHandle(asfRes);
 	if (aRes == 0x0)
 		return;
 
-	((ASFResource *)aRes)->buildJointIdxMap(0x0);
+	((ASFResource *)aRes)->buildJointIdxMap(frame, pJointMap);
 }
 
 

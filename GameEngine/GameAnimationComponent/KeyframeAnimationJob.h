@@ -67,6 +67,10 @@ public:
 
 	void unPause();
 
+	void setStartFrame(const float startFrame);
+
+	void setAnimBias(float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW);
+
 	std::vector<TimelineWeight>	m_timeline;
 	int							m_jobID;
 	bool						m_endless;
@@ -80,6 +84,15 @@ public:
 	static const float			ENDLESS_DURATION;
 	bool						m_paused;
 	float						m_pauseTimestamp;
+	float						m_startFrame;
+
+	float 						m_biasTransX;
+	float 						m_biasTransY;
+	float 						m_biasTransZ;
+	float 						m_biasRotX;
+	float 						m_biasRotY;
+	float 						m_biasRotZ;
+	float 						m_biasRotW;
 };
 #endif
 

@@ -102,12 +102,17 @@ public:
 
 struct AnimStage
 {
+	AnimStage() : biasTranslation(Vec3f(0,0,0)), biasRotation(Quaternion(0,0,0,1)){}
 	PAnimationResource  anim;  // If NULL, stage is inactive
 	int                 layer;
 	uint32              startNodeNameId;
 	float               animTime;
 	float               weight;
 	bool                additive;
+
+	IAnimatableNode *	animNode;
+	Vec3f 				biasTranslation;
+	Quaternion 			biasRotation;
 };
 
 struct AnimCtrlNode
@@ -129,7 +134,8 @@ public:
 	
 	bool setupAnimStage( int stage, AnimationResource *anim, int layer,
 	                     const std::string &startNode, bool additive );
-	bool setAnimParams( int stage, float time, float weight );
+	bool setAnimParams( int stage, float time, float weight);
+	bool setAnimBias(int stage, float biasTransX, float biasTransY, float biasTransZ, float biasRotX, float biasRotY, float biasRotZ, float biasRotW);
 	bool animate();
 
 protected:

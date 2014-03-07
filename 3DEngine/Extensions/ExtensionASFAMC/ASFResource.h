@@ -39,14 +39,19 @@ public:
 	void release();
 	bool load(const char *data, int size);
 
-	void buildJointIdxMap(SceneNode* model);
+	void buildJointIdxMap(int frame, std::map<std::string, Horde3D::Vec3f>* pJointMap);
+	void buildMaps(SceneNode* model);
 
 	void setModel(SceneNode* node);
 
 	int getNumFrames(){return _numFrames;};
 	int getNumEntities(){return _numEntities;};
 	void rebasePosture(int frameIndex, Matrix4f** frameTs, Quaternion** frameQs, bool basePosture, bool skeletonBasePosture);
+	void compare_bones(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans, Matrix4f* frameT, Quaternion* frameQ);
 	void getEntityName(int enitityIndex, char* name);
+
+	void draw_bones(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans, Matrix4f* frameT, Quaternion* frameQ);
+
 
 
 private:
@@ -72,6 +77,7 @@ private:
 
 	void traverseSkeleton(Bone* bone, Matrix4f cumulativeTransform, Vec3f* absoluteUnitVectors);
 	Vec3f* getAbsoluteUnitVectors();
+	void getAbsoluteVectors(Bone* bone, Bone* parent, Vec3f* absoluteUnitVectors, Vec3f* absoluteUnitVectors);
 	void transformBone(Bone* bone, Matrix4f &cumulativeTransform, Vec3f* absoluteUnitVectors);
 
 	void rebaseTree(SceneNode* joint, Vec3f* absoluteUnitVectors, Matrix4f absTrans, Matrix4f* frameT, Quaternion* frameQ, bool basePosture);

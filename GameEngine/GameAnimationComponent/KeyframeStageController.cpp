@@ -63,6 +63,7 @@ void KeyframeStageController::addAnimationJob( KeyframeAnimationJob* const job)
 	{
 		while( !Animations.empty() && ( Animations.front()->past(job->m_timeline.front().Timestamp) || Animations.front()->m_endless ) )
 		{
+			printf("deleting\n");
 			delete Animations.front();
 			Animations.pop_front();
 		}
